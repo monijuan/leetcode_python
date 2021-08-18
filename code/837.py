@@ -55,23 +55,18 @@ class Solution:
         """
         last = k+maxPts
         factor = 1./maxPts
-        dp = [0 for i in range(last+1)]
-        dp[0] = 1.
+        dp = [0 for _ in range(last+1)]
+        dp[0] = 1
         dp[1] = factor
         if k==0 :return 1
-        elif k==1 :return n/maxPts
-        for index in range(1,last):
-            if index<k and index<maxPts:
-                dp[index] = dp[index-1] + factor
-            elif index<k and index>=maxPts:
-                dp[index] = factor * (dp[index-1]-dp[index-1-maxPts])
-            elif index>=k and index<maxPts:
-                dp[index] = dp[index-1]
-            elif index>=k and index>=maxPts:
-                dp[index] = dp[index-1] - factor*dp[index-1-maxPts]
-
-            print(index, dp)
-        # print(dp)
+        elif k==1 :return min(1.,n/maxPts)
+        for index in range(2,last):
+            if index<=k and index<=maxPts:
+                dp[index] = dp[index-1] + factor * dp[index-1]
+            elif index<=k and index>maxPts:
+                dp[index] = dp[index-1] + factor * (dp[index-1] - dp[index - maxPts-1])
+            else:
+                dp[index] = dp[index-1] - factor * dp[index-maxPts-1]
         return sum([x for i, x in enumerate(dp) if k <= i <= n])
 
     def new21Game动态规划超时优化(self, n: int, k: int, maxPts: int) -> float:
@@ -86,12 +81,10 @@ class Solution:
         dp = [0 for i in range(last+1)]
         dp[0] = 1.
         if k==0 :return 1
-        elif k==1 :return n/maxPts
+        elif k==1 :return min(1.,n/maxPts)
         for index in range(1,last):
             dp[index] = factor * (sum(dp[max(1, index-maxPts):min(index,k)]))
             if index <= maxPts:  dp[index] += factor
-            # if index>=maxPts:dp[index-maxPts]=0
-            # print(index,dp)
         # print(dp)
         return sum([x for i, x in enumerate(dp) if k <= i <= n])
 
@@ -152,28 +145,33 @@ class Solution:
 
 def test(data_test):
     s = Solution()
+    # return s.new21Game暴力求解(*data_test)
     # return s.new21Game动态规划超时(*data_test)
+    # return s.new21Game动态规划超时优化(*data_test)
     return s.new21Game(*data_test)
 
 
 if __name__ == '__main__':
     datas = [
         # [10, 1, 10],
-        [10, 2, 10],
+        # [10, 2, 10],
         # [4, 3, 10],
         # [5, 3, 10],
         # [6, 3, 10],
         # [11, 3, 10],
         # [12, 3, 10],
         # [6, 1, 10],
-        # [21, 17, 10],   # 0.7327777870686083
-        # [11, 7, 10],
-        # [0, 0, 1],      # 1
-        # [1, 0, 1],      # 1
-        # [1, 0, 2],      # 1
-        # [121, 100, 47],
-        # [421, 400, 47],     # 0.7118794328537366
-        # [9811, 8890, 7719], # 0.20910837511099467
+        # [6, 2, 10],
+        [21, 17, 10],   # 0.7327777870686083
+        # # [11, 7, 10],
+        [0, 0, 1],      # 1
+        [1, 0, 1],      # 1
+        [1, 0, 2],      # 1
+        # # [121, 100, 47],
+        [421, 400, 47],     # 0.7118794328537366
+        [9811, 8890, 7719], # 0.20910837511099467
+        [3, 2, 3], # 0.8888888888888888
+        [12, 1, 10], # 1.0
     ]
     for data_test in datas:
         t0 = time.time()
