@@ -41,10 +41,28 @@ from typing import List
 
 class Solution:
     def __init__(self):
+        """
+        思路：
+            一行行遍历，如果是0则是0，如果是则是左边数+1，
+            第二行开始，不仅考虑上一步的结果，还不能超过上面那个数字
+        """
         pass
 
     def maximalSquare(self, matrix: List[List[str]]) -> int:
-        return
+        matrix = [[int(x) for x in line] for line in matrix]
+        res = 0
+        for row_id,row in enumerate(matrix):
+            for col_id,now in enumerate(row):
+                if now!=0 and col_id!=0:
+                    if row_id==0:
+                        matrix[row_id][col_id]=row[col_id-1]+1
+                    else:
+                        new = min(row[col_id-1]+1,matrix[row_id-1][col_id])
+                        res = max(res,new)
+                        matrix[row_id][col_id] = new
+                
+        print('\n'.join([str(x) for x in matrix]))
+        return res
 
 
 def test(data_test):
@@ -53,9 +71,9 @@ def test(data_test):
 
 if __name__ == '__main__':
     datas = [
-        [["1", "0", "1", "0", "0"], ["1", "0", "1", "1", "1"], ["1", "1", "1", "1", "1"], ["1", "0", "0", "1", "0"]], # 4
-        [["0", "1"], ["1", "0"]],   # 1
-        [["0"]],    # 0
+        [[["1", "0", "1", "0", "0"], ["1", "0", "1", "1", "1"], ["1", "1", "1", "1", "1"], ["1", "0", "0", "1", "0"]]], # 4
+        [[["0", "1"], ["1", "0"]]],   # 1
+        [[["0"]]],    # 0
     ]
     for data_test in datas:
         t0 = time.time()
