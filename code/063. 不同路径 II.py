@@ -51,6 +51,19 @@ from typing import List
 
 class Solution:
     def __init__(self):
+        """
+        ac之后发现思路和很多答案不一样，虽然都是dp的思路。
+        我说一下我的想法：
+
+        右下角是重点，在这就两种情况，如果end是障碍return 0，如果不是就1。
+
+        因为只能往下和往右，不能往回走，所以便从end往回遍历：
+        - 如果是障碍物，此格路线数量 = 0
+        - 如果不是障碍物，路线数量 = 右边一格的路线数量 + 下边一格的路线数量
+        - 当然，如果是最下面一行和最右边一列，就不存在下边一格和右边一格，要区分一下
+
+        因为python的机制，一行行分析比较方便，如果是c++或java，从最右一列往左也是可以的，总之要么是“先从下往上再从右往左”，要么是“先从右往左再从下往上”，本质没有区别。
+        """
         pass
 
     def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
