@@ -2,7 +2,7 @@
 # @Time    : 2021/8/16 16:46
 # @Author  : xxxxxxxxx
 # @Email   : xxxxxxxxxxx@xxx.com
-# @File    : 837.py
+# @File    : 837.21点.py
 # @Software: PyCharm
 # ===================================
 """爱丽丝参与一个大致基于纸牌游戏 “21点” 规则的游戏，描述如下：
