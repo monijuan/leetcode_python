@@ -43,37 +43,58 @@ class Solution:
     def __init__(self):
         """
         思路：
-            一行行遍历，如果是0则是0，如果是则是左边数+1，
-            第二行开始，不仅考虑上一步的结果，还不能超过上面那个数字
+            一行行遍历，记录左边和上边连续多少个1，同时对比左上角确定此刻正方形的边长
         """
         pass
 
     def maximalSquare(self, matrix: List[List[str]]) -> int:
+        """
+        每个位置用(x,y,z)表示，其中：
+            x表示水平向右方向第x个连续的1，
+            y表示竖直向下方向第y个连续的1，
+            z表示以这个位置为右下角的最大正方形的边长。
+        :param matrix:
+        :return:
+        """
+        max_size = 0
         matrix = [[int(x) for x in line] for line in matrix]
-        res = 0
+        last_line = [[0,0,0] for _ in matrix[0]]
         for row_id,row in enumerate(matrix):
+            this_line = [[0,0,0] for _ in row]
             for col_id,now in enumerate(row):
-                if now!=0 and col_id!=0:
-                    if row_id==0:
-                        matrix[row_id][col_id]=row[col_id-1]+1
+                if now==0:
+                    this_line[col_id] = [0,0,0]
+                else:
+                    num_1_col = last_line[col_id][1]+1
+                    if col_id==0:
+                        num_1_row = 1
+                        this_size = 1
                     else:
-                        new = min(row[col_id-1]+1,matrix[row_id-1][col_id])
-                        res = max(res,new)
-                        matrix[row_id][col_id] = new
-                
-        print('\n'.join([str(x) for x in matrix]))
-        return res
+                        num_1_row = this_line[col_id-1][0]+1
+                        this_size = min(num_1_row,num_1_col,last_line[col_id-1][2]+1)
+                    this_line[col_id] = [num_1_row,num_1_col,this_size]
+                    max_size = max(max_size,this_size)
+            last_line = this_line
+            print(this_line)
+        return max_size**2
 
+def print_matrix(matrix):
+    for line in matrix:
+        print(line)
 
 def test(data_test):
     s = Solution()
+    print_matrix(*data_test)
     return s.maximalSquare(*data_test)
 
 if __name__ == '__main__':
     datas = [
         [[["1", "0", "1", "0", "0"], ["1", "0", "1", "1", "1"], ["1", "1", "1", "1", "1"], ["1", "0", "0", "1", "0"]]], # 4
         [[["0", "1"], ["1", "0"]]],   # 1
-        [[["0"]]],    # 0
+        [[["0"]]],      # 0
+        [[["1"]]],      # 1
+        [[["1","0","1","0"],["1","0","1","1"],["1","0","1","1"],["1","1","1","1"]]],      # 4
+        [[["1","1","1","1","1","1","1","1"],["1","1","1","1","1","1","1","0"],["1","1","1","1","1","1","1","0"],["1","1","1","1","1","0","0","0"],["0","1","1","1","1","0","0","0"]]],#16
     ]
     for data_test in datas:
         t0 = time.time()
