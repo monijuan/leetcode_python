@@ -2,7 +2,7 @@
 # @Time    : 2021/8/19 13:25
 # @Author  : xxxxxxxxx
 # @Email   : xxxxxxxxxxx@xxx.com
-# @File    : 345.py
+# @File    : 345 反转字符串中的元音字母.py
 # @Software: PyCharm
 # ===================================
 """给你一个字符串 s ，仅反转字符串中的所有元音字母，并返回结果字符串。
