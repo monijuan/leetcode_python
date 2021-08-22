@@ -67,15 +67,9 @@ class Solution:
                 dp[index] = dp[index-1] + factor * (dp[index-1] - dp[index - maxPts-1])
             else:
                 dp[index] = dp[index-1] - factor * dp[index-maxPts-1]
-        return sum([x for i, x in enumerate(dp) if k <= i <= n])
+        return sum(dp[k:n+1])
 
     def new21Game动态规划超时优化(self, n: int, k: int, maxPts: int) -> float:
-        """
-        :param n: 求 <=n 的概率
-        :param k: 当 >=k 时停止
-        :param maxPts:  最大数
-        :return:  <=n 的概率
-        """
         last = k+maxPts
         factor = 1./maxPts
         dp = [0 for i in range(last+1)]
@@ -86,15 +80,9 @@ class Solution:
             dp[index] = factor * (sum(dp[max(1, index-maxPts):min(index,k)]))
             if index <= maxPts:  dp[index] += factor
         # print(dp)
-        return sum([x for i, x in enumerate(dp) if k <= i <= n])
+        return sum(dp[k:n+1])
 
     def new21Game动态规划超时(self, n: int, k: int, maxPts: int) -> float:
-        """
-        :param n: 求 <=n 的概率
-        :param k: 当 >=k 时停止
-        :param maxPts:  最大数
-        :return:  <=n 的概率
-        """
         last = k+maxPts
         factor = 1./maxPts
         dp = [0 for i in range(last+1)]
@@ -113,17 +101,11 @@ class Solution:
                     dp[index] = factor * (sum(dp[max(1, index-maxPts):k]))
                     # dp[index-maxPts]=0
             # if index>=maxPts:dp[index-maxPts]=0
-            # print(index,dp)
+            print('i=',index,[round(x,3) for x in dp])
         # print(dp)
-        return sum([x for i, x in enumerate(dp) if k <= i <= n])
+        return sum(dp[k:n+1])
 
     def new21Game暴力求解(self, n: int, k: int, maxPts: int) -> float:
-        """
-        :param n: 求 <=n 的概率
-        :param k: 当 >=k 时停止
-        :param maxPts:  最大数
-        :return:  <=n 的概率
-        """
         prob_factors=[0 for _ in range(k+1)]
         # global prob
         def getCard(score,prob_factor):
@@ -140,13 +122,13 @@ class Solution:
         for index,times in enumerate(prob_factors):
             prob+=times * 1/maxPts**index
 
-        print(prob_factors)
+        # print(prob_factors)
         return prob
 
 def test(data_test):
     s = Solution()
     # return s.new21Game暴力求解(*data_test)
-    # return s.new21Game动态规划超时(*data_test)
+    return s.new21Game动态规划超时(*data_test)
     # return s.new21Game动态规划超时优化(*data_test)
     return s.new21Game(*data_test)
 
@@ -164,14 +146,14 @@ if __name__ == '__main__':
         # [6, 2, 10],
         [21, 17, 10],   # 0.7327777870686083
         # # [11, 7, 10],
-        [0, 0, 1],      # 1
-        [1, 0, 1],      # 1
-        [1, 0, 2],      # 1
-        # # [121, 100, 47],
-        [421, 400, 47],     # 0.7118794328537366
-        [9811, 8890, 7719], # 0.20910837511099467
-        [3, 2, 3], # 0.8888888888888888
-        [12, 1, 10], # 1.0
+        # [0, 0, 1],      # 1
+        # [1, 0, 1],      # 1
+        # [1, 0, 2],      # 1
+        # [121, 100, 47],
+        # [421, 400, 47],     # 0.7118794328537366
+        # [9811, 8890, 7719], # 0.20910837511099467
+        # [3, 2, 3], # 0.8888888888888888
+        # [12, 1, 10], # 1.0
     ]
     for data_test in datas:
         t0 = time.time()
