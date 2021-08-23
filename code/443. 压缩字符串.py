@@ -61,32 +61,17 @@ class Solution:
         id_char_start = 0
         left,right=0,0
         while id_char_start<length:
-            id_char_start = right   # 记录这个 char 起始的id，用于统计长度
-            while right<length and chars[right]==chars[]
-
-
-
-        # next_char = chars[0]
-        # # count = 0
-        # left = 0
-        # id_start=0
-        # for right in range(length):
-        #     if next_char!=chars[right] or right==length-1:
-        #         # pass
-        #     # else:# right 和之前的不一样
-        #         chars[left] = next_char
-        #         left+=1
-        #         next_char = chars[right]
-        #
-        #         count = right - id_start if right<length-1 else right - id_start+1
-        #         id_start = right
-        #         if count>1:
-        #             for char_c in str(count):
-        #                 chars[left]=char_c
-        #                 left+=1
-        #     # print(chars,f'i={left}, j={right}, id_start={id_start}')
+            right = id_char_start  # id_char_start 到 right-1 都是同一个字母
+            while right<length and chars[right]==chars[id_char_start]:
+                right+=1
+            chars[left]=chars[id_char_start]
+            left+=1
+            if right-id_char_start>1:
+                for char in str(right-id_char_start):
+                    chars[left]=char
+                    left+=1
+            id_char_start = right   # right开始是另一个字母
         # chars = chars[:left]
-        # print('res=',chars,left)
         return left
 
     def compress_for(self, chars: List[str]) -> int:
@@ -123,12 +108,12 @@ def test(data_test):
 
 if __name__ == '__main__':
     datas = [
-        [["a","a","b","b","c","c","c"]],    # 6
-        # [["a"]],    # 1
-        [["a","b","b","b","b","b","b","b","b","b","b","b","b"]],    # 4
+        # [["a","a","b","b","c","c","c"]],    # 6
+        [["a"]],    # 1
+        # [["a","b","b","b","b","b","b","b","b","b","b","b","b"]],    # 4
         # [["a","b","b","b","b","b","b","b","b","b","b","b","b","c"]],    # 4
-        # [["a","b","b","b","c","c","c","c","b","c","c","c","c","c","c","c","c","c","c","c","c","b","b","b","b","b","b","b","b","b","b","b","b"]],    # 4
-        [["a","b","c"]],    # ["a","b","c"]
+        [["a","b","b","b","c","c","c","c","b","c","c","c","c","c","c","c","c","c","c","c","c","b","b","b","b","b","b","b","b","b","b","b","b"]],    # 4
+        # [["a","b","c"]],    # ["a","b","c"]
     ]
     for data_test in datas:
         t0 = time.time()
