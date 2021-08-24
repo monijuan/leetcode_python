@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# @Time    : 2021/8/12 14:26
+# @Time    : 2021/8/24 15:52
 # @Author  : xxxxxxxxx
 # @Email   : xxxxxxxxxxx@xxx.com
 # @File    : 1913. 两个数对之间的最大乘积差.py
@@ -34,22 +34,38 @@
 import time
 from typing import List
 
+
 class Solution:
     def __init__(self):
         pass
 
-    def getResult(self):
-        return
+    def maxProductDifference_152ms(self, nums: List[int]) -> int:
+        nums.sort()
+        return nums[-1]*nums[-2]-nums[0]*nums[1]
 
+    def maxProductDifference_144ms(self, nums: List[int]) -> int:
+        nums_sorted = sorted(nums)
+        return nums_sorted[-1]*nums_sorted[-2]-nums_sorted[0]*nums_sorted[1]
+
+    def maxProductDifference_184ms(self, nums: List[int]) -> int:
+        nums_sorted = sorted(nums)
+        min_1,min_2=nums_sorted[:2]
+        max_1,max_2=nums_sorted[-2:]
+        return max_1*max_2-min_1*min_2
 
 def test(data_test):
     s = Solution()
-    return s.getResult()
+    return s.maxProductDifference(*data_test)
+
 
 if __name__ == '__main__':
     datas = [
-        [],
+        [[5,6,2,7,4]],  # 34
+        [[4,2,5,9,7,4,8]],  # 64
     ]
     for data_test in datas:
         t0 = time.time()
-        print('result:',test(data_test),f'{time.time()-t0}s')
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')
