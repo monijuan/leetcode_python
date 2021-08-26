@@ -44,26 +44,72 @@ Node.random 为空（null）或指向链表中的节点。
 链接：https://leetcode-cn.com/problems/fu-za-lian-biao-de-fu-zhi-lcof
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
+import copy
 import time
 from typing import List
+# 本题与主站 138 题相同
 
+# Definition for a Node.
+class Node:
+    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
+        self.val = int(x)   # value
+        self.next = next
+        self.random = random
+
+    def __str__(self):
+        return f'val:{None if self.val is None else self.val}, ' \
+               f'next:{None if self.next is None else self.next.val}, ' \
+               f'random:{None if self.random is None else self.random.val}, '
+
+    # def __copy__(self, node:'Node'):
+    #     self.val = node.val
+    #     self.next = node.next
+    #     self.random = node.random
 
 class Solution:
     def __init__(self):
-        pass
+        self.nodes = {}
 
-    def getResult(self, args):
-        return
+    def __show(self):
+        print('-='*50)
+        print(type(self.nodes))
+        print(self.nodes)
+        for key,node in self.nodes.items():
+            print(key,node)
+        print('--'*50)
+
+    def dfs(self,node):
+        if not node:return None
+        elif node in self.nodes:return self.nodes[node]
+
+        new = Node(node.val)
+        self.nodes[node] = new
+        new.next = self.dfs(node.next)
+        new.random = self.dfs(node.random)
+        return new
+
+    def copyRandomList(self, head: 'Node') -> 'Node':
+        res =  self.dfs(head)
+        # self.__show()
+        return res
 
 
 def test(data_test):
     s = Solution()
-    return s.getResult(*data_test)
+    node_list = []
+    for pair in data_test:
+        node = Node(pair[0], None, None)
+        node_list.append(node)
+    for id in range(len(data_test)):
+        node_list[id].next = None if id==len(data_test)-1 else node_list[id+1]
+        node_list[id].random = None if data_test[id][1] is None  else node_list[data_test[id][1]]
+
+    return s.copyRandomList(node_list[0])
 
 
 if __name__ == '__main__':
     datas = [
-        [],
+        [[7,None],[13,0],[11,4],[10,2],[1,0]],
     ]
     for data_test in datas:
         t0 = time.time()
