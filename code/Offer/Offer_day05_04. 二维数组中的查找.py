@@ -70,7 +70,7 @@ class Solution:
         print()
         # # 再向下
         # print('to down')
-        # row_id_down = 0
+        row_id_down = 0
         # for row_id,row in enumerate(matrix):
         #     if row[col_id_right]<target:
         #         row_id_down=row_id
