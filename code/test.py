@@ -7,6 +7,11 @@
 # ===================================
 
 def test():
+    res = 11 & 1
+    res = 12 & 1
+    print(res)
+
+def test1():
     for x in range(50000,50200):
         print(f'[{x}],',end='')
     print()
