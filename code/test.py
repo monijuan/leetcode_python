@@ -7,7 +7,11 @@
 # ===================================
 
 def test():
-    print(2**31)
+    for x in range(50000,50200):
+        print(f'[{x}],',end='')
+    print()
+    for x in range(50000,50200):
+        print(f',"addNum"',end='')
     return
 
 

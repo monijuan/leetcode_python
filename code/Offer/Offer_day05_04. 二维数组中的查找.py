@@ -45,45 +45,16 @@ class Solution:
         pass
 
     def findNumberIn2DArray(self, matrix: List[List[int]], target: int) -> bool:
-        if len(matrix)==0:return False
-        elif len(matrix[0])==0:return False
-        for row in matrix:print(row)
-        # 最下一行，先向左
-        # print('to left')
-        row = 0
-        # for col_id,num in enumerate(matrix[-1][::-1]):
-        #     print(col_id,num)
-        #     if num>target:
-        #         col_id_right=col_id
-        #     elif num==target:
-        #         return True
-        #     else:
-        #         break
-        for row_id in range(len(matrix)-1,-1,-1):
-            print(row_id,matrix[row_id][-1])
-            if matrix[row_id][-1]>target:
-                row=row_id
-            elif matrix[row_id][-1]==target:
-                return True
-            else:
-                break
-        print()
-        # # 再向下
-        # print('to down')
-        row_id_down = 0
-        # for row_id,row in enumerate(matrix):
-        #     if row[col_id_right]<target:
-        #         row_id_down=row_id
-        #     elif row[col_id_right]==target:
-        #         return True
-        #     else:
-        #         row_id_down=row_id  # 找到更大的这一行向左
-        #         break
-        #
-        # # 再向左
-        print('to left')
-        print(matrix[row_id_down][:col_id_right])
-        return target in matrix[row_id_down][:col_id_right]
+        if len(matrix)==0 or len(matrix[0])==0:return False
+        # 从右上角开始，如果偏小则向下，如果偏大则向左
+        row_id = 0
+        col_id = len(matrix[0])-1
+        while row_id<len(matrix) and col_id>=0:
+            num = matrix[row_id][col_id]
+            if num == target:return True
+            elif num>target:col_id-=1
+            elif num<target:row_id+=1
+        return False
 
 
 def test(data_test):

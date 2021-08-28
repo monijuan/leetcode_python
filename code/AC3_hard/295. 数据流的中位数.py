@@ -35,10 +35,9 @@ findMedian() -> 2
 """
 import time
 from typing import List
+from sortedcontainers import SortedList
 
-
-class MedianFinder:
-
+class MedianFinder_超时:
     def __init__(self):
         """
         initialize your data structure here.
@@ -48,7 +47,7 @@ class MedianFinder:
         self.mid = None
 
     def addNum(self, num: int) -> None:
-        self.length+=1
+        self.length += 1
         self.datas.extend(num)
         self.mid = None
 
@@ -56,12 +55,38 @@ class MedianFinder:
         if self.mid:
             return self.mid
         else:
-            if self.length%2:
-                self.mid = sorted(self.datas)[(self.length+1)//2]
+            if self.length % 2:
+                self.mid = sorted(self.datas)[(self.length + 1) // 2]
             else:
-                left = self.length//2
-                self.mid = sum(sorted(self.datas)[left-1:left+1])/2
+                left = self.length // 2
+                self.mid = sum(sorted(self.datas)[left - 1:left + 1]) / 2
             return self.mid
+
+class MedianFinder:
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.length = 0
+        self.datas = SortedList()
+        self.mid = None
+
+    def addNum(self, num: int) -> None:
+        self.length+=1
+        self.datas.add(num)
+        self.mid = None
+
+    def findMedian(self) -> float:
+        if self.mid:
+            return self.mid
+        else:
+            if self.length%2:
+                self.mid = self.datas[(self.length-1)//2]
+            else:
+                right = self.length//2
+                self.mid = sum(self.datas[right-1:right+1])/2
+            return self.mid
+
 
 
 def test(data_test):
@@ -74,10 +99,10 @@ def test_obj(data_test):
     obj = MedianFinder()
     for fun, data in zip(data_test[0][1::], data_test[1][1::]):
         if data:
-            res = obj.__getattribute__(fun)(data)
+            res = obj.__getattribute__(fun)(*data)
         else:
             res = obj.__getattribute__(fun)()
-        print('command:',fun,data,res)
+        # print('command:',fun,data,res)
         result.append(res)
     return result
 
