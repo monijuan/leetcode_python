@@ -1,0 +1,95 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2021/8/28 9:26
+# @Author  : xxxxxxxxx
+# @Email   : xxxxxxxxxxx@xxx.com
+# @File    : 240. 搜索二维矩阵 II.py
+# @Software: PyCharm
+# ===================================
+"""编写一个高效的算法来搜索 m x n 矩阵 matrix 中的一个目标值 target 。该矩阵具有以下特性：
+
+每行的元素从左到右升序排列。
+每列的元素从上到下升序排列。
+ 
+
+示例 1：
+
+
+输入：matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 5
+输出：true
+示例 2：
+
+
+输入：matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], target = 20
+输出：false
+ 
+
+提示：
+
+m == matrix.length
+n == matrix[i].length
+1 <= n, m <= 300
+-109 <= matix[i][j] <= 109
+每行的所有元素从左到右升序排列
+每列的所有元素从上到下升序排列
+-109 <= target <= 109
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/search-a-2d-matrix-ii
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+import time
+from typing import List
+
+class Solution:
+    def __init__(self):
+        pass
+
+    def findNumberIn2DArray(self, matrix: List[List[int]], target: int) -> bool:
+        if len(matrix)==0 or len(matrix[0])==0:return False
+        # 从右上角开始，如果偏小则向下，如果偏大则向左
+        row_id = 0
+        col_id = len(matrix[0])-1
+        while row_id<len(matrix) and col_id>=0:
+            num = matrix[row_id][col_id]
+            if num == target:return True
+            elif num>target:col_id-=1
+            elif num<target:row_id+=1
+        return False
+
+
+def test(data_test):
+    s = Solution()
+    return s.findNumberIn2DArray(*data_test)
+
+
+if __name__ == '__main__':
+    datas = [
+        [[[1,   4,  7, 11, 15],
+          [2,   5,  8, 12, 19],
+          [3,   6,  9, 16, 22],
+          [10, 13, 14, 17, 24],
+          [18, 21, 23, 26, 30]
+         ],5],
+        # [[[1,   4,  7, 11, 15],
+        #   [2,   5,  8, 12, 19],
+        #   [3,   6,  9, 16, 22],
+        #   [10, 13, 14, 17, 24],
+        #   [18, 21, 23, 26, 30]
+        #  ],10],
+        # [[[1,   4,  7, 11, 15],
+        #   [2,   5,  8, 12, 19],
+        #   [3,   6,  9, 16, 22],
+        #   [10, 13, 14, 17, 24],
+        #   [18, 21, 23, 26, 30]
+        #  ],20],
+        # [[],0],
+        # [[[]],1],
+        # [[[-1,3]],3],
+        # [[[2,5],[2,8],[7,9],[7,11],[9,11]], 7],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')
