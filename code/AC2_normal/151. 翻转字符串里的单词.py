@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2021/8/26 17:27
-# @Author  : xxxxxxxxx
-# @Email   : xxxxxxxxxxx@xxx.com
+# @Author  : 模拟卷
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
 # @File    : 151. 翻转字符串里的单词.py
 # @Software: PyCharm
 # ===================================

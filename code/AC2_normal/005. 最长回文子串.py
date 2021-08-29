@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2021/8/20 13:08
-# @Author  : xxxxxxxxx
-# @Email   : xxxxxxxxxxx@xxx.com
+# @Author  : 模拟卷
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
 # @File    : 005. 最长回文子串.py
 # @Software: PyCharm
 # ===================================

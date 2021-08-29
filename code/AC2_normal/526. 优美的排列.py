@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2021/8/16 14:01
-# @Author  : xxxxxxxxx
-# @Email   : xxxxxxxxxxx@xxx.com
+# @Author  : 模拟卷
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
 # @File    : 526. 优美的排列.py
 # @Software: PyCharm
 # ===================================

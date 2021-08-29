@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2021/8/25 13:35
-# @Author  : xxxxxxxxx
-# @Email   : xxxxxxxxxxx@xxx.com
+# @Author  : 模拟卷
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
 # @File    : 121. 买卖股票的最佳时机.py
 # @Software: PyCharm
 # ===================================

@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2021/8/12 14:39
-# @Author  : xxxxxxxxx
-# @Email   : xxxxxxxxxxx@xxx.com
-# @File    : 313.py
+# @Author  : 模拟卷
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 313. 超级丑数.py
 # @Software: PyCharm
 # ===================================
 """
