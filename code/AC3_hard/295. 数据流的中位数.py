@@ -65,9 +65,7 @@ class MedianFinder_超时:
 
 class MedianFinder:
     def __init__(self):
-        """
-        initialize your data structure here.
-        """
+        from sortedcontainers import SortedList
         self.length = 0
         self.datas = SortedList()
         self.mid = None

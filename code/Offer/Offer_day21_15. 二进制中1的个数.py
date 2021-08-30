@@ -2,7 +2,7 @@
 # @Time    : 2021/8/28 20:22
 # @Author  : xxxxxxxxx
 # @Email   : xxxxxxxxxxx@xxx.com
-# @File    : Offer_day99_15. 二进制中1的个数.py
+# @File    : Offer_day21_15. 二进制中1的个数.py
 # @Software: PyCharm
 # ===================================
 """编写一个函数，输入是一个无符号整数（以二进制串的形式），返回其二进制表达式中数字位数为 '1' 的个数（也被称为 汉明重量).）。

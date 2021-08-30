@@ -1,36 +1,32 @@
 # -*- coding: utf-8 -*-
-# @Time    : 2021/8/28 19:56
+# @Time    : 2021/8/28 20:09
 # @Author  : xxxxxxxxx
 # @Email   : xxxxxxxxxxx@xxx.com
-# @File    : Offer_day99_10- I. 斐波那契数列.py
+# @File    : Offer_day08_10- II. 青蛙跳台阶问题.py
 # @Software: PyCharm
 # ===================================
-"""写一个函数，输入 n ，求斐波那契（Fibonacci）数列的第 n 项（即 F(N)）。斐波那契数列的定义如下：
-
-F(0) = 0,   F(1) = 1
-F(N) = F(N - 1) + F(N - 2), 其中 N > 1.
-斐波那契数列由 0 和 1 开始，之后的斐波那契数就是由之前的两数相加而得出。
+"""一只青蛙一次可以跳上1级台阶，也可以跳上2级台阶。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。
 
 答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。
-
- 
 
 示例 1：
 
 输入：n = 2
-输出：1
+输出：2
 示例 2：
 
-输入：n = 5
-输出：5
- 
+输入：n = 7
+输出：21
+示例 3：
 
+输入：n = 0
+输出：1
 提示：
 
 0 <= n <= 100
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/fei-bo-na-qi-shu-lie-lcof
+链接：https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
 import time
@@ -40,23 +36,17 @@ class Solution:
     def __init__(self):
         pass
 
-    def fib(self, n: int) -> int:
-        if n==0:return 0
-        elif n==1:return 1
-        else:
-            f_1 = 1
-            f_2 = 0
-            for i in range(2,n+1):
-                f_i = f_2 + f_1
-                f_2 = f_1
-                f_1 = f_i
-
-            return f_i%1000000007
+    def numWays(self, n: int) -> int:
+        n_2 = 0
+        n_1 = 1
+        for _ in range(n):
+            n_1, n_2 = n_1+n_2, n_1
+        return n_1 % 1000000007
 
 
 def test(data_test):
     s = Solution()
-    return s.fib(*data_test)
+    return s.numWays(*data_test)
 
 if __name__ == '__main__':
     datas = [
@@ -64,8 +54,8 @@ if __name__ == '__main__':
         [1],
         [2],
         [3],
-        [5],
-        [1005],
+        [13],
+        [113],
     ]
     for data_test in datas:
         t0 = time.time()
