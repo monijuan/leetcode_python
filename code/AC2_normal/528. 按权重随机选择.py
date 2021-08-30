@@ -67,17 +67,16 @@ class Solution:
     def __init__(self, w: List[int]):
         w_sum = sum(w)
         self.arr = []
+        self.length = len(w)
         for i,weight in enumerate(w):
             prob = weight/w_sum if i==0 else (weight/w_sum+self.arr[-1])
             self.arr.append(prob)
-        # self.length = len(self.arr)
-        print('arrrrr',self.arr)
-
 
     def pickIndex(self) -> int:
-        # id = random.randint(0,self.length-1)
-        # return self.arr[id]
-        return 0
+        prob = random.random()
+        for i,thre in enumerate(self.arr):
+            if prob<thre:return i
+        return self.length-1
 
 class Solution_超时:
     def __init__(self, w: List[int]):
@@ -85,6 +84,7 @@ class Solution_超时:
         for i,times in enumerate(w):
             self.arr.extend([i]*times)
         self.length = len(self.arr)
+
 
 
     def pickIndex(self) -> int:
@@ -106,7 +106,7 @@ def test_obj(data_test):
         else:
             res = obj.__getattribute__(fun)()
         result.append(res)
-    return 0
+    return result
 
 
 if __name__ == '__main__':
