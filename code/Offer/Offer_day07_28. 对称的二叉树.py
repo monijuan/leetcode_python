@@ -2,7 +2,7 @@
 # @Time    : 2021/8/31 17:15
 # @Github  : https://github.com/monijuan
 # @CSDN    : https://blog.csdn.net/qq_34451909
-# @File    : Offer_day08_28. 对称的二叉树.py
+# @File    : Offer_day07_28. 对称的二叉树.py
 # @Software: PyCharm
 # ===================================
 """请实现一个函数，用来判断一棵二叉树是不是对称的。如果一棵二叉树和它的镜像一样，那么它是对称的。
