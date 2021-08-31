@@ -57,13 +57,20 @@ class Solution:
     def __init__(self):
         pass
 
+    def isSameRoot(self, leftson,rightson) -> bool:
+        if leftson and rightson:
+            if leftson.val==rightson.val:
+                return self.isSameRoot(leftson.left,rightson.right) and self.isSameRoot(leftson.right,rightson.left)
+            else:
+                return False
+        elif not leftson and not rightson:
+            return True
+        else:
+            return False
+
     def isSymmetric(self, root: TreeNode) -> bool:
         if root:
-            new = TreeNode()
-            new.val = root.val
-            new.left = self.isSymmetric(root.right)
-            new.right = self.isSymmetric(root.left)
-            return new
+            return self.isSameRoot(root.left,root.right)
         else:
             return True
 
