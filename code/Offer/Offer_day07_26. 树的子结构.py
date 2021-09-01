@@ -22,10 +22,35 @@ class Solution:
         pass
 
     def isSame(self, A: TreeNode, B: TreeNode) -> bool:
-        pass
+        if A is not None and B is not None:
+            if B.val==A.val:
+                return self.isSame(A.left,B.left) and self.isSame(A.right,B.right)
+            else:
+                return False
+        elif B is None:
+            return True
+        else:
+            return False
 
     def isSubStructure(self, A: TreeNode, B: TreeNode) -> bool:
-        pass
+        if B is None:return False
+        queue = [A]
+        while len(queue):
+            head = queue.pop(0)
+            if head:
+                if self.isSame(head,B):return True
+                queue.append(head.left)
+                queue.append(head.right)
+        return False
+
+class Solution_官方:
+    def isSubStructure(self, A: TreeNode, B: TreeNode) -> bool:
+        def recur(A, B):
+            if not B: return True
+            if not A or A.val != B.val: return False
+            return recur(A.left, B.left) and recur(A.right, B.right)
+
+        return bool(A and B) and (recur(A, B) or self.isSubStructure(A.left, B) or self.isSubStructure(A.right, B))
 
 
 def test(data_test):
