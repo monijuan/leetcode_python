@@ -39,7 +39,13 @@ class Solution:
         pass
 
     def maxValue(self, grid: List[List[int]]) -> int:
-        return
+        for row_id,row in enumerate(grid):
+            for col_id,item in enumerate(row):
+                up = 0 if row_id==0 else grid[row_id-1][col_id]
+                left = 0 if col_id==0 else row[col_id-1]
+                grid[row_id][col_id]+=max(up,left)
+
+        return grid[-1][-1]
 
 
 def test(data_test):
