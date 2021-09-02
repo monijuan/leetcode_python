@@ -20,6 +20,43 @@ class Solution:
 
         self.ISDEBUG=False
 
+    def nthSuperUglyNumber(self, n: int, primes: List[int]) -> int:
+        dp = [None for _ in range(n+1)]     # 丑数序列
+        res = 1                            # 第一个是1
+        len_primes = len(primes)
+        nums = [None for _ in range(len_primes)]
+        pointers = [1 for _ in range(len_primes)]   # 指向该做乘积的那个丑数
+        for i in range(2,n+1):
+            min_newUgly = sys.maxsize
+            for j in range(len_primes):
+                nums[j] = dp[pointers[j]]*primes[j]
+                min_newUgly = min(min_newUgly,nums[j])
+            dp[i] = min_newUgly
+            for j in range(len_primes):
+                if min_newUgly==nums[j]:
+                    pointers[j]+=1
+        return dp[n]
+
+    # 动态规划_超时
+    def nthSuperUglyNumber_动态规划_超时(self, n: int, primes: List[int]) -> int:
+        dp = [None for _ in range(n+1)]     # 丑数序列
+        dp[1] = 1                             # 第一个是1
+        len_primes = len(primes)
+        nums = [None for _ in range(len_primes)]
+        pointers = [1 for _ in range(len_primes)]   # 指向该做乘积的那个丑数
+        for i in range(2,n+1):
+            min_newUgly = sys.maxsize
+            for j in range(len_primes):
+                nums[j] = dp[pointers[j]]*primes[j]
+                min_newUgly = min(min_newUgly,nums[j])
+            dp[i] = min_newUgly
+            for j in range(len_primes):
+                if min_newUgly==nums[j]:
+                    pointers[j]+=1
+        return dp[n]
+
+
+    # 暴力判断超级丑数
     def deepDivision(self,father,divisor):
         """返回 father不断除以divisor 直到不能整除"""
         while father%divisor==0:
@@ -71,7 +108,7 @@ class Solution:
         # self.is_super_ugly_number.add(number)
         return True
 
-    def nthSuperUglyNumber2(self, n: int, primes: List[int]) -> int:
+    def nthSuperUglyNumber_暴力超时(self, n: int, primes: List[int]) -> int:
         self.prime_in_set = primes
         result = 1
         cnt = 1 # 第一个永远是1，所以至少有一个
@@ -83,22 +120,6 @@ class Solution:
                 cnt+=1
         return result
 
-    def nthSuperUglyNumber(self, n: int, primes: List[int]) -> int:
-        dp = [None for _ in range(n+1)]     # 丑数序列
-        dp[1] = 1                             # 第一个是1
-        len_primes = len(primes)
-        nums = [None for _ in range(len_primes)]
-        pointers = [1 for _ in range(len_primes)]   # 指向该做乘积的那个丑数
-        for i in range(2,n+1):
-            min_newUgly = sys.maxsize
-            for j in range(len_primes):
-                nums[j] = dp[pointers[j]]*primes[j]
-                min_newUgly = min(min_newUgly,nums[j])
-            dp[i] = min_newUgly
-            for j in range(len_primes):
-                if min_newUgly==nums[j]:
-                    pointers[j]+=1
-        return dp[n]
 
 import sys
 def test(n=12,primes=[2,7,13,19]):
@@ -109,13 +130,14 @@ def test(n=12,primes=[2,7,13,19]):
 if __name__ == '__main__':
     import time
     data_test = [
-        [12,[2,7,13,19]],   # [1, 2, 4, 7, 8, 13, 14, 16, 19, 26, 28, 32]
-        [500,[37, 43, 59, 61, 67, 71, 79, 83, 89, 97, 101, 103, 113, 127, 131, 157, 163, 167, 173, 179, 191, 193, 197, 199, 211, 229, 233, 239, 251, 257]],
-        [800,[37, 43, 59, 61, 67, 71, 79, 83, 89, 97, 101, 103, 113, 127, 131, 157, 163, 167, 173, 179, 191, 193, 197, 199, 211, 229, 233, 239, 251, 257]],
-        [3000,[7, 19, 29, 37, 41, 47, 53, 59, 61, 79, 83, 89, 101, 103, 109, 127, 131, 137, 139, 157, 167, 179, 181, 199, 211, 229, 233, 239, 241, 251]],
-        [3000,[7, 19, 29, 37, 41, 47, 53, 59, 61, 79, 83, 89, 101, 103, 109, 127, 131, 137, 139, 157, 167, 179, 181, 199, 211, 229, 233, 239, 241, 251]],
-        [3000,[7, 19, 29, 37, 41, 47, 53, 59, 61, 79, 83, 89, 101, 103, 109, 127, 131, 137, 139, 157, 167, 179, 181, 199, 211, 229, 233, 239, 241, 251]],
-        [100000,[7, 19, 29, 37, 41, 47, 53, 59, 61, 79, 83, 89, 101, 103, 109, 127, 131, 137, 139, 157, 167, 179, 181, 199, 211, 229, 233, 239, 241, 251]],
+        # [12,[2,7,13,19]],   # [1, 2, 4, 7, 8, 13, 14, 16, 19, 26, 28, 32]
+        # [500,[37, 43, 59, 61, 67, 71, 79, 83, 89, 97, 101, 103, 113, 127, 131, 157, 163, 167, 173, 179, 191, 193, 197, 199, 211, 229, 233, 239, 251, 257]],
+        # [800,[37, 43, 59, 61, 67, 71, 79, 83, 89, 97, 101, 103, 113, 127, 131, 157, 163, 167, 173, 179, 191, 193, 197, 199, 211, 229, 233, 239, 251, 257]],
+        # [3000,[7, 19, 29, 37, 41, 47, 53, 59, 61, 79, 83, 89, 101, 103, 109, 127, 131, 137, 139, 157, 167, 179, 181, 199, 211, 229, 233, 239, 241, 251]],
+        # [3000,[7, 19, 29, 37, 41, 47, 53, 59, 61, 79, 83, 89, 101, 103, 109, 127, 131, 137, 139, 157, 167, 179, 181, 199, 211, 229, 233, 239, 241, 251]],
+        # [3000,[7, 19, 29, 37, 41, 47, 53, 59, 61, 79, 83, 89, 101, 103, 109, 127, 131, 137, 139, 157, 167, 179, 181, 199, 211, 229, 233, 239, 241, 251]],
+        # [100000,[7, 19, 29, 37, 41, 47, 53, 59, 61, 79, 83, 89, 101, 103, 109, 127, 131, 137, 139, 157, 167, 179, 181, 199, 211, 229, 233, 239, 241, 251]],
+        [1000000,[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97,101,103,107,109,113,127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229,233,239,241,251,257,263,269,271,277,281,283,293,307,311,313,317,331,337,347,349,353,359,367,373,379,383,389,397,401,409,419,421,431,433,439,443,449,457,461,463,467,479,487,491,499,503,509,521,523,541]],
     ]
     for n,p in data_test:
         t0 = time.time()
