@@ -21,22 +21,36 @@
 链接：https://leetcode-cn.com/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
+import calendar
 import time
 from typing import List
 
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
 
 class Solution:
     def __init__(self):
         pass
 
     def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
-        
-        return
+        if l1 is None:return l2
+        elif l2 is None:return l1
+        else:
+            if l1.val<l2.val:
+                new_head = l1
+                l1=l1.next
+            else:
+                new_head = l2
+                l2=l2.next
+            new_head.next=self.mergeTwoLists(l1,l2)
+        return new_head
 
 
 def test(data_test):
     s = Solution()
-    return s.getResult(*data_test)
+    return s.mergeTwoLists(*data_test)
 
 
 def test_obj(data_test):
