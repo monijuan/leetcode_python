@@ -3,7 +3,7 @@
 # @Author  : 模拟卷
 # @Github  : https://github.com/monijuan
 # @CSDN    : https://blog.csdn.net/qq_34451909
-# @File    : 022. 链表中倒数第k个节点.py
+# @File    : Offer_day11_22. 链表中倒数第k个节点.py
 # @Software: PyCharm 
 # ===================================
 """输入一个链表，输出该链表中倒数第k个节点。为了符合大多数人的习惯，本题从1开始计数，即链表的尾节点是倒数第1个节点。

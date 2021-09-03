@@ -1,0 +1,88 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2021/9/3 11:13
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 003. 无重复字符的最长子串.py
+# @Software: PyCharm
+# ===================================
+"""给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。
+
+ 
+
+示例 1:
+
+输入: s = "abcabcbb"
+输出: 3
+解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
+示例 2:
+
+输入: s = "bbbbb"
+输出: 1
+解释: 因为无重复字符的最长子串是 "b"，所以其长度为 1。
+示例 3:
+
+输入: s = "pwwkew"
+输出: 3
+解释: 因为无重复字符的最长子串是 "wke"，所以其长度为 3。
+     请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。
+示例 4:
+
+输入: s = ""
+输出: 0
+ 
+
+提示：
+
+0 <= s.length <= 5 * 104
+s 由英文字母、数字、符号和空格组成
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/longest-substring-without-repeating-characters
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+import time
+from typing import List
+
+
+class Solution:
+    def __init__(self):
+        pass
+
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        left = 0
+        lengths = 0
+        for right, char in enumerate(s):
+            char_in_id = s[left:right].find(char)
+            if 0 <= char_in_id: left += char_in_id + 1
+            lengths = max(right - left + 1, lengths)
+
+        return lengths
+
+def test(data_test):
+    s = Solution()
+    return s.lengthOfLongestSubstring(*data_test)
+
+def test_obj(data_test):
+    result = [None]
+    obj = Solution(*data_test[1][0])
+    for fun, data in zip(data_test[0][1::], data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+if __name__ == '__main__':
+    datas = [
+        ["abcabcbb"],
+        ["bbbbb"],
+        ["pwwkew"],
+        ["pwwshaioduhsaojdlqwperiqphosxcklnvlkasdlqwsadqwepaslkxcznoaherierqpwjeupqwjeqwrkew"],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')
