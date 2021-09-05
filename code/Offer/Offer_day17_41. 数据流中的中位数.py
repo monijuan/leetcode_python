@@ -12,12 +12,28 @@ import time
 from typing import List
 
 
-class Solution:
+class MedianFinder:
     def __init__(self):
-        pass
+        from sortedcontainers import SortedList
+        self.length = 0
+        self.datas = SortedList()
+        self.mid = None
 
-    def getResult(self, args):
-        return
+    def addNum(self, num: int) -> None:
+        self.length+=1
+        self.datas.add(num)
+        self.mid = None
+
+    def findMedian(self) -> float:
+        if self.mid:
+            return self.mid
+        else:
+            if self.length%2:
+                self.mid = self.datas[(self.length-1)//2]
+            else:
+                right = self.length//2
+                self.mid = sum(self.datas[right-1:right+1])/2
+            return self.mid
 
 
 def test(data_test):
@@ -27,7 +43,7 @@ def test(data_test):
 
 def test_obj(data_test):
     result = [None]
-    obj = Solution(*data_test[1][0])
+    obj = MedianFinder(*data_test[1][0])
     for fun, data in zip(data_test[0][1::], data_test[1][1::]):
         if data:
             res = obj.__getattribute__(fun)(*data)
