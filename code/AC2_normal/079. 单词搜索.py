@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-# @Time    : 2021/9/6 14:14
+# @Time    : 2021/9/8 16:13
 # @Github  : https://github.com/monijuan
 # @CSDN    : https://blog.csdn.net/qq_34451909
-# @File    : Offer_day14_12. 矩阵中的路径.py
+# @File    : 079. 单词搜索.py
 # @Software: PyCharm
 # ===================================
 """给定一个 m x n 二维字符网格 board 和一个字符串单词 word 。如果 word 存在于网格中，返回 true ；否则，返回 false 。
@@ -11,33 +11,33 @@
 
  
 
-例如，在下面的 3×4 的矩阵中包含单词 "ABCCED"（单词中的字母已标出）。
-
-
-
- 
-
 示例 1：
+
 
 输入：board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"
 输出：true
 示例 2：
 
-输入：board = [["a","b"],["c","d"]], word = "abcd"
+
+输入：board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "SEE"
+输出：true
+示例 3：
+
+
+输入：board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCB"
 输出：false
  
 
 提示：
 
-1 <= board.length <= 200
-1 <= board[i].length <= 200
+m == board.length
+n = board[i].length
+1 <= m, n <= 6
+1 <= word.length <= 15
 board 和 word 仅由大小写英文字母组成
- 
-
-注意：本题与主站 79 题相同：https://leetcode-cn.com/problems/word-search/
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/ju-zhen-zhong-de-lu-jing-lcof
+链接：https://leetcode-cn.com/problems/word-search
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
 import time
@@ -48,8 +48,35 @@ class Solution:
     def __init__(self):
         pass
 
+    def dfs(self, visited,row_id,col_id,word_id):
+        if row_id<0 or row_id>=self.height or \
+                col_id<0 or col_id>=self.width or \
+                self.word[word_id]!=self.board[row_id][col_id] or \
+                visited[row_id][col_id]:
+            return False
+        elif word_id==len(self.word)-1:
+            return True
+        else:
+            visited[row_id][col_id]=True
+            res = self.dfs(visited, row_id + 1, col_id, word_id+1) or \
+                  self.dfs(visited, row_id - 1, col_id, word_id + 1) or \
+                  self.dfs(visited, row_id, col_id + 1, word_id + 1) or \
+                  self.dfs(visited, row_id, col_id - 1, word_id + 1)
+            visited[row_id][col_id]=False
+            return res
+
     def exist(self, board: List[List[str]], word: str) -> bool:
-        return
+        if len(board)==0 or len(board[0])==0 :return False
+        self.board = board
+        self.height = len(board)
+        self.width = len(board[0])
+        self.word = word
+        visited=[[0 for _ in range(len(board[0]))] for _ in range(len(board))]
+        for row_id,row in enumerate(board):
+            for col_id,item in enumerate(row):
+                if self.dfs(visited,row_id,col_id,0):
+                    return True
+        return False
 
 
 def test(data_test):
