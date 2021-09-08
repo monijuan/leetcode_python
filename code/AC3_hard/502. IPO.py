@@ -49,14 +49,26 @@ n == capital.length
 """
 import time
 from typing import List
-
+import heapq
 
 class Solution:
     def __init__(self):
+        """借鉴了大佬所用的 小顶堆"""
         pass
 
     def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int:
-        return
+        n = len(profits)
+        # 将profits和capital组合起来，并按本金排序，这样保证我们总能选取所有小于等于当前资本的
+        projects = sorted(zip(profits, capital), key=lambda x: x[1])
+        cur = []
+        idx = 0
+        for _ in range(k):
+            while idx < n and projects[idx][1] <= w:    # capital<=w的
+                heapq.heappush(cur, -projects[idx][0])  # -profits 放到小顶堆
+                idx += 1    # 因为 projects 已经排序了
+            if cur: w -= heapq.heappop(cur)             # 负的小顶堆，就是最大值
+            else: break
+        return w
 
 
 def test(data_test):
