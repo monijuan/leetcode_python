@@ -39,7 +39,15 @@ class Solution:
         pass
 
     def isStraight(self, nums: List[int]) -> bool:
-        return
+        is_num = [0]*15
+        cnt_0=0
+        for x in nums:
+            if is_num[x]:return False
+            elif x: is_num[x]=1
+            else: cnt_0+=1
+        str_num=''.join([str(x) for x in is_num])
+        num_of_need_0 = len(''.join(str_num.split('1')[1:-1]))
+        return num_of_need_0<=cnt_0
 
 
 def test(data_test):
@@ -61,7 +69,10 @@ def test_obj(data_test):
 
 if __name__ == '__main__':
     datas = [
-        [],
+        [randListInt(0,13,5)],
+        [randListInt(0,13,5)],
+        [randListInt(0,13,5)],
+        # [[0,0,2,2,5]],
     ]
     for data_test in datas:
         t0 = time.time()
@@ -69,3 +80,5 @@ if __name__ == '__main__':
         print('input:', data_test)
         print('output:', test(data_test))
         print(f'use time:{time.time() - t0}s')
+
+    # for x in randListListInt(0,13,5,10):print(x)
