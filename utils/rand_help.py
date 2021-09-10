@@ -29,6 +29,7 @@ def randListListInt(smallest:int,biggest:int,length:int=10,times:int=10)->List[L
     return [randListInt(smallest,biggest,length) for _ in range(times)]
 
 if __name__ == '__main__':
-    datas = randListListInt(0,10)
+    datas = randListInt(1,30)
+    # datas = randListListInt(0,10)
     print(datas)
-    for x in datas:print(x)
+    # for x in datas:print(x)

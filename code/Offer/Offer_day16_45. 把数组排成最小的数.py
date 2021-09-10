@@ -31,16 +31,20 @@
 链接：https://leetcode-cn.com/problems/ba-shu-zu-pai-cheng-zui-xiao-de-shu-lcof
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
-import time
-from typing import List
-
+from leetcode_python.utils import *
 
 class Solution:
     def __init__(self):
         pass
 
     def minNumber(self, nums: List[int]) -> str:
-        return
+        length = len(nums)
+        nums = [str(x) for x in nums]
+        for i in range(length):
+            for j in range(i,length):
+                if nums[i]+nums[j]>nums[j]+nums[i]:
+                    nums[i],nums[j] = nums[j],nums[i]
+        return ''.join(nums)
 
 
 def test(data_test):
@@ -62,7 +66,7 @@ def test_obj(data_test):
 
 if __name__ == '__main__':
     datas = [
-        [],
+        [[16, 20, 20, 7, 30, 7, 27, 24, 10, 15]],
     ]
     for data_test in datas:
         t0 = time.time()
