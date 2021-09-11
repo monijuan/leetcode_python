@@ -28,8 +28,14 @@ def randListInt(smallest:int,biggest:int,length:int=10)->List[int]:
 def randListListInt(smallest:int,biggest:int,length:int=10,times:int=10)->List[List[int]]:
     return [randListInt(smallest,biggest,length) for _ in range(times)]
 
+def randListListIntShow(*argvs):
+    datas = randListListInt(*argvs)
+    for x in datas:
+        print(x)
+
 if __name__ == '__main__':
-    datas = randListInt(1,30)
+    # datas = randListInt(1,30)
     # datas = randListListInt(0,10)
-    print(datas)
+    # print(datas)
     # for x in datas:print(x)
+    randListListIntShow(1,30)
