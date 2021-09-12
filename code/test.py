@@ -5,10 +5,22 @@
 # @File    : test.py
 # @Software: PyCharm
 # ===================================
-
-
+from leetcode_python.utils import *
 
 def test():
+    chars = '()*'
+
+    length = 100
+    times = 10
+    while times:
+        times-=1
+        str = ''
+        for x in range(length):
+            str+=chars[random.randint(0, 2)]
+        print(f'"{str}"')
+
+
+def test3():
     n=10
 
     for i in range(n):
