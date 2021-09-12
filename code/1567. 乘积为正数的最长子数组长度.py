@@ -59,7 +59,6 @@ class Solution:
     def getMaxLen(self, nums: List[int]) -> int:
         return
 
-
     def maxProduct_152_乘积最大子数组(self, nums: List[int]) -> int:
         max_save,min_save,max_all =nums[0],nums[0],nums[0]
         for i,num in enumerate(nums):
