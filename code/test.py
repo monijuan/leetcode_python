@@ -8,6 +8,9 @@
 from leetcode_python.utils import *
 
 def test():
+    print(2**10)
+
+def test4():
     chars = '()*'
 
     length = 100
