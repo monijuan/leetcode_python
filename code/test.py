@@ -7,6 +7,50 @@
 # ===================================
 from leetcode_python.utils import *
 
+# 212
+"""
+from collections import defaultdict
+class Trie:
+    def __init__(self):
+        self.children = defaultdict(Trie)
+        self.word = ""
+
+    def insert(self, word):
+        cur = self
+        for c in word: cur = cur.children[c]
+        cur.is_word = True
+        cur.word = word
+
+class Solution:
+    def __init__(self):
+        self.res = set()
+
+    def dfs(self, now, i1, j1):
+        if self.board[i1][j1] not in now.children:return
+        ch = self.board[i1][j1]
+        now = now.children[ch]
+        if now.word != "":self.res.add(now.word)
+        self.board[i1][j1] = "#"
+        for i2, j2 in [(i1 + 1, j1), (i1 - 1, j1), (i1, j1 + 1), (i1, j1 - 1)]:
+            if 0 <= i2 < self.height and 0 <= j2 < self.width:
+                self.dfs(now, i2, j2)
+        self.board[i1][j1] = ch
+
+    def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
+        self.height = len(board)
+        self.width = len(board[0])
+        self.board = board
+        trie = Trie()
+        for word in words: trie.insert(word)
+        for i in range(self.height):
+            for j in range(self.width):
+                self.dfs(trie, i, j)
+
+        return list(self.res)
+"""
+###
+
+
 def test():
     print(2**10)
 
