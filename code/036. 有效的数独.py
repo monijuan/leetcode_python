@@ -76,7 +76,7 @@ class Solution:
         for line in list(map(list, zip(*board))):
             if self.__isRep(line):
                 return False
-        
+
 
 
 
