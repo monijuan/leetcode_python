@@ -7,7 +7,7 @@
 # @Software: PyCharm 
 # ===================================
 import time
-from typing import List
+from typing import List,Callable
 from .rand_help import *
 from .all_node import *
 
