@@ -66,13 +66,35 @@ class Solution:
     def __init__(self):
         pass
 
-    def getResult(self, args):
-        return
+    def strToInt(self, str: str) -> int:
+        str = str.strip()
+        if not str:return 0
+        res = 0
+        int_max=2**31-1
+        int_min=-2**31
+        bndry = 2**31//10
+        if str[0]=='-':
+            start_id=1
+            sign=-1
+        elif str[0]!='+':
+            start_id=0
+            sign=1
+        else:
+            start_id=1
+            sign=1
+        for str_num in str[start_id:]:
+            if not '0'<=str_num<='9':
+                break
+            elif res>bndry or res==bndry and str_num>'7':
+                return int_max if sign==1 else int_min
+            else:
+                res=10*res+ord(str_num)-ord('0')
+        return sign*res
 
 
 def test(data_test):
     s = Solution()
-    return s.getResult(*data_test)
+    return s.strToInt(*data_test)
 
 
 def test_obj(data_test):
@@ -89,7 +111,7 @@ def test_obj(data_test):
 
 if __name__ == '__main__':
     datas = [
-        [],
+        ['42'],
     ]
     for data_test in datas:
         t0 = time.time()
