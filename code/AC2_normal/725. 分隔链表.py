@@ -49,7 +49,6 @@ class Solution:
         pass
 
     def splitListToParts(self, head: ListNode, k: int) -> List[ListNode]:
-        print('start')
         length = 0
         head_t = head
         while head_t:
@@ -60,16 +59,18 @@ class Solution:
         head_plus = length%k
         res = []
         sub_list_id = 0
+        head_t = head
         while k:
-            length_sub_list = sub_length -1 + 1 if sub_list_id<head_plus else 0
-            res.append(head)
-            while length_sub_list and head:
-                head=head.next
+            length_sub_list = sub_length + (1 if sub_list_id<head_plus else 0)
+            res.append(head_t)
+            while length_sub_list and head_t:
                 length_sub_list-=1
-                if length_sub_list==0 and head:
-                    next_head = head.next
-                    head.next=None
-                    head = next_head
+                if length_sub_list:
+                    head_t = head_t.next
+                else:
+                    next_head = head_t.next
+                    head_t.next=None
+                    head_t = next_head
             sub_list_id+=1
             k-=1
         return res
