@@ -6,7 +6,10 @@
 # @File    : all_node.py
 # @Software: PyCharm 
 # ===================================
-
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 
 class TreeNode:
     def __init__(self, x):
