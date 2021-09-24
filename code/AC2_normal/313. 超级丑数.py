@@ -6,26 +6,72 @@
 # @File    : 313. 超级丑数.py
 # @Software: PyCharm
 # ===================================
-"""
+"""超级丑数 是一个正整数，并满足其所有质因数都出现在质数数组 primes 中。
+
+给你一个整数 n 和一个整数数组 primes ，返回第 n 个 超级丑数 。
+
+题目数据保证第 n 个 超级丑数 在 32-bit 带符号整数范围内。
+
+ 
+
+示例 1：
+
+输入：n = 12, primes = [2,7,13,19]
+输出：32
+解释：给定长度为 4 的质数数组 primes = [2,7,13,19]，前 12 个超级丑数序列为：[1,2,4,7,8,13,14,16,19,26,28,32] 。
+示例 2：
+
+输入：n = 1, primes = [2,3,5]
+输出：1
+解释：1 不含质因数，因此它的所有质因数都在质数数组 primes = [2,3,5] 中。
+ 
+提示：
+
+1 <= n <= 106
+1 <= primes.length <= 100
+2 <= primes[i] <= 1000
+题目数据 保证 primes[i] 是一个质数
+primes 中的所有值都 互不相同 ，且按 递增顺序 排列
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/super-ugly-number
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
 from typing import List
 import numpy as np
 import heapq
 
 
+class Solution_ac__:
+    def nthSuperUglyNumber_超时(self, n: int, primes: List[int]) -> int:
+        dp = [None for _ in range(n+1)]     # 丑数序列
+        dp[1] = 1                             # 第一个是1
+        len_primes = len(primes)
+        nums = [None for _ in range(len_primes)]
+        pointers = [1 for _ in range(len_primes)]   # 指向该做乘积的那个丑数
+        for i in range(2,n+1):
+            min_newUgly = sys.maxsize
+            for j in range(len_primes):
+                nums[j] = dp[pointers[j]]*primes[j]
+                min_newUgly = min(min_newUgly,nums[j])
+            dp[i] = min_newUgly
+            for j in range(len_primes):
+                if min_newUgly==nums[j]:
+                    pointers[j]+=1
+        return dp[n]
+
 class Solution:
     def __init__(self):
         pass
 
-    def nthSuperUglyNumber(self, n: int, primes: List[int]) -> int:
-        m = len(primes)
+    def nthSuperUglyNumber_ac(self, n: int, primes: List[int]) -> int:
         q = [(a, i, 0) for i, a in enumerate(primes)]
         ans = [1, ] + [0, ] * (n - 1)
         j = 1
         while j < n:
             val, i, idx = q[0]
             if val != ans[j - 1]:
-                ans[j] = val;
+                ans[j] = val
                 j += 1
             heapq.heapreplace(q, (ans[idx + 1] * primes[i], i, idx + 1))
         return ans[n - 1]

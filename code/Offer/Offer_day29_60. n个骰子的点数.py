@@ -39,7 +39,12 @@ class Solution:
         pass
 
     def dicesProbability(self, n: int) -> List[float]:
-        return
+        this_time = [1,1,1,1,1,1]
+        for time in range(n-1):
+            last_time = this_time
+            this_time=[sum(last_time[max(0,i-6):i]) for i in range(len(last_time)+6)]
+        res = [x/(6**n) for x in this_time if x!=0]
+        return res
 
 
 def test(data_test):
@@ -61,7 +66,9 @@ def test_obj(data_test):
 
 if __name__ == '__main__':
     datas = [
-        [],
+        [1],
+        [2],
+        [5],
     ]
     for data_test in datas:
         t0 = time.time()

@@ -25,6 +25,9 @@ n 不超过1690。
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
 from leetcode_python.utils import *
+import sys
+import numpy as np
+
 
 # 错误c++代码
 """
@@ -59,8 +62,52 @@ class Solution:
         pass
 
     def nthUglyNumber(self, n: int) -> int:
-        return
+        if n==0:return 1
+        dp = [0] * (n + 1)
+        dp[1] = 1
+        p2 = p3 = p5 = 1
+        for i in range(2, n + 1):
+            min_p2, min_p3, min_p5 = dp[p2] * 2, dp[p3] * 3, dp[p5] * 5
+            dp[i] = min(min_p2, min_p3, min_p5)
+            if dp[i] == min_p2:p2 += 1
+            if dp[i] == min_p3:p3 += 1
+            if dp[i] == min_p5:p5 += 1
+        return dp[n]
 
+
+    def nthUglyNumber_wrong(self, n: int) -> int:
+        import numpy as np
+        uglys=[2,3,5]
+        points = [0,0,0]
+        while n:
+            find_min = {}
+            ugly = np.prod([u ** p for u, p in zip(uglys, points)])
+            for i in range(3):
+                find_min[ugly*uglys[i]]=i
+            points[find_min[min(find_min.keys())]]+=1
+            print(n,points,find_min,min(find_min.keys()))
+            n-=1
+        return np.prod([u ** p for u, p in zip(uglys, points)])
+
+
+
+
+    def nthUglyNumber_318(self, n: int) -> int:
+        primes=[2,3,5]
+        dp = [None for _ in range(n+1)]     # 丑数序列
+        dp[1] = 1                             # 第一个是1
+        nums = [None,None,None]
+        pointers = [1,1,1]   # 指向该做乘积的那个丑数
+        for i in range(2,n+1):
+            min_newUgly = sys.maxsize
+            for j in range(3):
+                nums[j] = dp[pointers[j]]*primes[j]
+                min_newUgly = min(min_newUgly,nums[j])
+            dp[i] = min_newUgly
+            for j in range(3):
+                if min_newUgly==nums[j]:
+                    pointers[j]+=1
+        return dp[n]
 
 def test(data_test):
     s = Solution()
@@ -81,7 +128,9 @@ def test_obj(data_test):
 
 if __name__ == '__main__':
     datas = [
-        [],
+        [1],
+        [5],
+        [10],
     ]
     for data_test in datas:
         t0 = time.time()
