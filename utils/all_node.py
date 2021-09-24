@@ -6,6 +6,14 @@
 # @File    : all_node.py
 # @Software: PyCharm 
 # ===================================
+class Node:
+    def __init__(self, val, prev, next, child):
+        """430. 扁平化多级双向链表"""
+        self.val = val
+        self.prev = prev
+        self.next = next
+        self.child = child
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val

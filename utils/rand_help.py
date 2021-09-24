@@ -39,5 +39,5 @@ if __name__ == '__main__':
     # print(datas)
     # for x in datas:print(x)
     # randListListIntShow(1,30)
-    data = randListListInt(smallest=-1000,biggest=4130,length=1000)
+    data = randListListInt(smallest=-1000,biggest=1000,length=100)
     print(data[0])
