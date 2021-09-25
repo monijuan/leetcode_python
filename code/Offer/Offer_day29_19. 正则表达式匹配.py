@@ -57,7 +57,13 @@ class Solution:
         pass
 
     def isMatch(self, s: str, p: str) -> bool:
-        return
+        length_s,length_p = len(s),len(p)
+        if 0==length_p:return 0==length_s
+        first = length_s!=0 and (s[0]==p[0] or p[0]=='.')
+        if length_p>1 and p[1]=='*':
+            return (first and self.isMatch(s[1:],p)) or self.isMatch(s,p[2:])
+        else:
+            return first and self.isMatch(s[1:],p[1:])
 
 
 def test(data_test):
