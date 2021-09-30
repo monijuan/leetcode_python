@@ -1,31 +1,36 @@
 # -*- coding: utf-8 -*-
-# @Time    : 2021/9/11 12:43
-# @Author  : 模拟卷
+# @Time    : 2021/9/30 14:18
 # @Github  : https://github.com/monijuan
 # @CSDN    : https://blog.csdn.net/qq_34451909
-# @File    : Offer_dat19_64. 求1+2+…+n.py
-# @Software: PyCharm 
+# @File    : 083. 删除排序链表中的重复元素.py
+# @Software: PyCharm
 # ===================================
-"""求 1+2+...+n ，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。
+"""存在一个按升序排列的链表，给你这个链表的头节点 head ，请你删除所有重复的元素，使每个元素 只出现一次 。
+
+返回同样按升序排列的结果链表。
 
  
 
 示例 1：
 
-输入: n = 3
-输出: 6
+
+输入：head = [1,1,2]
+输出：[1,2]
 示例 2：
 
-输入: n = 9
-输出: 45
+
+输入：head = [1,1,2,3,3]
+输出：[1,2,3]
  
 
-限制：
+提示：
 
-1 <= n <= 10000
+链表中节点数目在范围 [0, 300] 内
+-100 <= Node.val <= 100
+题目数据保证链表已经按升序排列
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/qiu-12n-lcof
+链接：https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
 from leetcode_python.utils import *
@@ -33,18 +38,22 @@ from leetcode_python.utils import *
 
 class Solution:
     def __init__(self):
-        self.res = 0
         pass
 
-    def sumNums(self, n: int) -> int:
-        n>0 and self.sumNums(n-1)
-        self.res+=n
-        return self.res
+    def deleteDuplicates(self, head: ListNode) -> ListNode:
+        left = head
+        while left:
+            right = left.next
+            while right and left.val == right.val:
+                right=right.next
+            left.next = right
+            left = left.next
+        return head
 
 
 def test(data_test):
     s = Solution()
-    return s.sumNums(*data_test)
+    return s.deleteDuplicates(*data_test)
 
 
 def test_obj(data_test):

@@ -1,4 +1,9 @@
 
+- 【】 144. 二叉树的前序遍历
+- 【】 094. 二叉树的中序遍历
+- 【】 145. 二叉树的后序遍历
+- 【】 102. 二叉树的层序遍历
+
 ```python
 class TreeNode:
     def __init__(self, x):
@@ -70,4 +75,43 @@ def 逆中序遍历非递归(root:TreeNode)
         k -= 1
         if k == 0: return node.val
         root = node.left
+```
+
+
+- 汇总
+
+```python
+class Solution:
+    def __init__(self):
+        self.res = []
+
+    def preorder(self, root: TreeNode)->None:
+        if root:
+            self.res.append(root.val)
+            self.preorder(root.left)
+            self.preorder(root.right)
+
+    def preorderTraversal(self, root: TreeNode) -> List[int]:
+        self.preorder(root)
+        return self.res
+
+    def inorder(self, root: TreeNode)->None:
+        if root:
+            self.inorder(root.left)
+            self.res.append(root.val)
+            self.inorder(root.right)
+
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
+        self.inorder(root)
+        return self.res
+
+    def postorder(self, root: TreeNode)->None:
+        if root:
+            self.postorder(root.left)
+            self.postorder(root.right)
+            self.res.append(root.val)
+
+    def postorderTraversal(self, root: TreeNode) -> List[int]:
+        self.postorder(root)
+        return self.res
 ```

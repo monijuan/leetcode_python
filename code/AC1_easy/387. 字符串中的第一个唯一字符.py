@@ -1,31 +1,27 @@
 # -*- coding: utf-8 -*-
-# @Time    : 2021/9/11 12:43
-# @Author  : 模拟卷
+# @Time    : 2021/9/30 11:34
 # @Github  : https://github.com/monijuan
 # @CSDN    : https://blog.csdn.net/qq_34451909
-# @File    : Offer_day19_64. 求1+2+…+n.py
-# @Software: PyCharm 
+# @File    : 387. 字符串中的第一个唯一字符.py
+# @Software: PyCharm
 # ===================================
-"""求 1+2+...+n ，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。
+"""给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回 -1。
 
  
 
-示例 1：
+示例：
 
-输入: n = 3
-输出: 6
-示例 2：
+s = "leetcode"
+返回 0
 
-输入: n = 9
-输出: 45
+s = "loveleetcode"
+返回 2
  
 
-限制：
-
-1 <= n <= 10000
+提示：你可以假定该字符串只包含小写字母。
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/qiu-12n-lcof
+链接：https://leetcode-cn.com/problems/first-unique-character-in-a-string
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
 from leetcode_python.utils import *
@@ -33,18 +29,19 @@ from leetcode_python.utils import *
 
 class Solution:
     def __init__(self):
-        self.res = 0
         pass
 
-    def sumNums(self, n: int) -> int:
-        n>0 and self.sumNums(n-1)
-        self.res+=n
-        return self.res
+    def firstUniqChar(self, s: str) -> int:
+        if len(s)==1:return 0
+        for id,char in enumerate(s):
+            if char not in s[:id]+s[id+1:]:
+                return id
+        return -1
 
 
 def test(data_test):
     s = Solution()
-    return s.sumNums(*data_test)
+    return s.firstUniqChar(*data_test)
 
 
 def test_obj(data_test):
