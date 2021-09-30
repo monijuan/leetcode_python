@@ -45,7 +45,10 @@ class Solution:
         pass
 
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
-        return
+        if not root:return False
+        targetSum -= root.val
+        if root.left is None and root.right is None:return targetSum==0
+        else: return self.hasPathSum(root.left,targetSum) or self.hasPathSum(root.right,targetSum)
 
 
 def test(data_test):
