@@ -37,6 +37,7 @@
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
 from leetcode_python.utils import *
+import sys
 
 
 class Solution:
@@ -44,18 +45,17 @@ class Solution:
         pass
 
     def isValidBST(self, root: TreeNode) -> bool:
-        if not root:return True
-        else:
-            if root.left:
-                left_flag = root.val>root.left.val and self.isValidBST(root.left)
-            else:
-                left_flag = True
-            if root.right:
-                right_flag = root.val<root.right.val and self.isValidBST(root.right)
-            else:
-                right_flag = True
-        return left_flag and right_flag
+        import sys
+        return self.isValidBSTRoot(root)
 
+    def isValidBSTRoot(self, root: TreeNode,min=-sys.maxsize,max=sys.maxsize) -> bool:
+        if not root:
+            return True
+        elif min<root.val<max:
+            print(min,root.val,max)
+            return self.isValidBSTRoot(root.left,min,root.val) and self.isValidBSTRoot(root.right,root.val,max)
+        else:
+            return False
 
 def test(data_test):
     s = Solution()

@@ -53,6 +53,14 @@ class Solution:
             return self.lowestCommonAncestor(root.right,p,q)
         else: return root
 
+    def lowestCommonAncestor_2(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        if root and root.val > p.val and root.val > q.val:
+            return self.lowestCommonAncestor(root.left, p, q)
+        elif root and root.val < p.val and root.val < q.val:
+            return self.lowestCommonAncestor(root.right, p, q)
+        else:
+            return root
+
 
 def test(data_test):
     s = Solution()
