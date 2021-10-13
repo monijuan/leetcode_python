@@ -43,8 +43,22 @@ class Solution:
     def __init__(self):
         pass
 
-    def getResult(self, args):
-        return
+    def sortedSquares(self, nums: List[int]) -> List[int]:
+        length = len(nums)
+        res = [0] * length
+
+        left, right, pos = 0, length - 1, length - 1
+        while left <= right:
+            if nums[left] * nums[left] > nums[right] * nums[right]:
+                res[pos] = nums[left]**2
+                left += 1
+            else:
+                res[pos] = nums[right]**2
+                right -= 1
+            pos -= 1
+
+        return res
+
 
 
 def test(data_test):
