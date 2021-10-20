@@ -46,30 +46,41 @@ search 中的 word 由 '.' 或小写英文字母组成
 """
 from leetcode_python.utils import *
 
-
-class WordDictionary:
+class Trie:
     def __init__(self):
         self.children = [None]*26
         self.isEnd = False
 
-    def addWord(self, word: str) -> None:
+    def insert(self, word: str) -> None:
         node = self
         for char in word:
             char_int = ord(char)-ord('a')
             if node.children[char_int] is None:
-                node.children[char_int] = WordDictionary()
+                node.children[char_int] = Trie()
             node = node.children[char_int]
         node.isEnd = True
 
+    def search(self,word,index,node)->bool:
+        if index==len(word):return node.isEnd
+        if word[index] == '.':
+            for child in node.children:
+                if child is not None and self.search(word, index + 1, child):
+                    return True
+        else:
+            child = node.children[ord(word[index]) - ord('a')]
+            if child is not None and self.search(word, index + 1, child):
+                return True
+        return False
+
+class WordDictionary:
+    def __init__(self):
+        self.trie = Trie()
+
+    def addWord(self, word: str) -> None:
+        self.trie.insert(word)
 
     def search(self, word: str) -> bool:
-        node = self
-        for char in prefix:
-            char_int = ord(char)-ord('a')
-            if node.children[char_int] is None:return None
-            node = node.children[char_int]
-        return node
-        return node is not None and node.isEnd
+        return self.trie.search(word,0,self.trie)
 
 
 def test(data_test):

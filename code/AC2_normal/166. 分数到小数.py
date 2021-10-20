@@ -1,0 +1,115 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2021/10/20 11:44
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 166. 分数到小数.py
+# @Software: PyCharm
+# ===================================
+"""给定两个整数，分别表示分数的分子 numerator 和分母 denominator，以 字符串形式返回小数 。
+
+如果小数部分为循环小数，则将循环的部分括在括号内。
+
+如果存在多个答案，只需返回 任意一个 。
+
+对于所有给定的输入，保证 答案字符串的长度小于 104 。
+
+ 
+
+示例 1：
+
+输入：numerator = 1, denominator = 2
+输出："0.5"
+示例 2：
+
+输入：numerator = 2, denominator = 1
+输出："2"
+示例 3：
+
+输入：numerator = 2, denominator = 3
+输出："0.(6)"
+示例 4：
+
+输入：numerator = 4, denominator = 333
+输出："0.(012)"
+示例 5：
+
+输入：numerator = 1, denominator = 5
+输出："0.2"
+ 
+
+提示：
+
+-231 <= numerator, denominator <= 231 - 1
+denominator != 0
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/fraction-to-recurring-decimal
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+from leetcode_python.utils import *
+
+
+class Solution:
+    def __init__(self):
+        pass
+
+    def fractionToDecimal(self, numerator: int, denominator: int) -> str:
+        # 整除，没有小数
+        if 0==numerator%denominator:return str(numerator//denominator)
+
+        # 有小数，先判断符号
+        res = []
+        if (numerator<0)!=(denominator<0):res.append('-')
+        numerator = abs(numerator)
+        denominator = abs(denominator)
+
+        # 小数点左边
+        res.append(str(numerator//denominator))
+
+        # 小数点
+        res.append('.')
+
+        # 小数点右边
+        remainder = numerator%denominator
+        remainder_map = {}
+        while remainder and remainder not in remainder_map.keys():
+            remainder_map[remainder] = len(res)
+            remainder*=10
+            res.append(str(remainder//denominator))
+            remainder %= denominator
+
+        # 加入括号
+        if remainder:
+            res.insert(remainder_map[remainder],'(')
+            res.append(')')
+
+        return ''.join(res)
+
+
+def test(data_test):
+    s = Solution()
+    return s.fractionToDecimal(*data_test)
+
+
+def test_obj(data_test):
+    result = [None]
+    obj = Solution(*data_test[1][0])
+    for fun, data in zip(data_test[0][1::], data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+
+if __name__ == '__main__':
+    datas = [
+        [],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')

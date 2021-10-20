@@ -7,6 +7,14 @@
 # @Software: PyCharm 
 # ===================================
 class Node:
+    def __init__(self, val: int = 0, left: 'Node' = None, right: 'Node' = None, next: 'Node' = None):
+        """116. 填充每个节点的下一个右侧节点指针"""
+        self.val = val
+        self.left = left
+        self.right = right
+        self.next = next
+
+class Node_430:
     def __init__(self, val, prev, next, child):
         """430. 扁平化多级双向链表"""
         self.val = val
