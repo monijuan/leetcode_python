@@ -18,19 +18,83 @@ LEVEL_NAME_DICT = {
     'Offer':'剑指 Offer',
 }
 
-def GetTitle(level_name,filestem):
+def Get标题(level_name,filestem):
     return f'模拟卷Leetcode【{level_name}】{filestem}'
 
+def GetDetail(filepath):
+    """题目名字, 题目说明, 代码"""
+    题目名字 = filepath.stem
+    with open(filepath,'r',encoding='utf-8') as file:datalines = file.readlines()
 
-def GetResult():
-    res = """
+    # 找题目说明：第一个和第二个"""
+    first_second,cnt,id = [],0,0
+    while cnt<2:
+        if '"""' in datalines[id]:
+            first_second.append(id)
+            cnt+=1
+        id+=1
+    if cnt==2:
+        题目说明=datalines[first_second[0]:first_second[1]]
+        题目说明[0] = 题目说明[0][3:]
+        题目说明 = ''.join(题目说明)
+        代码 = ''.join(datalines[first_second[1]+1:])
+    else:
+        题目说明 = '（题目说明未记录）'
+        代码 = ''.join(datalines[8:])
+    # print('题目说明')
+    # print(题目说明)
+    # print('代码')
+    # print(代码)
+
+    return 题目名字, 题目说明, 代码
+
+def GetResult(标题,题目名字,题目说明,代码):
+    res = f"""### 标题
+
+```
+{标题}
+```
+
+
+
+### 正文
+
+```
+### {题目名字}
+
+{题目说明}
+
+
+
+代码：
+
+​```python
+{代码}
+​```
+
+备注：
+GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monijuan/leetcode_python)
+
+CSDN汇总：[模拟卷Leetcode 题解汇总_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/120968335)
+
+可以加QQ群交流：==*1092754609*==
+
+> leetcode_python.utils详见汇总页说明
+> 先刷的题，之后用脚本生成的blog，如果有错请留言，我看到了会修改的！谢谢！
+
+```
     """
+    return res
+
+def WriteFile(out,path):
+    with open(path,'w',encoding='utf-8') as file:
+        file.write(out)
 
 
 
 def main():
-    src_dir = Path(r'D:\YZJ\file\work\202108 codeTest\leetcode_python\code')
-    out_dir = Path(r'D:\YZJ\file\work\202108 codeTest\leetcode_python\doc\csdn')
+    src_dir = Path(r'..\code')
+    out_dir = Path(r'..\doc\csdn')
 
     for sub_dir in src_dir.glob('**'):
         print(sub_dir)
@@ -38,9 +102,14 @@ def main():
             level_name = LEVEL_NAME_DICT.get(sub_dir.name,'其他')
             for filepath in sub_dir.glob('*.py'):
                 filename = filepath.name
+                outpath = out_dir /  f'{filepath.stem}.md'
 
-                title = GetTitle(level_name = level_name, filestem = filepath.stem)
-                print(title)
+                题目名字, 题目说明, 代码 = GetDetail(filepath)
+                标题 = Get标题(level_name = level_name, filestem = filepath.stem)
+                out = GetResult(标题, 题目名字, 题目说明, 代码)
+                WriteFile(out,outpath)
+                print(outpath)
+                return
 
 
 if __name__ == '__main__':

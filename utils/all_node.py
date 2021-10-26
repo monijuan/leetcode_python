@@ -6,7 +6,7 @@
 # @File    : all_node.py
 # @Software: PyCharm 
 # ===================================
-class Node:
+class Node_116:
     def __init__(self, val: int = 0, left: 'Node' = None, right: 'Node' = None, next: 'Node' = None):
         """116. 填充每个节点的下一个右侧节点指针"""
         self.val = val

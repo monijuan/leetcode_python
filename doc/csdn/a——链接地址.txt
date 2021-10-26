@@ -1,0 +1,7 @@
+[模拟卷Leetcode【简单】001. 两数之和_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/120969284)
+
+
+
+[模拟卷Leetcode【剑指 Offer】Offer_03. 数组中重复的数字_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/120969636)
+
+[模拟卷Leetcode【剑指 Offer】Offer_09. 用两个栈实现队列_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/120969364)

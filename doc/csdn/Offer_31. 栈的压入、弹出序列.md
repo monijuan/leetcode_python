@@ -1,0 +1,107 @@
+### 标题
+
+```
+模拟卷Leetcode【剑指 Offer】Offer_31. 栈的压入、弹出序列
+```
+
+
+
+### 正文
+
+```
+### Offer_day25_31. 栈的压入、弹出序列
+
+输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否为该栈的弹出顺序。假设压入栈的所有数字均不相等。例如，序列 {1,2,3,4,5} 是某栈的压栈序列，序列 {4,5,3,2,1} 是该压栈序列对应的一个弹出序列，但 {4,3,5,1,2} 就不可能是该压栈序列的弹出序列。
+
+ 
+
+示例 1：
+
+输入：pushed = [1,2,3,4,5], popped = [4,5,3,2,1]
+输出：true
+解释：我们可以按以下顺序执行：
+push(1), push(2), push(3), push(4), pop() -> 4,
+push(5), pop() -> 5, pop() -> 3, pop() -> 2, pop() -> 1
+示例 2：
+
+输入：pushed = [1,2,3,4,5], popped = [4,3,5,1,2]
+输出：false
+解释：1 不能在 2 之前弹出。
+ 
+
+提示：
+
+0 <= pushed.length == popped.length <= 1000
+0 <= pushed[i], popped[i] < 1000
+pushed 是 popped 的排列。
+注意：本题与主站 946 题相同：https://leetcode-cn.com/problems/validate-stack-sequences/
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/zhan-de-ya-ru-dan-chu-xu-lie-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+
+
+
+
+代码：
+
+​```python
+from leetcode_python.utils import *
+
+
+class Solution:
+    def __init__(self):
+        pass
+
+    def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
+        stack=[]
+        poptime = 0
+        for push in pushed:
+            stack.append(push)
+            while stack and stack[-1]==popped[poptime]:
+                stack.pop()
+                poptime+=1
+        return not stack
+
+
+def test(data_test):
+    s = Solution()
+    return s.validateStackSequences(*data_test)
+
+
+def test_obj(data_test):
+    result = [None]
+    obj = Solution(*data_test[1][0])
+    for fun, data in zip(data_test[0][1::], data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+
+if __name__ == '__main__':
+    datas = [
+        [[1,2,3,4,5],[4,5,3,2,1]],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')
+​```
+
+备注：
+GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monijuan/leetcode_python)
+
+CSDN汇总：[模拟卷Leetcode 题解汇总_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/120968335)
+
+可以加QQ群交流：==*1092754609*==
+
+> leetcode_python.utils详见汇总页说明
+> 先刷的题，之后用脚本生成的blog，如果有错请留言，我看到了会修改的！谢谢！
+
+```
+    
