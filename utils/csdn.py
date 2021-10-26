@@ -10,34 +10,52 @@ from pathlib import Path
 import os
 import sys
 
+SRC_DIR = Path(r'..\code')
+OUT_DIR = Path(r'..\doc\csdn')
+CHECK_DIR = Path(r'..\doc\csdn\已发表')
+
 LEVEL_NAME_DICT = {
-    'AC1_easy':'简单',
-    'AC2_normal':'普通',
-    'AC3_hard':'困难',
-    'Interview':'面试题',
-    'Offer':'剑指 Offer',
+    'AC1_easy': '简单',
+    'AC2_normal': '普通',
+    'AC3_hard': '困难',
+    'Interview': '面试题',
+    'Offer': '剑指 Offer',
 }
 
-def Get标题(level_name,filestem):
+
+def Get标题(filestem, level_name):
+    filestem = str(filestem)
+    if 'Offer_' in filestem:
+        filestem = 'Offer_' + filestem[12:]
     return f'模拟卷Leetcode【{level_name}】{filestem}'
+
+
+def Get文件名(filestem, out_dir=OUT_DIR):
+    filestem = str(filestem)
+    if 'Offer_' in filestem:
+        filestem = 'Offer_' + filestem[12:]
+    outpath = out_dir / f'{filestem}.md'
+    return outpath
+
 
 def GetDetail(filepath):
     """题目名字, 题目说明, 代码"""
     题目名字 = filepath.stem
-    with open(filepath,'r',encoding='utf-8') as file:datalines = file.readlines()
+    with open(filepath, 'r', encoding='utf-8') as file:
+        datalines = file.readlines()
 
     # 找题目说明：第一个和第二个"""
-    first_second,cnt,id = [],0,0
-    while cnt<2:
+    first_second, cnt, id = [], 0, 0
+    while cnt < 2:
         if '"""' in datalines[id]:
             first_second.append(id)
-            cnt+=1
-        id+=1
-    if cnt==2:
-        题目说明=datalines[first_second[0]:first_second[1]]
+            cnt += 1
+        id += 1
+    if cnt == 2:
+        题目说明 = datalines[first_second[0]:first_second[1]]
         题目说明[0] = 题目说明[0][3:]
         题目说明 = ''.join(题目说明)
-        代码 = ''.join(datalines[first_second[1]+1:])
+        代码 = ''.join(datalines[first_second[1] + 1:])
     else:
         题目说明 = '（题目说明未记录）'
         代码 = ''.join(datalines[8:])
@@ -48,7 +66,8 @@ def GetDetail(filepath):
 
     return 题目名字, 题目说明, 代码
 
-def GetResult(标题,题目名字,题目说明,代码):
+
+def GetResult(标题, 题目名字, 题目说明, 代码):
     res = f"""### 标题
 
 ```
@@ -86,31 +105,48 @@ CSDN汇总：[模拟卷Leetcode 题解汇总_卷子的博客-CSDN博客](https:/
     """
     return res
 
-def WriteFile(out,path):
-    with open(path,'w',encoding='utf-8') as file:
+
+def WriteFile(out, path):
+    with open(path, 'w', encoding='utf-8') as file:
         file.write(out)
 
 
+def 未发表(filestem, check_dir=CHECK_DIR):
+    checkpath = check_dir / Get文件名(filestem).name
+    return not (checkpath.is_file() or Get文件名(filestem).is_file())
 
-def main():
-    src_dir = Path(r'..\code')
-    out_dir = Path(r'..\doc\csdn')
 
-    for sub_dir in src_dir.glob('**'):
-        print(sub_dir)
-        if sub_dir != src_dir:
-            level_name = LEVEL_NAME_DICT.get(sub_dir.name,'其他')
+def main(checkold=True):
+    cnt_all, cnt_new = 0, 0
+    for sub_dir in SRC_DIR.glob('**'):
+        # print('-'*50)
+        if sub_dir != SRC_DIR:
+            level_name = LEVEL_NAME_DICT.get(sub_dir.name, '其他')
+            # if level_name != '剑指 Offer':continue
             for filepath in sub_dir.glob('*.py'):
-                filename = filepath.name
-                outpath = out_dir /  f'{filepath.stem}.md'
+                # print('-'*50)
+                # print(filepath)
+                cnt_all += 1
 
-                题目名字, 题目说明, 代码 = GetDetail(filepath)
-                标题 = Get标题(level_name = level_name, filestem = filepath.stem)
-                out = GetResult(标题, 题目名字, 题目说明, 代码)
-                WriteFile(out,outpath)
-                print(outpath)
-                return
+                if not checkold or 未发表(filestem=filepath.stem):
+                    cnt_new += 1
+                    题目名字, 题目说明, 代码 = GetDetail(filepath)
+                    标题 = Get标题(filestem=filepath.stem, level_name=level_name)
+                    outpath = Get文件名(filestem=filepath.stem)
+                    out = GetResult(标题, 题目名字, 题目说明, 代码)
+                    # WriteFile(out,outpath)
+
+                    # print('标题',标题)
+                    # print('题目名字',题目名字)
+                    # print('outpath',outpath)
+                    print(f'成功转换：{outpath}')
+                else:
+                    print(f'已存在：{filepath.stem}')
+    if checkold:
+        print(f'已有转换：{cnt_all - cnt_new}，新转换：{cnt_new}，累计：{cnt_all}！')
+    else:
+        print(f'未开启检查已转换文件，本次一共转换：{cnt_all}！')
 
 
 if __name__ == '__main__':
-    main()
+    main(checkold=True)

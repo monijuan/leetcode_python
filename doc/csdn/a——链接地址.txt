@@ -1,7 +1,81 @@
-[模拟卷Leetcode【简单】001. 两数之和_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/120969284)
+@[TOC](目录)
+
+
+
+其他：
+
+[PAT乙级-【题目+解答】汇总](https://blog.csdn.net/qq_34451909/article/details/104811369)
+
+[PAT甲级-【题目+解答】汇总](https://blog.csdn.net/qq_34451909/article/details/105119913)
+
+[PTA-浙大版《Python 程序设计》AC解答汇总](https://blog.csdn.net/qq_34451909/article/details/107907668)
+
+
+
+### 【剑指 Offer】
 
 
 
 [模拟卷Leetcode【剑指 Offer】Offer_03. 数组中重复的数字_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/120969636)
 
 [模拟卷Leetcode【剑指 Offer】Offer_09. 用两个栈实现队列_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/120969364)
+
+
+
+### 【简单】
+
+
+
+[模拟卷Leetcode【简单】001. 两数之和_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/120969284)
+
+
+
+###  utils
+
+#### 各种import
+
+```python
+from typing import List,Callable,Optional
+```
+
+
+
+#### 各种Node
+
+```python
+class Node_116:
+    def __init__(self, val: int = 0, left: 'Node' = None, right: 'Node' = None, next: 'Node' = None):
+        """116. 填充每个节点的下一个右侧节点指针"""
+        self.val = val
+        self.left = left
+        self.right = right
+        self.next = next
+
+class Node_430:
+    def __init__(self, val, prev, next, child):
+        """430. 扁平化多级双向链表"""
+        self.val = val
+        self.prev = prev
+        self.next = next
+        self.child = child
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+
+    def __str__(self):
+        res = f'[{self.val},l:{self.left},r:{self.right}]'
+        return res
+```
+
+
+
+> 占坑，等待更新
+> 最近更新日期：2021.10.26
