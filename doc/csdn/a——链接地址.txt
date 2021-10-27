@@ -12,13 +12,35 @@
 
 
 
+GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monijuan/leetcode_python)
+
+
+
 ### 【剑指 Offer】
 
 
 
 [模拟卷Leetcode【剑指 Offer】Offer_03. 数组中重复的数字_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/120969636)
 
+[模拟卷Leetcode【剑指 Offer】Offer_04. 二维数组中的查找_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/120988681)
+
+[模拟卷Leetcode【剑指 Offer】Offer_05. 替换空格_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/120988714)
+
+[模拟卷Leetcode【剑指 Offer】Offer_06. 从尾到头打印链表_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/120990134)
+
+[模拟卷Leetcode【剑指 Offer】Offer_07. 重建二叉树_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/120990148)
+
 [模拟卷Leetcode【剑指 Offer】Offer_09. 用两个栈实现队列_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/120969364)
+
+[模拟卷Leetcode【剑指 Offer】Offer_10- I. 斐波那契数列_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/120990186)
+
+[模拟卷Leetcode【剑指 Offer】Offer_10- II. 青蛙跳台阶问题_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/120990206)
+
+
+
+
+
+
 
 
 
@@ -78,4 +100,4 @@ class TreeNode:
 
 
 > 占坑，等待更新
-> 最近更新日期：2021.10.26
+> 最近更新日期：2021.10.27
