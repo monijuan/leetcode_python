@@ -66,6 +66,54 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 
 ###  utils
 
+### 做题脚本
+
+- `test`：直接运行`getResult()`函数，这个函数的定义行可以直接复制题目中的`def`。
+- `test_obj` ：是用于需要编写多个类方法的题目，可以根据输入`函数名（str）`找对应的函数名执行程序，并且兼容了是否有参数的情况。
+
+
+
+```python
+class Solution:
+    def __init__(self):
+        pass
+
+    def getResult(self, args):
+        return
+
+
+def test(data_test):
+    s = Solution()
+    return s.getResult(*data_test)
+
+
+def test_obj(data_test):
+    result = [None]
+    obj = Solution(*data_test[1][0])
+    for fun, data in zip(data_test[0][1::], data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+
+if __name__ == '__main__':
+    datas = [
+        [],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')
+
+```
+
+
+
 #### 各种import
 
 ```python
