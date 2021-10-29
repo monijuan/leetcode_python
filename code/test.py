@@ -52,6 +52,11 @@ class Solution:
 
 
 def test():
+    li = [0,1]*2
+    li[0]=2
+    print(li)
+
+def test5():
     print(2**10)
 
 def test4():

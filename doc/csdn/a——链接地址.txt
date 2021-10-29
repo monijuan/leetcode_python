@@ -18,8 +18,6 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 
 ### 【剑指 Offer】
 
-
-
 [模拟卷Leetcode【剑指 Offer】Offer_03. 数组中重复的数字_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/120969636)
 
 [模拟卷Leetcode【剑指 Offer】Offer_04. 二维数组中的查找_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/120988681)
@@ -36,9 +34,23 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 
 [模拟卷Leetcode【剑指 Offer】Offer_10- II. 青蛙跳台阶问题_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/120990206)
 
+[模拟卷Leetcode【剑指 Offer】Offer_11. 旋转数组的最小数字_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121018507)
 
+[模拟卷Leetcode【剑指 Offer】Offer_12. 矩阵中的路径_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121018531)
 
+[模拟卷Leetcode【剑指 Offer】Offer_13. 机器人的运动范围_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121018577)
 
+[模拟卷Leetcode【剑指 Offer】Offer_14- I. 剪绳子_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121018600)
+
+[模拟卷Leetcode【剑指 Offer】Offer_14- II. 剪绳子 II_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121018619)
+
+[模拟卷Leetcode【剑指 Offer】Offer_15. 二进制中1的个数_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121027555)
+
+[模拟卷Leetcode【剑指 Offer】Offer_16. 数值的整数次方_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121027564)
+
+[模拟卷Leetcode【剑指 Offer】Offer_17. 打印从1到最大的n位数_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121027570)
+
+[模拟卷Leetcode【剑指 Offer】Offer_18. 删除链表的节点_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121027580)
 
 
 
@@ -100,4 +112,4 @@ class TreeNode:
 
 
 > 占坑，等待更新
-> 最近更新日期：2021.10.27
+> 最近更新日期：2021.10.29
