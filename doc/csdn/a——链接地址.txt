@@ -52,6 +52,20 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 
 [模拟卷Leetcode【剑指 Offer】Offer_18. 删除链表的节点_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121027580)
 
+[模拟卷Leetcode【剑指 Offer】Offer_19. 正则表达式匹配_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121060116)
+
+[模拟卷Leetcode【剑指 Offer】Offer_20. 表示数值的字符串_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121060120)
+
+[模拟卷Leetcode【剑指 Offer】Offer_21. 调整数组顺序使奇数位于偶数前面_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121060126)
+
+[模拟卷Leetcode【剑指 Offer】Offer_22. 链表中倒数第k个节点_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121060130)
+
+
+
+
+
+
+
 
 
 
@@ -66,7 +80,7 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 
 ###  utils
 
-### 做题脚本
+#### 做题脚本
 
 - `test`：直接运行`getResult()`函数，这个函数的定义行可以直接复制题目中的`def`。
 - `test_obj` ：是用于需要编写多个类方法的题目，可以根据输入`函数名（str）`找对应的函数名执行程序，并且兼容了是否有参数的情况。
