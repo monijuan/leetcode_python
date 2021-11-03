@@ -42,13 +42,23 @@
 """
 from leetcode_python.utils import *
 
-
 class Solution:
     def __init__(self):
         pass
 
+    def rob_198打家劫舍(self, nums: List[int]) -> int:
+        if len(nums)<=2: return max(nums)
+        dp_0 = nums[0]
+        dp_1 = nums[1]
+        for i in range(2,len(nums)):
+            dp_0,dp_1 = max(dp_0,dp_1),dp_0+nums[i]
+        return max(dp_0,dp_1)
+
     def deleteAndEarn(self, nums: List[int]) -> int:
-        return
+        total = [0] * (max(nums) + 1)
+        for val in nums:
+            total[val] += val
+        return self.rob_198打家劫舍(total)
 
 
 def test(data_test):
@@ -70,7 +80,8 @@ def test_obj(data_test):
 
 if __name__ == '__main__':
     datas = [
-        [],
+        [[3,4,2]],
+        [[2,2,3,3,3,4]],
     ]
     for data_test in datas:
         t0 = time.time()

@@ -40,4 +40,5 @@ if __name__ == '__main__':
     # for x in datas:print(x)
     # randListListIntShow(1,30)
     data = randListListInt(smallest=-1000,biggest=1000,length=100)
+    data = randListListInt(smallest=0,biggest=1000,length=100)
     print(data[0])
