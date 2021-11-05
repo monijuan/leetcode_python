@@ -58,8 +58,20 @@ class Solution:
     def __init__(self):
         pass
 
+    def kadane(self,nums):
+        res,cur = -99999,-99999
+        for num in nums:
+            cur = num + max(cur, 0)
+            res = max(res, cur)
+        return res
+
     def maxSubarraySumCircular(self, nums: List[int]) -> int:
-        return
+        allsum = sum(nums)
+        ans1 = self.kadane(nums)
+        ans2 = allsum + self.kadane([-num for num in nums[1:]])
+        ans3 = allsum + self.kadane([-num for num in nums[:-1]])
+        return max(ans1, ans2, ans3)
+
 
 
 def test(data_test):
@@ -81,7 +93,11 @@ def test_obj(data_test):
 
 if __name__ == '__main__':
     datas = [
-        [],
+        [[1,-2,3,-2]],
+        [[5,-3,5]],
+        [[3,-1,2,-1]],
+        [[3,-2,2,-3]],
+        [[-2,-3,-1]],
     ]
     for data_test in datas:
         t0 = time.time()

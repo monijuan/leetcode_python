@@ -60,11 +60,27 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 
 [模拟卷Leetcode【剑指 Offer】Offer_22. 链表中倒数第k个节点_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121060130)
 
+[模拟卷Leetcode【剑指 Offer】Offer_24. 反转链表_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121122195)
 
+[模拟卷Leetcode【剑指 Offer】Offer_25. 合并两个排序的链表_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121122248)
 
+[模拟卷Leetcode【剑指 Offer】Offer_26. 树的子结构_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121122276)
 
+[模拟卷Leetcode【剑指 Offer】Offer_27. 二叉树的镜像_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121122323)
 
+[模拟卷Leetcode【剑指 Offer】Offer_28. 对称的二叉树_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121122397)
 
+[模拟卷Leetcode【剑指 Offer】Offer_29. 顺时针打印矩阵_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121159127)
+
+[模拟卷Leetcode【剑指 Offer】Offer_30. 包含min函数的栈_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121159139)
+
+[模拟卷Leetcode【剑指 Offer】Offer_31. 栈的压入、弹出序列_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121159154)
+
+[模拟卷Leetcode【剑指 Offer】Offer_32 - I. 从上到下打印二叉树_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121159170)
+
+[模拟卷Leetcode【剑指 Offer】Offer_32 - II. 从上到下打印二叉树 II_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121159188)
+
+[模拟卷Leetcode【剑指 Offer】Offer_32 - III. 从上到下打印二叉树 III_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121159212)
 
 
 
@@ -174,4 +190,4 @@ class TreeNode:
 
 
 > 占坑，等待更新
-> 最近更新日期：2021.10.29
+> 最近更新日期：2021.11.5

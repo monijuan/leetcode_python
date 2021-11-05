@@ -1,7 +1,7 @@
 ### 标题
 
 ```
-模拟卷Leetcode【剑指 Offer】Offer_27. 二叉树的镜像
+模拟卷Leetcode【剑指 Offer】Offer_28. 对称的二叉树
 ```
 
 
@@ -9,41 +9,50 @@
 ### 正文
 
 ```
-### Offer_day07_27. 二叉树的镜像
+### Offer_day07_28. 对称的二叉树
 
-请完成一个函数，输入一个二叉树，该函数输出它的镜像。
+请实现一个函数，用来判断一棵二叉树是不是对称的。如果一棵二叉树和它的镜像一样，那么它是对称的。
 
-例如输入：
+例如，二叉树 [1,2,2,3,4,4,3] 是对称的。
 
-     4
-   /   \
-  2     7
- / \   / \
-1   3 6   9
-镜像输出：
+​```cpp
+    1
+   / \
+  2   2
+ / \ / \
+3  4 4  3
+​```
 
-     4
-   /   \
-  7     2
- / \   / \
-9   6 3   1
+但是下面这个 [1,2,2,null,3,null,3] 则不是镜像对称的:
 
- 
+​```cpp
+    1
+   / \
+  2   2
+   \   \
+   3    3
+​```
+
+ 
 
 示例 1：
 
-输入：root = [4,2,7,1,3,6,9]
-输出：[4,7,2,9,6,3,1]
- 
+输入：root = [1,2,2,3,4,4,3]
+输出：true
+示例 2：
+
+输入：root = [1,2,2,null,3,null,3]
+输出：false
+ 
 
 限制：
 
 0 <= 节点个数 <= 1000
 
-注意：本题与主站 226 题相同：https://leetcode-cn.com/problems/invert-binary-tree/
+注意：本题与主站 101 题相同：https://leetcode-cn.com/problems/symmetric-tree/
 
 来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/er-cha-shu-de-jing-xiang-lcof
+链接：https://leetcode-cn.com/problems/dui-cheng-de-er-cha-shu-lcof
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
 
@@ -65,20 +74,27 @@ class Solution:
     def __init__(self):
         pass
 
-    def mirrorTree(self, root: TreeNode) -> TreeNode:
-        if root:
-            new = TreeNode()
-            new.val = root.val
-            new.left = self.mirrorTree(root.right)
-            new.right = self.mirrorTree(root.left)
-            return new
+    def isSameRoot(self, leftson,rightson) -> bool:
+        if leftson and rightson:
+            if leftson.val==rightson.val:
+                return self.isSameRoot(leftson.left,rightson.right) and self.isSameRoot(leftson.right,rightson.left)
+            else:
+                return False
+        elif not leftson and not rightson:
+            return True
         else:
-            return None
+            return False
+
+    def isSymmetric(self, root: TreeNode) -> bool:
+        if root:
+            return self.isSameRoot(root.left,root.right)
+        else:
+            return True
 
 
 def test(data_test):
     s = Solution()
-    return s.getResult(*data_test)
+    return s.isSymmetric(*data_test)
 
 
 def test_obj(data_test):
@@ -117,4 +133,3 @@ CSDN汇总：[模拟卷Leetcode 题解汇总_卷子的博客-CSDN博客](https:/
 > 先刷的题，之后用脚本生成的blog，如果有错请留言，我看到了会修改的！谢谢！
 
 ```
-    
