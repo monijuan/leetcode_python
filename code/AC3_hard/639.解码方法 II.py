@@ -129,6 +129,25 @@ class Solution:
         print(dp_second)
         return (dp_self[-1]+dp_second[-1])%(10**9+7)
 
+    def numDecodings_91_解码方法(self, s: str) -> int:
+        if '0'==s[0]:return 0
+        dp_self = 1
+        dp_second = 0
+        for index in range(1,len(s)):
+            dp_self_last = dp_self
+            dp_second_last = dp_second
+            if '0' == s[index]:
+                dp_self = 0
+            else:
+                dp_self = dp_self_last + dp_second_last
+
+            if '10' <= s[index - 1:index + 1] <= '26':
+                dp_second = dp_self_last
+            else:
+                dp_second = 0
+
+        return dp_self+dp_second
+
 
 def test(data_test):
     s = Solution()

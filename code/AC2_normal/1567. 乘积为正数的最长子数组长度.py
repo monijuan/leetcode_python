@@ -54,10 +54,26 @@ from leetcode_python.utils import *
 
 class Solution:
     def __init__(self):
+        """
+        动态规划，保存正负最长的长度，对于每个数分>0,=0,<0三种情况：
+            - >0: 正的长度+1，负的长度得看之前负的最长是不是0
+            - =0: 正负的长度都为0
+            - <0: 正的长度看之前负的，负的长度=之前正的+1
+        """
         pass
 
     def getMaxLen(self, nums: List[int]) -> int:
-        return
+        len_p, len_n = int(nums[0] > 0), int(nums[0] < 0)
+        res = len_p
+        for num in nums[1::]:
+            if num > 0:
+                len_p, len_n = len_p + 1, (len_n + 1 if len_n > 0 else 0)
+            elif num < 0:
+                len_p, len_n = (len_n + 1 if len_n > 0 else 0), len_p + 1
+            else:
+                len_p, len_n = 0, 0
+            res = max(res, len_p)
+        return res
 
     def maxProduct_152_乘积最大子数组(self, nums: List[int]) -> int:
         max_save,min_save,max_all =nums[0],nums[0],nums[0]
@@ -85,7 +101,7 @@ def test_obj(data_test):
 
 if __name__ == '__main__':
     datas = [
-        [],
+        [[1,-2,-3,4]],
     ]
     for data_test in datas:
         t0 = time.time()
