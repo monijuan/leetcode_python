@@ -1,0 +1,89 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2021/11/10 16:34
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 413. 等差数列划分.py
+# @Software: PyCharm
+# ===================================
+"""如果一个数列 至少有三个元素 ，并且任意两个相邻元素之差相同，则称该数列为等差数列。
+
+例如，[1,3,5,7,9]、[7,7,7,7] 和 [3,-1,-5,-9] 都是等差数列。
+给你一个整数数组 nums ，返回数组 nums 中所有为等差数组的 子数组 个数。
+
+子数组 是数组中的一个连续序列。
+
+ 
+
+示例 1：
+
+输入：nums = [1,2,3,4]
+输出：3
+解释：nums 中有三个子等差数组：[1, 2, 3]、[2, 3, 4] 和 [1,2,3,4] 自身。
+示例 2：
+
+输入：nums = [1]
+输出：0
+ 
+
+提示：
+
+1 <= nums.length <= 5000
+-1000 <= nums[i] <= 1000
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/arithmetic-slices
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+from leetcode_python.utils import *
+
+
+class Solution:
+    def __init__(self):
+        pass
+
+    def numberOfArithmeticSlices(self, nums: List[int]) -> int:
+        # 计算所有数，两两之间的差值
+        ds = [nums[id] - nums[id-1] for id in range(1,len(nums))]
+        # 如果有连续两个差值是一样的则说明这三个数是等差数列，记录所有等差数列的长度
+        length_ds = len(ds)
+        lengths = []
+        left=0
+        while left<length_ds:
+            right=left
+            while right<length_ds and ds[right]==ds[left]:
+                right+=1
+            lengths.append(right-left+1)
+            left=right
+
+        # 对于长度为 l 的等差数列，可以拆分成 1+2+...+(l-2) = (l-2)*(l-1)//2 个等差数列
+        res = sum([max(0,(l-2)*(l-1)//2) for l in lengths])
+        return res
+
+
+def test(data_test):
+    s = Solution()
+    return s.numberOfArithmeticSlices(*data_test)
+
+
+def test_obj(data_test):
+    result = [None]
+    obj = Solution(*data_test[1][0])
+    for fun, data in zip(data_test[0][1::], data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+
+if __name__ == '__main__':
+    datas = [
+        [[1,2,3,4]],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')
