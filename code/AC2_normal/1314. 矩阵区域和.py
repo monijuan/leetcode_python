@@ -44,10 +44,18 @@ class Solution:
 
     def matrixBlockSum(self, mat: List[List[int]], k: int) -> List[List[int]]:
         data = np.array(mat)
+        h,w = data.shape
+        res = [[int(np.sum(data[max(0,i-k):min(h,i+k+1),max(0,j-k):min(w,j+k+1)])) for j in range(w)] for i in range(h)]
+        return res
+
+    def matrixBlockSum_conv(self, mat: List[List[int]], k: int) -> List[List[int]]:
+        """但是不知道为什么结果不对，尤其卷积核超过mat的时候"""
+        data = np.array(mat)
         print(data)
-        nurcle = np.ones((1+k*2,1+k*2))
+        nurcle = np.ones((1+k*2,1+k*2)).astype(np.uint32)
+        # nurcle[k][k]=0
         print(nurcle)
-        res = signal.convolve2d(data, nurcle).astype(np.uint8)
+        res = signal.convolve2d(data, nurcle, boundary='fill', fillvalue=0).astype(np.uint8)
         # res = signal.convolve2d(data, nurcle, 'same').astype(np.uint8)
         print(res)
         return res.tolist()
@@ -74,6 +82,8 @@ if __name__ == '__main__':
     datas = [
         # [[[1,2,3],[4,5,6],[7,8,9]],2],
         [[[67,64,78],[99,98,38],[82,46,46],[6,52,55],[55,99,45]],3],
+        # [[[1,1,1],[1,2,1],[1,1,1],[1,1,1],[1,1,1]],3],
+        # [[[1,1,1,1,1],[1,2,1,1,1],[1,1,1,1,1],[1,1,1,1,1],[1,1,1,1,1]],5],
     ]
     for data_test in datas:
         t0 = time.time()
