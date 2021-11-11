@@ -108,6 +108,16 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 
 [模拟卷Leetcode【剑指 Offer】Offer_45. 把数组排成最小的数_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121246759)
 
+[模拟卷Leetcode【剑指 Offer】Offer_46. 把数字翻译成字符串_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121263398)
+
+[模拟卷Leetcode【剑指 Offer】Offer_47. 礼物的最大价值_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121263414)
+
+[模拟卷Leetcode【剑指 Offer】Offer_48. 最长不含重复字符的子字符串_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121263434)
+
+[模拟卷Leetcode【剑指 Offer】Offer_49. 丑数_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121263442)
+
+[模拟卷Leetcode【剑指 Offer】Offer_50. 第一个只出现一次的字符_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121263451)
+
 
 
 
@@ -218,4 +228,4 @@ class TreeNode:
 
 
 > 占坑，等待更新
-> 最近更新日期：2021.11.10
+> 最近更新日期：2021.11.11
