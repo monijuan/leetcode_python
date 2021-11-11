@@ -1,0 +1,85 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2021/11/11 13:23
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 714. 买卖股票的最佳时机含手续费.py
+# @Software: PyCharm
+# ===================================
+"""给定一个整数数组 prices，其中第 i 个元素代表了第 i 天的股票价格 ；整数 fee 代表了交易股票的手续费用。
+
+你可以无限次地完成交易，但是你每笔交易都需要付手续费。如果你已经购买了一个股票，在卖出它之前你就不能再继续购买股票了。
+
+返回获得利润的最大值。
+
+注意：这里的一笔交易指买入持有并卖出股票的整个过程，每笔交易你只需要为支付一次手续费。
+
+ 
+
+示例 1：
+
+输入：prices = [1, 3, 2, 8, 4, 9], fee = 2
+输出：8
+解释：能够达到的最大利润:
+在此处买入 prices[0] = 1
+在此处卖出 prices[3] = 8
+在此处买入 prices[4] = 4
+在此处卖出 prices[5] = 9
+总利润: ((8 - 1) - 2) + ((9 - 4) - 2) = 8
+示例 2：
+
+输入：prices = [1,3,7,5,10,3], fee = 3
+输出：6
+ 
+
+提示：
+
+1 <= prices.length <= 5 * 104
+1 <= prices[i] < 5 * 104
+0 <= fee < 5 * 104
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+from leetcode_python.utils import *
+
+
+class Solution:
+    def __init__(self):
+        pass
+
+    def maxProfit(self, prices: List[int], fee: int) -> int:
+        sell, buy = 0, -prices[0]
+        for price in prices[1:]:
+            sell, buy = max(sell, buy + price - fee), max(buy, sell - price)
+        return sell
+
+
+
+def test(data_test):
+    s = Solution()
+    return s.maxProfit(*data_test)
+
+
+def test_obj(data_test):
+    result = [None]
+    obj = Solution(*data_test[1][0])
+    for fun, data in zip(data_test[0][1::], data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+
+if __name__ == '__main__':
+    datas = [
+        [],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')

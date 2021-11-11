@@ -49,12 +49,21 @@ from leetcode_python.utils import *
 
 
 class Solution:
-    def __init__(self):
-        pass
+    def ChangeList(self,nums,l,r):
+        nums[l],nums[r]=nums[r],nums[l]
 
     def sortColors(self, nums: List[int]) -> None:
-        return
-
+        index_0=index_1=0
+        for id,num in enumerate(nums):
+            if 0==num:
+                self.ChangeList(nums,id,index_0)
+                if index_0<index_1:
+                    self.ChangeList(nums, id, index_1)
+                index_0+=1
+                index_1+=1
+            elif 1==num:
+                self.ChangeList(nums, id, index_1)
+                index_1+=1
 
 def test(data_test):
     s = Solution()
