@@ -118,9 +118,19 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 
 [模拟卷Leetcode【剑指 Offer】Offer_50. 第一个只出现一次的字符_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121263451)
 
+[模拟卷Leetcode【剑指 Offer】Offer_51. 数组中的逆序对_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121282263)
 
+[模拟卷Leetcode【剑指 Offer】Offer_52. 两个链表的第一个公共节点_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121282278)
 
+[模拟卷Leetcode【剑指 Offer】Offer_53 - I. 在排序数组中查找数字 I_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121282287)
 
+[模拟卷Leetcode【剑指 Offer】Offer_53 - II. 0～n-1中缺失的数字_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121282305)
+
+[模拟卷Leetcode【剑指 Offer】Offer_54. 二叉搜索树的第k大节点_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121282327)
+
+[模拟卷Leetcode【剑指 Offer】Offer_55 - I. 二叉树的深度_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121282339)
+
+[模拟卷Leetcode【剑指 Offer】Offer_55 - II. 平衡二叉树_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121282358)
 
 
 
