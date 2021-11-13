@@ -1,0 +1,86 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2021/11/13 8:36
+# @Author  : 模拟卷
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 056. 合并区间.py
+# @Software: PyCharm 
+# ===================================
+"""以数组 intervals 表示若干个区间的集合，其中单个区间为 intervals[i] = [starti, endi] 。请你合并所有重叠的区间，并返回一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间。
+
+ 
+
+示例 1：
+
+输入：intervals = [[1,3],[2,6],[8,10],[15,18]]
+输出：[[1,6],[8,10],[15,18]]
+解释：区间 [1,3] 和 [2,6] 重叠, 将它们合并为 [1,6].
+示例 2：
+
+输入：intervals = [[1,4],[4,5]]
+输出：[[1,5]]
+解释：区间 [1,4] 和 [4,5] 可被视为重叠区间。
+ 
+
+提示：
+
+1 <= intervals.length <= 104
+intervals[i].length == 2
+0 <= starti <= endi <= 104
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/merge-intervals
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+from leetcode_python.utils import *
+
+
+class Solution:
+    def __init__(self):
+        pass
+
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        intervals = sorted(intervals,key = lambda x:x[0])
+        length = len(intervals)
+        res = []
+        id=0
+        while id<length:
+            now_inter = intervals[id]
+            while id<length and intervals[id][0]<=now_inter[1]:
+                now_inter[0]=min(now_inter[0],intervals[id][0])
+                now_inter[1]=max(now_inter[1],intervals[id][1])
+                id+=1
+            res.append(now_inter)
+        return res
+
+
+def test(data_test):
+    s = Solution()
+    return s.merge(*data_test)
+
+
+def test_obj(data_test):
+    result = [None]
+    obj = Solution(*data_test[1][0])
+    for fun, data in zip(data_test[0][1::], data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+
+if __name__ == '__main__':
+    datas = [
+        # [[[1,3],[2,6],[8,10],[15,18]]],
+        # [[[2,3],[0,0]]],
+        [[[2, 3], [4, 5]]],
+        [[[2,3],[4,5],[6,7],[8,9],[1,10]]],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')
