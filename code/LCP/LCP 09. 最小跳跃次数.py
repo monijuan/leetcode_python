@@ -32,6 +32,9 @@ from leetcode_python.utils import *
 
 class Solution:
     def __init__(self):
+        """
+        超时case：https://leetcode-cn.com/submissions/detail/238701415/testcase/
+        """
         pass
 
     def minJump(self, jump: List[int]) -> int:
@@ -46,8 +49,12 @@ class Solution:
             # 更新后面的，如果发现回跳会更快，则必须要更新。因为可能一下子先跳到后面
             jump_from_now = jump_from[start]
             for start_behind in range(start+1,length):
-                jump_from[start_behind] = min(jump_from[start_behind],jump_from_now+2)
-            print(start,jump_from)
+                # jump_from[start_behind] = min(jump_from[start_behind],jump_from_now+1)    # 这样会超时，需要break优化
+                if jump_from[start_behind]<=jump_from_now:
+                    break
+                else:
+                    jump_from[start_behind] = jump_from_now+1
+            # print(start,jump_from)    # 有print会超时
         return jump_from[0]
 
 

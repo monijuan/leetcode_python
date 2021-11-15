@@ -48,14 +48,36 @@ nums 中的所有元素 互不相同
 """
 from leetcode_python.utils import *
 
-
 class Solution:
-    def __init__(self):
-        pass
-
     def combinationSum4(self, nums: List[int], target: int) -> int:
+        count_for_target = [1] + [0]*target
+        for target_temp in range(1,target+1):
+            for num in nums:
+                if num<= target_temp:
+                    count_for_target[target_temp] += count_for_target[target_temp-num]
+        return count_for_target[-1]
 
-        return
+    def dfs_超时(self, now):
+        for num in self.nums:
+            next = now + num
+            if next == self.target:
+                self.res += 1
+            elif next < self.target:
+                self.dfs(next)
+            else:
+                break
+
+    def combinationSum4_超时(self, nums: List[int], target: int) -> int:
+        """
+        输入：[[4, 2, 1], 32]
+        结果：39882198
+        会超时
+        """
+        self.nums = sorted(nums)
+        self.target = target
+        self.res = 0
+        self.dfs_超时(0)
+        return self.res
 
 
 def test(data_test):
@@ -77,7 +99,7 @@ def test_obj(data_test):
 
 if __name__ == '__main__':
     datas = [
-        [],
+        [[4,2,1],32],
     ]
     for data_test in datas:
         t0 = time.time()

@@ -1,0 +1,86 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2021/11/15 10:25
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 279. 完全平方数.py
+# @Software: PyCharm
+# ===================================
+"""给定正整数 n，找到若干个完全平方数（比如 1, 4, 9, 16, ...）使得它们的和等于 n。你需要让组成和的完全平方数的个数最少。
+
+给你一个整数 n ，返回和为 n 的完全平方数的 最少数量 。
+
+完全平方数 是一个整数，其值等于另一个整数的平方；换句话说，其值等于一个整数自乘的积。例如，1、4、9 和 16 都是完全平方数，而 3 和 11 不是。
+
+ 
+
+示例 1：
+
+输入：n = 12
+输出：3
+解释：12 = 4 + 4 + 4
+示例 2：
+
+输入：n = 13
+输出：2
+解释：13 = 4 + 9
+ 
+提示：
+
+1 <= n <= 104
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/perfect-squares
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+from leetcode_python.utils import *
+
+
+class Solution:
+    def __init__(self):
+        pass
+
+    def numSquares(self, n: int) -> int:
+        # 准备数组
+        nums = []
+        for i in range(int(n**0.5+1)):
+            nums.append(i*i)
+
+        # 动态规划
+        cnt_for_need = [x for x in range(n+1)]
+        for i in range(1,n+1):
+            for num in nums:
+                if num<=i:
+                    cnt_for_need[i] = min(cnt_for_need[i],cnt_for_need[i-num]+1)
+            # print(i,cnt_for_need)
+        return cnt_for_need[n]
+
+
+def test(data_test):
+    s = Solution()
+    return s.numSquares(*data_test)
+
+
+def test_obj(data_test):
+    result = [None]
+    obj = Solution(*data_test[1][0])
+    for fun, data in zip(data_test[0][1::], data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+
+if __name__ == '__main__':
+    datas = [
+        [15],
+        [12],
+        [13],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')

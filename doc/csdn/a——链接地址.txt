@@ -132,6 +132,22 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 
 [模拟卷Leetcode【剑指 Offer】Offer_55 - II. 平衡二叉树_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121282358)
 
+[模拟卷Leetcode【剑指 Offer】Offer_56 - I. 数组中数字出现的次数_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121328332)
+
+[模拟卷Leetcode【剑指 Offer】Offer_56 - II. 数组中数字出现的次数 II_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121328370)
+
+[模拟卷Leetcode【剑指 Offer】Offer_57 - II. 和为s的连续正数序列_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121328380)
+
+[模拟卷Leetcode【剑指 Offer】Offer_57. 和为s的两个数字_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121328397)
+
+[模拟卷Leetcode【剑指 Offer】Offer_58 - I. 翻转单词顺序_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121328409)
+
+[模拟卷Leetcode【剑指 Offer】Offer_58 - II. 左旋转字符串_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121328422)
+
+[模拟卷Leetcode【剑指 Offer】Offer_59 - I. 滑动窗口的最大值_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121328443)
+
+[模拟卷Leetcode【剑指 Offer】Offer_59 - II. 队列的最大值_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121328458)
+
 
 
 ### 【简单】
@@ -238,4 +254,4 @@ class TreeNode:
 
 
 > 占坑，等待更新
-> 最近更新日期：2021.11.11
+> 最近更新日期：2021.11.15
