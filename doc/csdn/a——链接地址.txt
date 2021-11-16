@@ -148,6 +148,20 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 
 [模拟卷Leetcode【剑指 Offer】Offer_59 - II. 队列的最大值_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121328458)
 
+[模拟卷Leetcode【剑指 Offer】Offer_60. n个骰子的点数_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121353008)
+
+[模拟卷Leetcode【剑指 Offer】Offer_61. 扑克牌中的顺子_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121353015)
+
+[模拟卷Leetcode【剑指 Offer】Offer_62. 圆圈中最后剩下的数字_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121353020)
+
+[模拟卷Leetcode【剑指 Offer】Offer_63. 股票的最大利润_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121353025)
+
+[模拟卷Leetcode【剑指 Offer】Offer_64. 求1+2+…+n_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121353032)
+
+[模拟卷Leetcode【剑指 Offer】Offer_65. 不用加减乘除做加法_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121353039)
+
+
+
 
 
 ### 【简单】
@@ -254,4 +268,4 @@ class TreeNode:
 
 
 > 占坑，等待更新
-> 最近更新日期：2021.11.15
+> 最近更新日期：2021.11.16
