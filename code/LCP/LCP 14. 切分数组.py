@@ -39,8 +39,28 @@ class Solution:
     def __init__(self):
         pass
 
+    def initFactor(self,maxsize):
+        self.left_factor = [0]*maxsize
+        for num in range(2,maxsize):
+            if not self.left_factor[num]:
+                for j in range(num,maxsize,num):
+                    self.left_factor[j] = num
+
     def splitArray(self, nums: List[int]) -> int:
-        return
+        max_size = max(nums) + 1
+        self.initFactor(max_size)
+        res_last = 0
+        length = len(nums)
+        dp = [length]*max_size
+        for num in nums:
+            res_now = length
+            while num>1:
+                num_f = self.left_factor[num]
+                while self.left_factor[num]==num_f: num//=num_f
+                dp[num_f] = min(dp[num_f],res_last)
+                res_now = min(res_now,dp[num_f]+1)
+            res_last = res_now
+        return res_last
 
 
 def test(data_test):
@@ -62,7 +82,9 @@ def test_obj(data_test):
 
 if __name__ == '__main__':
     datas = [
-        [],
+        [[2,3,3,2,3,3]],
+        [[2,3,5,7]],
+        [[2]],
     ]
     for data_test in datas:
         t0 = time.time()
