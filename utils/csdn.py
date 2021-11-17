@@ -30,10 +30,13 @@ def Get标题(filestem, level_name):
     return f'模拟卷Leetcode【{level_name}】{filestem}'
 
 
-def Get文件名(filestem, out_dir=OUT_DIR):
+def Get文件名(filestem, out_dir=OUT_DIR, levelname='levelname'):
     filestem = str(filestem)
     if 'Offer_' in filestem:
         filestem = 'Offer_' + filestem[12:]
+    elif ' ' in filestem:
+        filestem = filestem.replace(' ',f'【{levelname}】')
+
     outpath = out_dir / f'{filestem}.md'
     return outpath
 
@@ -111,28 +114,31 @@ def WriteFile(out, path):
         file.write(out)
 
 
-def 未发表(filestem, check_dir=CHECK_DIR):
-    checkpath = check_dir / Get文件名(filestem).name
-    return not (checkpath.is_file() or Get文件名(filestem).is_file())
+def 未发表(filestem, check_dir=CHECK_DIR, levelname=''):
+    checkpath = check_dir / Get文件名(filestem,levelname=levelname).name
+    return not (checkpath.is_file() or Get文件名(filestem,levelname=levelname).is_file())
 
 
-def main(checkold=True):
+def main(checkold=True, choicelevel = []):
     cnt_all, cnt_new = 0, 0
     for sub_dir in SRC_DIR.glob('**'):
         # print('-'*50)
         if sub_dir != SRC_DIR:
             level_name = LEVEL_NAME_DICT.get(sub_dir.name, '其他')
             # if level_name != '剑指 Offer':continue
+            if len(choicelevel) and level_name not in choicelevel:
+                print(f'跳过【{level_name}】')
+                continue
             for filepath in sub_dir.glob('*.py'):
                 # print('-'*50)
                 # print(filepath)
                 cnt_all += 1
 
-                if not checkold or 未发表(filestem=filepath.stem):
+                if not checkold or 未发表(filestem=filepath.stem,levelname=level_name):
                     cnt_new += 1
                     题目名字, 题目说明, 代码 = GetDetail(filepath)
                     标题 = Get标题(filestem=filepath.stem, level_name=level_name)
-                    outpath = Get文件名(filestem=filepath.stem)
+                    outpath = Get文件名(filestem=filepath.stem,levelname=level_name)
                     out = GetResult(标题, 题目名字, 题目说明, 代码)
                     # WriteFile(out,outpath)
 
@@ -149,4 +155,4 @@ def main(checkold=True):
 
 
 if __name__ == '__main__':
-    main(checkold=True)
+    main(checkold=True,choicelevel=['普通'])
