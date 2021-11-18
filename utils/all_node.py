@@ -30,6 +30,14 @@ class ListNode:
     def __str__(self):
         return f"{str(self.val)}->{self.next}"
 
+    def reverse(self,head,tail):
+        """反转指定头尾部分的链表"""
+        now_next = tail.next
+        now = head
+        while now_next!=tail:
+            now.next, now, now_next = now_next, now.next, now
+        return tail,head
+
 class TreeNode:
     def __init__(self, x):
         self.val = x
