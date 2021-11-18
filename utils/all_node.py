@@ -27,6 +27,9 @@ class ListNode:
         self.val = val
         self.next = next
 
+    def __str__(self):
+        return f"{str(self.val)}->{self.next}"
+
 class TreeNode:
     def __init__(self, x):
         self.val = x

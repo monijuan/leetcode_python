@@ -1,0 +1,89 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2021/11/18 14:52
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 024. 两两交换链表中的节点.py
+# @Software: PyCharm
+# ===================================
+"""给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。
+
+你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
+
+ 
+
+示例 1：
+
+
+输入：head = [1,2,3,4]
+输出：[2,1,4,3]
+示例 2：
+
+输入：head = []
+输出：[]
+示例 3：
+
+输入：head = [1]
+输出：[1]
+ 
+
+提示：
+
+链表中节点的数目在范围 [0, 100] 内
+0 <= Node.val <= 100
+ 
+
+进阶：你能在不修改链表节点值的情况下解决这个问题吗?（也就是说，仅修改节点本身。）
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/swap-nodes-in-pairs
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+from leetcode_python.utils import *
+
+
+class Solution:
+    def __init__(self):
+        pass
+
+    def swapPairs(self, head: ListNode) -> ListNode:
+        hair = ListNode(None,head)
+        last,first = hair,hair.next
+        while first and first.next:
+            # print(first)
+            second = first.next
+            last.next,first.next,second.next = second,second.next,first
+            last,first = first,first.next
+        return hair.next
+
+
+def test(data_test):
+    s = Solution()
+    # data = data_test    # normal
+    data = [list2node(data) for data in data_test]  # list转node
+    return s.swapPairs(*data)
+
+
+def test_obj(data_test):
+    result = [None]
+    obj = Solution(*data_test[1][0])
+    for fun, data in zip(data_test[0][1::], data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+
+if __name__ == '__main__':
+    datas = [
+        [[1,2,3,4]],
+        [[]],
+        [[955, 60, 602, 804, 659, 605, 767, 80, 89, 376, 12, 703, 228, 6, 37, 238, 544, 534, 900, 425, 511, 96, 914, 597, 46, 830, 482, 868, 124, 155, 456, 540, 466, 683, 500, 297, 796, 488, 35, 727, 692, 268, 131, 254, 991, 893, 442, 643, 565, 571, 386, 164, 253, 8, 608, 663, 623, 494, 564, 991, 161, 968, 364, 285, 276, 577, 966, 90, 44, 881, 841, 13, 302, 391, 979, 966, 319, 901, 342, 576, 785, 944, 359, 914, 54, 386, 918, 49, 797, 261, 47, 236, 976, 508, 117, 698, 22, 9, 158, 178]],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')
