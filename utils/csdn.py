@@ -140,7 +140,7 @@ def main(checkold=True, choicelevel = []):
                     标题 = Get标题(filestem=filepath.stem, level_name=level_name)
                     outpath = Get文件名(filestem=filepath.stem,levelname=level_name)
                     out = GetResult(标题, 题目名字, 题目说明, 代码)
-                    # WriteFile(out,outpath)
+                    WriteFile(out,outpath)
 
                     # print('标题',标题)
                     # print('题目名字',题目名字)

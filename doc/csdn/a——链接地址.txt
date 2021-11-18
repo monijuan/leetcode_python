@@ -170,15 +170,29 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 
 
 
-
-
-
-
 ### 【简单】
 
-
-
 [模拟卷Leetcode【简单】001. 两数之和](https://blog.csdn.net/qq_34451909/article/details/120969284)
+
+
+
+
+
+### 【普通】
+
+[模拟卷Leetcode【普通】002. 两数相加_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121405916)
+
+[模拟卷Leetcode【普通】003. 无重复字符的最长子串_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121405948)
+
+[模拟卷Leetcode【普通】005. 最长回文子串_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121405963)
+
+[模拟卷Leetcode【普通】008. 字符串转换整数 (atoi)_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121405981)
+
+[模拟卷Leetcode【普通】015. 三数之和_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121406006)
+
+
+
+
 
 
 
@@ -278,4 +292,4 @@ class TreeNode:
 
 
 > 占坑，等待更新
-> 最近更新日期：2021.11.17
+> 最近更新日期：2021.11.18
