@@ -35,7 +35,7 @@ def Get文件名(filestem, out_dir=OUT_DIR, levelname='levelname'):
     if 'Offer_' in filestem:
         filestem = 'Offer_' + filestem[12:]
     elif ' ' in filestem:
-        filestem = filestem.replace(' ',f'【{levelname}】')
+        filestem = filestem.replace(' ',f'【{levelname}】',1)
 
     outpath = out_dir / f'{filestem}.md'
     return outpath
