@@ -1,0 +1,100 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2021/11/19 17:11
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 707. 设计链表.py
+# @Software: PyCharm
+# ===================================
+"""设计链表的实现。您可以选择使用单链表或双链表。单链表中的节点应该具有两个属性：val 和 next。val 是当前节点的值，next 是指向下一个节点的指针/引用。如果要使用双向链表，则还需要一个属性 prev 以指示链表中的上一个节点。假设链表中的所有节点都是 0-index 的。
+
+在链表类中实现这些功能：
+
+get(index)：获取链表中第 index 个节点的值。如果索引无效，则返回-1。
+addAtHead(val)：在链表的第一个元素之前添加一个值为 val 的节点。插入后，新节点将成为链表的第一个节点。
+addAtTail(val)：将值为 val 的节点追加到链表的最后一个元素。
+addAtIndex(index,val)：在链表中的第 index 个节点之前添加值为 val  的节点。如果 index 等于链表的长度，则该节点将附加到链表的末尾。如果 index 大于链表长度，则不会插入节点。如果index小于0，则在头部插入节点。
+deleteAtIndex(index)：如果索引 index 有效，则删除链表中的第 index 个节点。
+ 
+
+示例：
+
+MyLinkedList linkedList = new MyLinkedList();
+linkedList.addAtHead(1);
+linkedList.addAtTail(3);
+linkedList.addAtIndex(1,2);   //链表变为1-> 2-> 3
+linkedList.get(1);            //返回2
+linkedList.deleteAtIndex(1);  //现在链表是1-> 3
+linkedList.get(1);            //返回3
+ 
+
+提示：
+
+所有val值都在 [1, 1000] 之内。
+操作次数将在  [1, 1000] 之内。
+请不要使用内置的 LinkedList 库。
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/design-linked-list
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+from leetcode_python.utils import *
+
+
+class MyLinkedList:
+
+    def __init__(self):
+        self.nums = []
+        self.length = 0
+
+
+    def get(self, index: int) -> int:
+        if index<0 or index>=self.length:return -1
+        return self.nums[index]
+
+    def addAtHead(self, val: int) -> None:
+        self.addAtIndex(0,val)
+
+    def addAtTail(self, val: int) -> None:
+        self.addAtIndex(self.length,val)
+
+    def addAtIndex(self, index: int, val: int) -> None:
+        if index<=self.length:
+            self.nums.insert(index,val)
+            self.length+=1
+
+    def deleteAtIndex(self, index: int) -> None:
+        # print('pop',index,self.nums,self.length)
+        if index<self.length:
+            self.nums.pop(max(0,index))
+            self.length-=1
+
+def test(data_test):
+    s = MyLinkedList()
+    data = data_test  # normal
+    # data = [list2node(data_test[0])]  # list转node
+    return s.swapPairs(*data)
+
+
+def test_obj(data_test):
+    result = [None]
+    obj = MyLinkedList(*data_test[1][0])
+    for fun, data in zip(data_test[0][1::], data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+
+if __name__ == '__main__':
+    datas = [
+        [["MyLinkedList","addAtHead","addAtTail","addAtIndex","get","deleteAtIndex","get"],[[],[1],[3],[1,2],[1],[1],[1]]],
+        [["MyLinkedList","addAtHead","get","addAtIndex","addAtIndex","deleteAtIndex","addAtHead","addAtHead","deleteAtIndex","addAtIndex","addAtHead","deleteAtIndex"],[[],[9],[1],[1,1],[1,7],[1],[7],[4],[1],[1,4],[2],[5]]],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test_obj(data_test))
+        print(f'use time:{time.time() - t0}s')
