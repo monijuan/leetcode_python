@@ -1,0 +1,93 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2021/11/19 16:01
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 230. 二叉搜索树中第K小的元素.py
+# @Software: PyCharm
+# ===================================
+"""给定一个二叉搜索树的根节点 root ，和一个整数 k ，请你设计一个算法查找其中第 k 个最小元素（从 1 开始计数）。
+
+ 
+
+示例 1：
+
+
+输入：root = [3,1,4,null,2], k = 1
+输出：1
+示例 2：
+
+
+输入：root = [5,3,6,2,4,null,null,1], k = 3
+输出：3
+ 
+
+ 
+
+提示：
+
+树中的节点数为 n 。
+1 <= k <= n <= 104
+0 <= Node.val <= 104
+ 
+
+进阶：如果二叉搜索树经常被修改（插入/删除操作）并且你需要频繁地查找第 k 小的值，你将如何优化算法？
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/kth-smallest-element-in-a-bst
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+from leetcode_python.utils import *
+
+
+class Solution:
+    def __init__(self):
+        pass
+
+    def gen(self,root):
+        if root:
+            yield from self.gen(root.left)
+            yield root.val
+            yield from self.gen(root.right)
+
+
+    def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+        # def gen( root):
+        #     if root:
+        #         yield from gen(root.left)
+        #         yield root
+        #         yield from gen(root.right)
+        it = self.gen(root)
+        for _ in range(k):
+            res = next(it)
+        return res
+
+
+def test(data_test):
+    s = Solution()
+    data = data_test  # normal
+    # data = [list2node(data_test[0])]  # list转node
+    return s.kthSmallest(*data)
+
+
+def test_obj(data_test):
+    result = [None]
+    obj = Solution(*data_test[1][0])
+    for fun, data in zip(data_test[0][1::], data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+
+if __name__ == '__main__':
+    datas = [
+        [],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')
