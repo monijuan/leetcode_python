@@ -9,7 +9,7 @@
 import random
 from typing import List
 
-def randListInt(smallest:int,biggest:int,length:int=10)->List[int]:
+def randListInt(smallest:int=-1000,biggest:int=1000,length:int=50)->List[int]:
     """
     生成随机数列
     Args:
