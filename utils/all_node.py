@@ -39,11 +39,11 @@ class ListNode:
         return tail,head
 
 class TreeNode:
-    def __init__(self, x):
-        self.val = x
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
         self.left = None
         self.right = None
 
     def __str__(self):
-        res = f'[{self.val},l:{self.left},r:{self.right}]'
+        res = f'[{self.val}({self.left},{self.right})]'
         return res
