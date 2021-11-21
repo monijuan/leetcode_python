@@ -54,9 +54,48 @@ import collections
 [5,2,3,null,null,2,4,3,1]
 """
 
-
 class Codec:
+    def serialize(self, root):
+        if not root:return '[]'
+        res = []
+        last = [root]
+        while last:
+            now = []
+            # print(last)
+            for node in last:
+                if node:
+                    res.append(node.val)
+                    now.append(node.left)
+                    now.append(node.right)
+                else:
+                    res.append(None)
+            last = now
+        while len(res)>1 and res[-1]==None:res.pop(-1)
+        return str(res)
 
+    def deserialize(self, data):
+        if isinstance(data,str): data = eval(data)
+        length = len(data)
+        if 0==length:return None
+        head = TreeNode(data[0])
+        queue = [head]
+        index = 1
+        while index<length:
+            node = queue.pop(0)
+            data_index = data[index]
+            if data_index is not None:
+                node.left = TreeNode(int(data_index))
+                queue.append(node.left)
+            index+=1
+            if index>=length:break
+            data_index = data[index]
+            if data_index is not None:
+                node.right = TreeNode(int(data_index))
+                queue.append(node.right)
+            index+=1
+        return head
+
+class Codec_20210924:
     def serialize(self, root):
         """Encodes a tree to a single string.
 
