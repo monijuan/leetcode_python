@@ -34,14 +34,17 @@ def list2node(datas:List)->ListNode:
 
 # region ############ others 2 list
 def BST2list(root):
-    if root.left and root.right:
-        return BST2list(root.left) + [root.val] + BST2list(root.right)
-    elif root.left:
-        return BST2list(root.left) + [root.val]
-    elif root.right:
-        return [root.val] + BST2list(root.right)
-    else:
-        return [root.val]
+    """
+        if root.left and root.right:
+            return BST2list(root.left) + [root.val] + BST2list(root.right)
+        elif root.left:
+            return BST2list(root.left) + [root.val]
+        elif root.right:
+            return [root.val] + BST2list(root.right)
+        else:
+            return [root.val]
+    """
+    return BST2list(root.left) + [root.val] + BST2list(root.right) if root else []
 
 # endregion
 

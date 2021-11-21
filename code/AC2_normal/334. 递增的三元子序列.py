@@ -1,0 +1,110 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2021/11/20 20:31
+# @Author  : 模拟卷
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 334. 递增的三元子序列.py
+# @Software: PyCharm 
+# ===================================
+"""给你一个整数数组 nums ，判断这个数组中是否存在长度为 3 的递增子序列。
+
+如果存在这样的三元组下标 (i, j, k) 且满足 i < j < k ，使得 nums[i] < nums[j] < nums[k] ，返回 true ；否则，返回 false 。
+
+ 
+
+示例 1：
+
+输入：nums = [1,2,3,4,5]
+输出：true
+解释：任何 i < j < k 的三元组都满足题意
+示例 2：
+
+输入：nums = [5,4,3,2,1]
+输出：false
+解释：不存在满足题意的三元组
+示例 3：
+
+输入：nums = [2,1,5,0,4,6]
+输出：true
+解释：三元组 (3, 4, 5) 满足题意，因为 nums[3] == 0 < nums[4] == 4 < nums[5] == 6
+ 
+
+提示：
+
+1 <= nums.length <= 105
+-231 <= nums[i] <= 231 - 1
+ 
+
+进阶：你能实现时间复杂度为 O(n) ，空间复杂度为 O(1) 的解决方案吗？
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/increasing-triplet-subsequence
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+from leetcode_python.utils import *
+
+
+class Solution:
+    def __init__(self):
+        pass
+
+    def increasingTriplet(self, nums: List[int]) -> bool:
+        if len(nums)<3:return False
+        elif nums[0]<nums[1]<nums[2]:return True
+        a,b = nums[0],None
+        for num in nums[1:]:
+            if b==None:
+                if num>a:b=num
+                else:a=num
+            else:
+                if num>b:return True
+                elif a<num<b:b=num
+                elif num<a:a=num
+        return False
+
+    def increasingTriplet_慢(self, nums: List[int]) -> bool:
+        if len(nums)<3:return False
+        elif nums[0]<nums[1]<nums[2]:return True
+        save = [nums[0],None]
+        for num in nums[1:]:
+            if save[1]==None:
+                if num>save[0]:save[1]=num
+                else:save[0]=num
+            else:
+                if num>save[1]:return True
+                elif save[0]<num<save[1]:save[1]=num
+                elif num<save[0]:save[0]=num
+        return False
+
+
+def test(data_test):
+    s = Solution()
+    data = data_test  # normal
+    # data = [list2node(data_test[0])]  # list转node
+    return s.increasingTriplet(*data)
+
+
+def test_obj(data_test):
+    result = [None]
+    obj = Solution(*data_test[1][0])
+    for fun, data in zip(data_test[0][1::], data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+
+if __name__ == '__main__':
+    datas = [
+        [[1,2,3,4,5]],
+        [[5,4,3,2,1]],
+        [[2,1,5,0,4,6]],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')

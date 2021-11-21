@@ -22,6 +22,12 @@ class Node_430:
         self.next = next
         self.child = child
 
+class Node_559:
+    def __init__(self, val=None, children=None):
+        self.val = val
+        self.children = children
+
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
