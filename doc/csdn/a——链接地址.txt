@@ -190,6 +190,18 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 
 [模拟卷Leetcode【普通】015. 三数之和_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121406006)
 
+[模拟卷Leetcode【普通】019. 删除链表的倒数第 N 个结点_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121465752)
+
+[模拟卷Leetcode【普通】022. 括号生成_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121465766)
+
+[模拟卷Leetcode【普通】024. 两两交换链表中的节点_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121465777)
+
+[模拟卷Leetcode【普通】029. 两数相除_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121465793)
+
+
+
+
+
 
 
 
@@ -273,23 +285,40 @@ class Node_430:
         self.next = next
         self.child = child
 
+class Node_559:
+    def __init__(self, val=None, children=None):
+        self.val = val
+        self.children = children
+
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 
+    def __str__(self):
+        return f"{str(self.val)}->{self.next}"
+
+    def reverse(self,head,tail):
+        """反转指定头尾部分的链表"""
+        now_next = tail.next
+        now = head
+        while now_next!=tail:
+            now.next, now, now_next = now_next, now.next, now
+        return tail,head
+
 class TreeNode:
-    def __init__(self, x):
-        self.val = x
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
         self.left = None
         self.right = None
 
     def __str__(self):
-        res = f'[{self.val},l:{self.left},r:{self.right}]'
+        res = f'[{self.val}({self.left},{self.right})]'
         return res
 ```
 
 
 
 > 占坑，等待更新
-> 最近更新日期：2021.11.18
+> 最近更新日期：2021.11.22
