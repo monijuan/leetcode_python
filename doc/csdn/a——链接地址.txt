@@ -206,9 +206,13 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 
 [模拟卷Leetcode【普通】046. 全排列_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121488782)
 
+[模拟卷Leetcode【普通】054. 螺旋矩阵_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121511017)
 
+[模拟卷Leetcode【普通】055. 跳跃游戏_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121511061)
 
+[模拟卷Leetcode【普通】056. 合并区间_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121511091)
 
+[模拟卷Leetcode【普通】059. 螺旋矩阵 II_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121511107)
 
 
 
@@ -293,6 +297,7 @@ class Node_430:
 
 class Node_559:
     def __init__(self, val=None, children=None):
+        """559. N 叉树的最大深度"""
         self.val = val
         self.children = children
 
@@ -327,4 +332,4 @@ class TreeNode:
 
 
 > 占坑，等待更新
-> 最近更新日期：2021.11.23
+> 最近更新日期：2021.11.24

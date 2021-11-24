@@ -24,6 +24,7 @@ class Node_430:
 
 class Node_559:
     def __init__(self, val=None, children=None):
+        """559. N 叉树的最大深度"""
         self.val = val
         self.children = children
 
