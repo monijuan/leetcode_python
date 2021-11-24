@@ -1,0 +1,92 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2021/11/24 8:52
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 423. 从英文中重建数字.py
+# @Software: PyCharm
+# ===================================
+"""给你一个字符串 s ，其中包含字母顺序打乱的用英文单词表示的若干数字（0-9）。按 升序 返回原始的数字。
+
+ 
+
+示例 1：
+
+输入：s = "owoztneoer"
+输出："012"
+示例 2：
+
+输入：s = "fviefuro"
+输出："45"
+ 
+
+提示：
+
+1 <= s.length <= 105
+s[i] 为 ["e","g","f","i","h","o","n","s","r","u","t","w","v","x","z"] 这些字符之一
+s 保证是一个符合题目要求的字符串
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/reconstruct-original-digits-from-english
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+import collections
+
+from leetcode_python.utils import *
+
+
+class Solution:
+    def __init__(self):
+        """
+        # words = ['zero','one','two','three','four','five','six','seven','eight','nine']
+        # z - 0, w - 2, u - 4, x - 6, g - 8
+        # h - 3, f - 5, s - 7,
+        # o - 1, i - 9
+        """
+        pass
+
+    def originalDigits(self, s: str) -> str:
+        cnt = collections.Counter(s)
+        res = ''
+        for num,char in zip('02468','zwuxg'):
+            res += num*cnt[char]
+        cnt['h']-=cnt['g']
+        cnt['f']-=cnt['u']
+        cnt['s']-=cnt['x']
+        for num,char in zip('357','hfs'):
+            res += num*cnt[char]
+        cnt['o'] = cnt['o'] - cnt['z'] - cnt['w'] - cnt['u']
+        cnt['i'] = cnt['i'] - cnt['f'] - cnt['x'] - cnt['g']
+        for num,char in zip('19','oi'):
+            res += num*cnt[char]
+        return ''.join(sorted(res))
+
+
+def test(data_test):
+    s = Solution()
+    data = data_test  # normal
+    # data = [list2node(data_test[0])]  # list转node
+    return s.originalDigits(*data)
+
+
+def test_obj(data_test):
+    result = [None]
+    obj = Solution(*data_test[1][0])
+    for fun, data in zip(data_test[0][1::], data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+
+if __name__ == '__main__':
+    datas = [
+        ["owoztneoer"],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')
