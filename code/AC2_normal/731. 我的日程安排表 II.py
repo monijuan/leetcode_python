@@ -1,0 +1,112 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2021/11/27 10:21
+# @Author  : 模拟卷
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 731. 我的日程安排表 II.py
+# @Software: PyCharm 
+# ===================================
+"""实现一个 MyCalendar 类来存放你的日程安排。如果要添加的时间内不会导致三重预订时，则可以存储这个新的日程安排。
+
+MyCalendar 有一个 book(int start, int end)方法。它意味着在 start 到 end 时间内增加一个日程安排，注意，这里的时间是半开区间，即 [start, end), 实数 x 的范围为，  start <= x < end。
+
+当三个日程安排有一些时间上的交叉时（例如三个日程安排都在同一时间内），就会产生三重预订。
+
+每次调用 MyCalendar.book方法时，如果可以将日程安排成功添加到日历中而不会导致三重预订，返回 true。否则，返回 false 并且不要将该日程安排添加到日历中。
+
+请按照以下步骤调用MyCalendar 类: MyCalendar cal = new MyCalendar(); MyCalendar.book(start, end)
+
+ 
+
+示例：
+
+MyCalendar();
+MyCalendar.book(10, 20); // returns true
+MyCalendar.book(50, 60); // returns true
+MyCalendar.book(10, 40); // returns true
+MyCalendar.book(5, 15); // returns false
+MyCalendar.book(5, 10); // returns true
+MyCalendar.book(25, 55); // returns true
+解释：
+前两个日程安排可以添加至日历中。 第三个日程安排会导致双重预订，但可以添加至日历中。
+第四个日程安排活动（5,15）不能添加至日历中，因为它会导致三重预订。
+第五个日程安排（5,10）可以添加至日历中，因为它未使用已经双重预订的时间10。
+第六个日程安排（25,55）可以添加至日历中，因为时间 [25,40] 将和第三个日程安排双重预订；
+时间 [40,50] 将单独预订，时间 [50,55）将和第二个日程安排双重预订。
+ 
+
+提示：
+
+每个测试用例，调用 MyCalendar.book 函数最多不超过 1000次。
+调用函数 MyCalendar.book(start, end)时， start 和 end 的取值范围为 [0, 10^9]。
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/my-calendar-ii
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+from leetcode_python.utils import *
+
+class MyCalendar:
+    def __init__(self):
+        self.books = []
+        self.temp = []
+
+    def check(self, start: int, end: int) -> bool:
+        for s,e in self.books:
+            if s<end and start<e: return False
+        self.temp.append([start,end])
+        return True
+
+    def confirm(self,key):
+        if key:
+            self.books.extend(self.temp.copy())
+        self.temp = []
+
+class MyCalendarTwo:
+    def __init__(self):
+        self.books = []
+        self.calendar = MyCalendar()
+
+    def book(self, start: int, end: int) -> bool:
+        print('-'*50)
+        print(start,end)
+        self.calendar.confirm(False)
+        for s,e in self.books:
+            if s<end and start<e:
+                if not self.calendar.check(max(s,start),min(e,end)):
+                    return False
+        self.calendar.confirm(True)
+        self.books.append([start,end])
+        return True
+
+
+def test(data_test):
+    s = MyCalendarTwo()
+    data = data_test  # normal
+    # data = [list2node(data_test[0])]  # list转node
+    return s.getResult(*data)
+
+
+def test_obj(data_test):
+    result = [None]
+    obj = MyCalendarTwo(*data_test[1][0])
+    for fun, data in zip(data_test[0][1::], data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+
+if __name__ == '__main__':
+    datas = [
+        [["MyCalendarTwo","book","book","book","book","book","book","book","book","book","book","book","book","book","book","book","book","book","book","book","book"],\
+[[],[97,100],[33,51],[89,100],[83,100],[75,92],[76,95],[19,30],[53,63],[8,23],[18,37],[87,100],[83,100],[54,67],[35,48],[58,75],[70,89],[13,32],[44,63],[51,62],[2,15]]],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test_obj(data_test))
+        print(f'use time:{time.time() - t0}s')
