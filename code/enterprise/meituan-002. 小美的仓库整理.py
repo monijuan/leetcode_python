@@ -43,6 +43,8 @@
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
 
+### 测试case
+
 """
 5
 3 2 4 4 5
@@ -61,18 +63,43 @@
 2 1 4 6 3 7 5
 """
 
-def get_sum(id):
-    print(id,weights[:id-1],sum(weights[:id-1]),weights[id:],sum(weights[id:]))
-    return max(sum(weights[:id-1]), sum(weights[id:]))
-
 num = int(input())
 if num>1:
     weights = list(map(int,input().split()))
-    splitids = list(map(int,input().split()))
-    for id in splitids:
-        res = get_sum(id)
-        weights[id-1] = 0
-        print(res)
+    splitids = list(map(lambda x:int(x)-1,input().split()))
+    id_range_dict = {}
+    max_now = 0
+    res = [0 for _ in range(num)]
+    for id in range(num-1,-1,-1):
+        # 当前位置的结果是插入之前的最大值
+        res[id] = max_now
+        index_now = splitids[id]
+        weight_now = weights[index_now]
+        left_now,right_now = index_now-1,index_now+1
+
+        # 更新插入这个点后最大堆
+        if left_now in id_range_dict and right_now in id_range_dict:        # [......,new,......]
+            ll,lr,lres = id_range_dict[left_now]
+            rl,rr,rres = id_range_dict[right_now]#找出左右两边的区间
+            id_range_dict.pop(lr)
+            id_range_dict.pop(rl)   # 删除中间两个端点
+            id_range_dict[ll] = id_range_dict[rr] = (ll,rr,lres+rres+weight_now) # 更新两端
+            max_now = max(max_now,id_range_dict[ll][2])   # 更新最大值
+        elif left_now in id_range_dict:                                     # [......,new]
+            ll,lr,lres = id_range_dict[left_now]
+            id_range_dict.pop(lr)
+            id_range_dict[ll] = id_range_dict[index_now] = (ll,index_now,lres+weight_now) # 更新两端
+            max_now = max(max_now, id_range_dict[index_now][2])   # 更新最大值
+        elif right_now in id_range_dict:                                    # [new,......]
+            rl,rr,rres = id_range_dict[right_now]
+            id_range_dict.pop(rl)
+            id_range_dict[rr] = id_range_dict[index_now] = (index_now,rr,rres+weight_now) # 更新两端
+            max_now = max(max_now, id_range_dict[index_now][2])   # 更新最大值
+        else:
+            id_range_dict[index_now] = (index_now,index_now,weight_now)     # [new]
+            max_now = max(max_now,weight_now)   # 更新最大值
+    print('\n'.join(str(x) for x in res))
+
 else:
     w = int(input())
     i = int(input())
