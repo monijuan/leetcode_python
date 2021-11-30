@@ -49,9 +49,62 @@ class Solution:
         return list(self.res)
 """
 ###
-
-
 def test():
+    import collections
+
+    MOD = 10 ** 9 + 7
+
+    # ------------------------输入，建图-------------------------#
+    # ----结点个数，级别范围
+    n, k = map(int, input().split())
+
+    # ----建图。邻接表（链接矩阵也可以）
+    adjvex = collections.defaultdict(list)
+    for _ in range(n - 1):
+        x, y = map(int, input().split())
+        x -= 1  # 结点ID号统一成从0开始
+        y -= 1
+        adjvex[x].append(y)
+        adjvex[y].append(x)
+
+    # ----结点的级别
+    rank = [int(x) for x in input().split()]
+
+    # -----------------------尝试每个点--------------------------#
+    min_rank = -1
+    max_rank = -1
+    root = -1  # 回溯时的基准root结点，方便比较，防止重复
+
+    def backtrace(x: int) -> int:
+        if not (min_rank <= rank[x] <= max_rank):
+            return 0
+        if x < root:
+            return 0
+        cnt = 1
+        visited[x] = True
+        for y in adjvex[x]:
+            if visited[y] == False:
+                cnt_old = cnt
+                cnt = cnt * (backtrace(y) + 1) % MOD
+        visited[x] = False
+
+        return cnt
+
+    visited = [False for _ in range(n)]
+    res = 0
+    for x in range(n):
+        visited[x] = True
+        min_rank = rank[x]  # 最低的级别
+        max_rank = rank[x] + k  # 最高的级别
+        root = x  # 标记，防止重复
+        backtrace_x = backtrace(x)
+        print(x+1,backtrace_x)
+        res += backtrace_x
+        res %= MOD
+        visited[x] = False
+    print(res)
+
+def test6():
     li = [0,1]*2
     li[0]=2
     print(li)
