@@ -42,5 +42,7 @@ if __name__ == '__main__':
     # randListListIntShow(-10,10,5,50)
     # data = randListListInt(smallest=-1000,biggest=1000,length=5)
     # data = randListListInt(smallest=0,biggest=1000,length=100)
-    data = randListListInt(smallest=0,biggest=50,length=100)
+    data = randListListInt(smallest=1,biggest=10,length=20)
+    for x in data[0]:print(x,end=' ')
+    print()
     print(data[0])
