@@ -130,6 +130,10 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 [模拟卷Leetcode【普通】077. 组合_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121602670)
 [模拟卷Leetcode【普通】079. 单词搜索_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121602773)
 [模拟卷Leetcode【普通】082. 删除排序链表中的重复元素 II_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121602790)
+[模拟卷Leetcode【普通】091. 解码方法_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121695297)
+[模拟卷Leetcode【普通】096. 不同的二叉搜索树_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121695314)
+[模拟卷Leetcode【普通】098. 验证二叉搜索树_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121695334)
+
 
 
 
