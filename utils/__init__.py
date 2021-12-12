@@ -11,6 +11,7 @@ from .all_node import *
 from .load_node import *
 import numpy as np
 import time
+import math
 from typing import List,Callable,Optional
 from functools import lru_cache
 from collections import Counter,defaultdict
@@ -20,6 +21,7 @@ from itertools import product
 
 
 ########################### test
+# product 多重循环
 def __test_product():
     """shows:
             0 0 0
@@ -54,3 +56,12 @@ def __test_product():
     n, d = len(li), defaultdict(set)
     for i, j, k in product(range(n), repeat = 3):
         print(i,j,k)
+
+# 并查集
+def __unionset(bombs: List[List[int]]) -> int:
+    n, d = len(bombs), defaultdict(set)
+    for i, j in product(range(n), repeat = 2):
+        if math.dist(bombs[i][:2], bombs[j][:2]) <= bombs[i][2]: d[i].add(j)
+    for k, i in product(range(n), repeat = 2):
+        if k in d[i]: d[i] |= d[k]
+    return max(len(d[i]) for i in range(n))
