@@ -114,3 +114,4 @@ class UnionFindSet(object):
                 self.size_dict[b_head] = a_set_size + b_set_size
 
 def __test_UnionFindSet():
+    pass
