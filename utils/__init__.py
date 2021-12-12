@@ -21,7 +21,17 @@ from itertools import product
 
 
 ########################### test
-# product 多重循环
+# region 二分查找
+
+import bisect
+def __test_bisect():
+    li = list(range(0,20,3))
+    print(f'li:{li}')
+    for x in [1,2,3,4,20]:
+        print(f"{x}:[left]{bisect.bisect_left(li,x)}, [right]{bisect.bisect_right(li,x)}, ")
+# endregion
+
+# region product 多重循环
 def __test_product():
     """shows:
             0 0 0
@@ -56,8 +66,9 @@ def __test_product():
     n, d = len(li), defaultdict(set)
     for i, j, k in product(range(n), repeat = 3):
         print(i,j,k)
+# endregion
 
-# 并查集
+# region 并查集
 def __unionset(bombs: List[List[int]]) -> int:
     n, d = len(bombs), defaultdict(set)
     for i, j in product(range(n), repeat = 2):
@@ -115,3 +126,5 @@ class UnionFindSet(object):
 
 def __test_UnionFindSet():
     pass
+
+# endregion
