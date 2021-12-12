@@ -62,6 +62,17 @@ bombs[i].length == 3
 1 <= xi, yi, ri <= 105
 """
 from leetcode_python.utils import *
+from itertools import product
+import math
+
+class Solution_大佬:
+    def maximumDetonation(self, bombs: List[List[int]]) -> int:
+        n, d = len(bombs), defaultdict(set)
+        for i, j in product(range(n), repeat = 2):
+            if math.dist(bombs[i][:2], bombs[j][:2]) <= bombs[i][2]: d[i].add(j)
+        for k, i in product(range(n), repeat = 2):
+            if k in d[i]: d[i] |= d[k]
+        return max(len(d[i]) for i in range(n))
 
 class Solution:
     def __init__(self):

@@ -7,6 +7,12 @@
 # ===================================
 from leetcode_python.utils import *
 
+def test():
+    li = list(range(3))
+    n, d = len(li), defaultdict(set)
+    for i, j, k in product(range(n), repeat = 3):
+        print(i,j,k)
+
 # 212
 """
 from collections import defaultdict
@@ -49,7 +55,7 @@ class Solution:
         return list(self.res)
 """
 ###
-def test():
+def test7():
     import collections
 
     MOD = 10 ** 9 + 7
