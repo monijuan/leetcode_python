@@ -6,6 +6,7 @@
 # @Software: PyCharm
 # ===================================
 from functools import lru_cache
+from typing import List
 
 class Solution:
     def __init__(self,matrix):
@@ -17,4 +18,22 @@ class Solution:
         for row_id, col_id in ((rowid - 1, colid), (rowid, colid - 1), (rowid + 1, colid), (rowid, colid + 1)):
             if 0 <= row_id < self.height and 0 <= col_id < self.width:
                 res.append([row_id, col_id])
+        return res
+
+
+    def dfs(self,r,c):
+        self.grid[r][c]=0
+        for nextr,nextc in self.next(r,c):
+            if self.grid[nextr][nextc]=='1':
+                self.dfs(nextr,nextc)
+
+    def cntConnections(self, grid: List[List[str]]) -> int:
+        self.grid = grid
+        self.height,self.width = len(grid),len(grid[0])
+        res = 0
+        for r in range(self.height):
+            for c in range(self.width):
+                if self.grid[r][c]=='1':
+                    res+=1
+                    self.dfs(r,c)
         return res
