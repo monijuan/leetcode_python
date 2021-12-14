@@ -144,6 +144,11 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 [模拟卷Leetcode【普通】151. 翻转字符串里的单词_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121849065)
 [模拟卷Leetcode【普通】152. 乘积最大子数组_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121849078)
 [模拟卷Leetcode【普通】153. 寻找旋转排序数组中的最小值_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121849087)
+[模拟卷Leetcode【普通】162. 寻找峰值_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121922227)
+[模拟卷Leetcode【普通】165. 比较版本号_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121922335)
+[模拟卷Leetcode【普通】166. 分数到小数_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121922359)
+[模拟卷Leetcode【普通】187. 重复的DNA序列_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121922384)
+[模拟卷Leetcode【普通】189. 旋转数组_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121922403)
 
 
 
