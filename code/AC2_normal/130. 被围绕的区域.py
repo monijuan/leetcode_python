@@ -1,0 +1,103 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2021/12/15 9:26
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 130. 被围绕的区域.py
+# @Software: PyCharm
+# ===================================
+"""给你一个 m x n 的矩阵 board ，由若干字符 'X' 和 'O' ，找到所有被 'X' 围绕的区域，并将这些区域里所有的 'O' 用 'X' 填充。
+ 
+
+示例 1：
+
+
+输入：board = [["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X","X"]]
+输出：[["X","X","X","X"],["X","X","X","X"],["X","X","X","X"],["X","O","X","X"]]
+解释：被围绕的区间不会存在于边界上，换句话说，任何边界上的 'O' 都不会被填充为 'X'。 任何不在边界上，或不与边界上的 'O' 相连的 'O' 最终都会被填充为 'X'。如果两个元素在水平或垂直方向相邻，则称它们是“相连”的。
+示例 2：
+
+输入：board = [["X"]]
+输出：[["X"]]
+ 
+
+提示：
+
+m == board.length
+n == board[i].length
+1 <= m, n <= 200
+board[i][j] 为 'X' 或 'O'
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/surrounded-regions
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+from leetcode_python.utils import *
+
+
+class Solution:
+    def __init__(self):
+        pass
+
+    def solve(self, board: List[List[str]]) -> None:
+        self.board = board
+        self.height,self.width = len(board), len(board[0])
+        self.mat_is_O = [[False]*self.width for _ in range(self.height)]
+        for rowid in [0,self.height-1]:
+            for colid in range(self.width):
+                if board[rowid][colid]=='O':
+                    self.dfs(rowid,colid)
+        for colid in [0,self.width-1]:
+            for rowid in range(self.height):
+                if board[rowid][colid]=='O':
+                    self.dfs(rowid,colid)
+
+        for rowid in range(self.height):
+            for colid in range(self.width):
+                if board[rowid][colid]=='O' and not self.mat_is_O[rowid][colid]:
+                    board[rowid][colid] = 'X'
+
+    @lru_cache(None)
+    def next(self,rowid,colid):
+        res = []
+        for row_id, col_id in ((rowid - 1, colid), (rowid, colid - 1), (rowid + 1, colid), (rowid, colid + 1)):
+            if 0 <= row_id < self.height and 0 <= col_id < self.width:
+                res.append([row_id, col_id])
+        return res
+
+    @lru_cache(None)
+    def dfs(self,r,c):
+        self.mat_is_O[r][c]=True
+        for nextr,nextc in self.next(r,c):
+            if self.board[nextr][nextc]=='O' and self.mat_is_O[nextr][nextc]==False:
+                self.dfs(nextr,nextc)
+
+
+def test(data_test):
+    s = Solution()
+    data = data_test  # normal
+    # data = [list2node(data_test[0])]  # list转node
+    return s.solve(*data)
+
+
+def test_obj(data_test):
+    result = [None]
+    obj = Solution(*data_test[1][0])
+    for fun, data in zip(data_test[0][1::], data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+
+if __name__ == '__main__':
+    datas = [
+        [[["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X","X"]]],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')

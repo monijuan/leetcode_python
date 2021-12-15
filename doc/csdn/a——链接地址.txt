@@ -149,6 +149,10 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 [模拟卷Leetcode【普通】166. 分数到小数_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121922359)
 [模拟卷Leetcode【普通】187. 重复的DNA序列_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121922384)
 [模拟卷Leetcode【普通】189. 旋转数组_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121922403)
+[模拟卷Leetcode【普通】198. 打家劫舍_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121952369)
+[模拟卷Leetcode【普通】208. 实现 Trie (前缀树)_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121952384)
+[模拟卷Leetcode【普通】211. 添加与搜索单词 - 数据结构设计_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121952401)
+[模拟卷Leetcode【普通】213. 打家劫舍 II_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121952419)
 
 
 
