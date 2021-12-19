@@ -21,8 +21,30 @@ from itertools import product
 
 
 ########################### test
-# region 二分查找
+# region dfs
+class Solution:
+    """ 047. 全排列 II"""
+    def dfs(self,now):
+        if self.length>=len(now):
+            if now not in self.res:
+                self.res.append(now)
+        else:
+            for nextid in range(self.length):
+                if not self.vis[nextid]:
+                    self.vis[nextid]=True
+                    self.dfs(now+[self.nums[nextid]])
+                    self.vis[nextid]=False
 
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+        self.nums = nums
+        self.length = len(nums)
+        self.vis = [False]*self.length
+        self.res = []
+        self.dfs([])
+        return self.res
+# endregion
+
+# region 二分查找
 import bisect
 def __test_bisect():
     li = list(range(0,20,3))
@@ -127,27 +149,4 @@ class UnionFindSet(object):
 def __test_UnionFindSet():
     pass
 
-# endregion
-
-# region dfs
-class Solution:
-    """ 047. 全排列 II"""
-    def dfs(self,now):
-        if self.length>=len(now):
-            if now not in self.res:
-                self.res.append(now)
-        else:
-            for nextid in range(self.length):
-                if not self.vis[nextid]:
-                    self.vis[nextid]=True
-                    self.dfs(now+[self.nums[nextid]])
-                    self.vis[nextid]=False
-
-    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
-        self.nums = nums
-        self.length = len(nums)
-        self.vis = [False]*self.length
-        self.res = []
-        self.dfs([])
-        return self.res
 # endregion
