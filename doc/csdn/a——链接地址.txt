@@ -157,8 +157,17 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 [模拟卷Leetcode【普通】223. 矩形面积_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121997048)
 [模拟卷Leetcode【普通】229. 求众数 II_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121997062)
 [模拟卷Leetcode【普通】236. 二叉树的最近公共祖先_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121997081)
-
-
+[模拟卷Leetcode【普通】240. 搜索二维矩阵 II_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122039476)
+[模拟卷Leetcode【普通】260. 只出现一次的数字 III_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122039488)
+[模拟卷Leetcode【普通】264. 丑数 II_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122039503)
+[模拟卷Leetcode【普通】279. 完全平方数_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122039550)
+[模拟卷Leetcode【普通】299. 猜数字游戏_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122039578)
+[模拟卷Leetcode【普通】300. 最长递增子序列_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122054706)
+[模拟卷Leetcode【普通】304. 二维区域和检索 - 矩阵不可变_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122054713)
+[模拟卷Leetcode【普通】309. 最佳买卖股票时机含冷冻期_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122054734)
+[模拟卷Leetcode【普通】313. 超级丑数_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122054742)
+[模拟卷Leetcode【普通】318. 最大单词长度乘积_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122054761)
+[模拟卷Leetcode【普通】319. 灯泡开关_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122054777)
 
 
 
