@@ -168,6 +168,14 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 [模拟卷Leetcode【普通】313. 超级丑数_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122054742)
 [模拟卷Leetcode【普通】318. 最大单词长度乘积_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122054761)
 [模拟卷Leetcode【普通】319. 灯泡开关_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122054777)
+[模拟卷Leetcode【普通】322. 零钱兑换_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122080726)
+[模拟卷Leetcode【普通】343. 整数拆分_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122080759)
+[模拟卷Leetcode【普通】371. 两整数之和_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122080775)
+[模拟卷Leetcode【普通】375. 猜数字大小 II_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122080808)
+[模拟卷Leetcode【普通】376. 摆动序列_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122080843)
+[模拟卷Leetcode【普通】377. 组合总和 Ⅳ_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122080882)
+
+
 
 
 
