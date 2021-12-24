@@ -61,6 +61,7 @@ class Solution:
         return cnt[-1][-1]
 
     def findNumberOfLIS2(self, nums: List[int]) -> int:
+        """300. 最长递增子序列"""
         dp,cnt = [],[]
         for num in nums:
             if not dp  or num>dp[-1]:

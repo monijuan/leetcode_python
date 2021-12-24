@@ -21,6 +21,31 @@ from itertools import product
 
 
 ########################### test
+# region 子数组
+def lengthOfLIS_最长递增子数组(nums: List[int]) -> int:
+    """最长非递减子数组"""
+    dp = []
+    for num in nums:
+        j = bisect.bisect_left(dp, num + 1)
+        if j == len(dp):
+            dp.append(num)
+        else:
+            dp[j] = num
+    return len(dp)
+
+
+def lengthOfLIS_最长严格递增子数组(nums: List[int]) -> int:
+    """最长递增子数组"""
+    dp = []
+    for num in nums:
+        j = bisect.bisect_left(dp, num)
+        if j == len(dp):
+            dp.append(num)
+        else:
+            dp[j] = num
+    return len(dp)
+# endregion
+
 # region dfs
 class Solution:
     """ 047. 全排列 II"""

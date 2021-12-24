@@ -51,6 +51,16 @@ class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
         dp = []
         for num in nums:
+            j = bisect.bisect_left(dp,num)
+            if j==len(dp):
+                dp.append(num)
+            else:
+                dp[j]=num
+        return len(dp)
+
+    def lengthOfLIS_二分(self, nums: List[int]) -> int:
+        dp = []
+        for num in nums:
             if not dp  or num>dp[-1]:
                 dp.append(num)
             else:
