@@ -20,6 +20,8 @@ from sortedcontainers import SortedList, SortedKeyList, SortedListWithKey, Sorte
 from itertools import product
 
 
+@lru_cache(None)
+
 ########################### test
 # region 子数组
 def lengthOfLIS_最长递增子数组(nums: List[int]) -> int:
