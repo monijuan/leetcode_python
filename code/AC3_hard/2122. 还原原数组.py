@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
-# @Time    : 2021/12/26 10:27
-# @Author  : 模拟卷
+# @Time    : 2021/12/30 11:32
 # @Github  : https://github.com/monijuan
 # @CSDN    : https://blog.csdn.net/qq_34451909
-# @File    : 5966AC. 还原原数组.py
-# @Software: PyCharm 
+# @File    : 2122. 还原原数组.py
+# @Software: PyCharm
 # ===================================
 """Alice 有一个下标从 0 开始的数组 arr ，由 n 个正整数组成。她会选择一个任意的 正整数 k 并按下述方式创建两个下标从 0 开始的新整数数组 lower 和 higher ：
 
@@ -16,7 +15,7 @@
 
 注意：生成的测试用例保证存在 至少一个 有效数组 arr 。
 
-
+ 
 
 示例 1：
 
@@ -41,7 +40,7 @@
 输出：[220]
 解释：
 唯一可行的组合是 arr = [220] 且 k = 215 。在这种情况下，lower = [5] 且 higher = [435] 。
-
+ 
 
 提示：
 
@@ -49,8 +48,13 @@
 1 <= n <= 1000
 1 <= nums[i] <= 109
 生成的测试用例保证存在 至少一个 有效数组 arr
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/recover-the-original-array
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
 from leetcode_python.utils import *
+
 
 
 class Solution:
@@ -97,11 +101,12 @@ class Solution:
             if res:return res
 
 
+
 def test(data_test):
     s = Solution()
     data = data_test  # normal
     # data = [list2node(data_test[0])]  # list转node
-    return s.recoverArray(*data)
+    return s.getResult(*data)
 
 
 def test_obj(data_test):
@@ -118,10 +123,7 @@ def test_obj(data_test):
 
 if __name__ == '__main__':
     datas = [
-        # [[2,10,6,4,8,12]],
-        # [[1,1,3,3]],
-        # [[11,6,3,4,8,7,8,7,9,8,9,10,10,2,1,9]], # [2,3,7,8,8,9,9,10]
-        [[3,7,7,1,5,3]],
+        [],
     ]
     for data_test in datas:
         t0 = time.time()
