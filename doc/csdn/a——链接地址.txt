@@ -174,6 +174,16 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 [模拟卷Leetcode【普通】375. 猜数字大小 II_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122080808)
 [模拟卷Leetcode【普通】376. 摆动序列_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122080843)
 [模拟卷Leetcode【普通】377. 组合总和 Ⅳ_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122080882)
+[模拟卷Leetcode【普通】397. 整数替换_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122165453)
+[模拟卷Leetcode【普通】400. 第 N 位数字_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122165467)
+[模拟卷Leetcode【普通】413. 等差数列划分_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122165477)
+[模拟卷Leetcode【普通】430. 扁平化多级双向链表_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122165496)
+[模拟卷Leetcode【普通】437. 路径总和 III_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122165528)
+[模拟卷Leetcode【普通】443. 压缩字符串_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122257639)
+[模拟卷Leetcode【普通】447. 回旋镖的数量_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122257658)
+[模拟卷Leetcode【普通】470. 用 Rand7() 实现 Rand10()_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122257681)
+[模拟卷Leetcode【普通】516. 最长回文子序列_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122257703)
+[模拟卷Leetcode【普通】518. 零钱兑换 II_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122257722)
 
 
 
@@ -293,4 +303,4 @@ class TreeNode:
 
 
 
-> 最近更新日期：2021.12.17
+> 最近更新日期：2021.12.31
