@@ -75,7 +75,7 @@ class Solution:
         li = []
         for next in self.faved[now]:
             if notvis[next]:
-                # notvis[next]=False
+                notvis[next]=False
                 r,rl = self.findfaved(notvis,next)
                 if r+1>res:
                     li = [next] + rl
@@ -99,20 +99,11 @@ class Solution:
         elif self.next[now] == last:
             notvis[now] = False
             #还有可能 now <- a <- b的
-            # print('====last',now,self.findfaved(notvis,now),res)
             r,li = self.findfaved(notvis,now)
-            print('find faved',r,li)
             res+=r
             for l in li:notvis[l]=False
-            # r,li = self.findfaved(notvis,startid)
-            # print('find faved',r,li)
-            # res+=r
-            # for l in li:notvis[l]=False
             #还可能有 a->b->a的
-            for a,b in self.pairs:
-                if notvis[a] :
-                    print('add pair',a,b)
-                    res+=2
+            res+=2*len([1 for a,b in self.pairs if notvis[a] and notvis[b]])
             return res
         else:return 0
 
