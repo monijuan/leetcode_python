@@ -184,6 +184,12 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 [模拟卷Leetcode【普通】470. 用 Rand7() 实现 Rand10()_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122257681)
 [模拟卷Leetcode【普通】516. 最长回文子序列_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122257703)
 [模拟卷Leetcode【普通】518. 零钱兑换 II_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122257722)
+[模拟卷Leetcode【普通】524. 通过删除字母匹配到字典里最长单词_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122316154)
+[模拟卷Leetcode【普通】526. 优美的排列_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122316181)
+[模拟卷Leetcode【普通】528. 按权重随机选择_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122316200)
+[模拟卷Leetcode【普通】542. 01 矩阵_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122316323)
+[模拟卷Leetcode【普通】567. 字符串的排列_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122316480)
+[模拟卷Leetcode【普通】583. 两个字符串的删除操作_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122316497)
 
 
 
