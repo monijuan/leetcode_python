@@ -1,0 +1,118 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2022/1/10 8:56
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 306. 累加数.py
+# @Software: PyCharm
+# ===================================
+"""累加数 是一个字符串，组成它的数字可以形成累加序列。
+
+一个有效的 累加序列 必须 至少 包含 3 个数。除了最开始的两个数以外，字符串中的其他数都等于它之前两个数相加的和。
+
+给你一个只包含数字 '0'-'9' 的字符串，编写一个算法来判断给定输入是否是 累加数 。如果是，返回 true ；否则，返回 false 。
+
+说明：累加序列里的数 不会 以 0 开头，所以不会出现 1, 2, 03 或者 1, 02, 3 的情况。
+
+ 
+
+示例 1：
+
+输入："112358"
+输出：true
+解释：累加序列为: 1, 1, 2, 3, 5, 8 。1 + 1 = 2, 1 + 2 = 3, 2 + 3 = 5, 3 + 5 = 8
+示例 2：
+
+输入："199100199"
+输出：true
+解释：累加序列为: 1, 99, 100, 199。1 + 99 = 100, 99 + 100 = 199
+ 
+
+提示：
+
+1 <= num.length <= 35
+num 仅由数字（0 - 9）组成
+ 
+
+进阶：你计划如何处理由过大的整数输入导致的溢出?
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/additive-number
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+from leetcode_python.utils import *
+
+
+class Solution:
+    def isAdditiveNumber(self, num: str) -> bool:
+        n = len(num)
+        for secondStart in range(1, n - 1):
+            if num[0] == '0' and secondStart != 1:
+                break
+            for secondEnd in range(secondStart, n - 1):
+                if num[secondStart] == '0' and secondStart != secondEnd:
+                    break
+                if self.valid(secondStart, secondEnd, num):
+                    return True
+        return False
+
+    def valid(self, secondStart: int, secondEnd: int, num: str) -> bool:
+        n = len(num)
+        firstStart, firstEnd = 0, secondStart - 1
+        while secondEnd <= n - 1:
+            third = self.stringAdd(num, firstStart, firstEnd, secondStart, secondEnd)
+            thirdStart = secondEnd + 1
+            thirdEnd = secondEnd + len(third)
+            if thirdEnd >= n or num[thirdStart:thirdEnd + 1] != third:
+                break
+            if thirdEnd == n - 1:
+                return True
+            firstStart, firstEnd = secondStart, secondEnd
+            secondStart, secondEnd = thirdStart, thirdEnd
+        return False
+
+    def stringAdd(self, s: str, firstStart: int, firstEnd: int, secondStart: int, secondEnd: int) -> str:
+        third = []
+        carry, cur = 0, 0
+        while firstEnd >= firstStart or secondEnd >= secondStart or carry != 0:
+            cur = carry
+            if firstEnd >= firstStart:
+                cur += ord(s[firstEnd]) - ord('0')
+                firstEnd -= 1
+            if secondEnd >= secondStart:
+                cur += ord(s[secondEnd]) - ord('0')
+                secondEnd -= 1
+            carry = cur // 10
+            cur %= 10
+            third.append(chr(cur + ord('0')))
+        return ''.join(third[::-1])
+
+
+def test(data_test):
+    s = Solution()
+    data = data_test  # normal
+    # data = [list2node(data_test[0])]  # list转node
+    return s.getResult(*data)
+
+
+def test_obj(data_test):
+    result = [None]
+    obj = Solution(*data_test[1][0])
+    for fun, data in zip(data_test[0][1::], data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+
+if __name__ == '__main__':
+    datas = [
+        [],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')

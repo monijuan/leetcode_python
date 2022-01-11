@@ -190,6 +190,10 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 [模拟卷Leetcode【普通】542. 01 矩阵_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122316323)
 [模拟卷Leetcode【普通】567. 字符串的排列_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122316480)
 [模拟卷Leetcode【普通】583. 两个字符串的删除操作_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122316497)
+[模拟卷Leetcode【普通】638. 大礼包_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122413433)
+[模拟卷Leetcode【普通】650. 只有两个键的键盘_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122413456)
+[模拟卷Leetcode【普通】673. 最长递增子序列的个数_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122413491)
+[模拟卷Leetcode【普通】677. 键值映射_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122413503)
 
 
 
@@ -309,4 +313,4 @@ class TreeNode:
 
 
 
-> 最近更新日期：2021.12.31
+> 最近更新日期：2022.1.10
