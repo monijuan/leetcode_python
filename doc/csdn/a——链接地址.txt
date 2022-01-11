@@ -109,11 +109,16 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 [模拟卷Leetcode【普通】003. 无重复字符的最长子串_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121405948)
 [模拟卷Leetcode【普通】005. 最长回文子串_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121405963)
 [模拟卷Leetcode【普通】008. 字符串转换整数 (atoi)_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121405981)
+[模拟卷Leetcode【普通】011. 盛最多水的容器_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122437187)
 [模拟卷Leetcode【普通】015. 三数之和_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121406006)
+[模拟卷Leetcode【普通】017. 电话号码的字母组合_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122437210)
+[模拟卷Leetcode【普通】018. 四数之和_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122437337)
 [模拟卷Leetcode【普通】019. 删除链表的倒数第 N 个结点_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121465752)
 [模拟卷Leetcode【普通】022. 括号生成_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121465766)
 [模拟卷Leetcode【普通】024. 两两交换链表中的节点_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121465777)
 [模拟卷Leetcode【普通】029. 两数相除_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121465793)
+[模拟卷Leetcode【普通】033. 搜索旋转排序数组_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122437397)
+[模拟卷Leetcode【普通】034. 在排序数组中查找元素的第一个和最后一个位置_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122437453)
 [模拟卷Leetcode【普通】036. 有效的数独_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121488738)
 [模拟卷Leetcode【普通】038. 外观数列_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121488755)
 [模拟卷Leetcode【普通】045. 跳跃游戏 II_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121488772)
@@ -194,6 +199,8 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 [模拟卷Leetcode【普通】650. 只有两个键的键盘_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122413456)
 [模拟卷Leetcode【普通】673. 最长递增子序列的个数_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122413491)
 [模拟卷Leetcode【普通】677. 键值映射_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122413503)
+[模拟卷Leetcode【普通】678. 有效的括号字符串_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122437111)
+[模拟卷Leetcode【普通】695. 岛屿的最大面积_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122437128)
 
 
 
