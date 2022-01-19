@@ -1,0 +1,81 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2022/1/18 8:56
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 539. 最小时间差.py
+# @Software: PyCharm
+# ===================================
+"""给定一个 24 小时制（小时:分钟 "HH:MM"）的时间列表，找出列表中任意两个时间的最小时间差并以分钟数表示。
+
+ 
+
+示例 1：
+
+输入：timePoints = ["23:59","00:00"]
+输出：1
+示例 2：
+
+输入：timePoints = ["00:00","23:59","00:00"]
+输出：0
+ 
+
+提示：
+
+2 <= timePoints <= 2 * 104
+timePoints[i] 格式为 "HH:MM"
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/minimum-time-difference
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+from leetcode_python.utils import *
+
+
+class Solution:
+    def diff(self,time1,time2):
+        """return time2-time1"""
+        # h1,m1 = int(time1[0:2]),int(time1[3:5])
+        # h2,m2 = int(time2[0:2]),int(time2[3:5])
+        h1,m1 = map(int,time1.split(':'))
+        h2,m2 = map(int,time2.split(':'))
+        return (h2-h1)*60+m2-m1
+
+
+    def findMinDifference(self, timePoints: List[str]) -> int:
+        timePoints.sort()
+        res = self.diff(timePoints[-1],str(int(timePoints[0][:2])+24)+timePoints[0][2:])
+        for id,t in enumerate(timePoints):
+            if 0==id:continue
+            res = min(res,self.diff(timePoints[id-1],t))
+        return res
+
+
+def test(data_test):
+    s = Solution()
+    data = data_test  # normal
+    # data = [list2node(data_test[0])]  # list转node
+    return s.findMinDifference(*data)
+
+
+def test_obj(data_test):
+    result = [None]
+    obj = Solution(*data_test[1][0])
+    for fun, data in zip(data_test[0][1::], data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+
+if __name__ == '__main__':
+    datas = [
+        [["00:00","23:59","00:00"]],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')
