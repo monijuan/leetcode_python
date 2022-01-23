@@ -86,10 +86,8 @@ grid[row][col] > 0
 from leetcode_python.utils import *
 
 import functools
-class Solution:
-    def __init__(self):
-        self.diss = defaultdict(int)
 
+class Solution:
     @lru_cache(None)
     def next(self,rowid,colid):
         res = []
@@ -101,46 +99,40 @@ class Solution:
     def highestRankedKItems(self, grid: List[List[int]], pricing: List[int], start: List[int], k: int) -> List[List[int]]:
         self.height,self.width = len(grid), len(grid[0])
         self.grid = grid
-        # self.diss = [[0]*self.width for _ in range(self.height)]
         self.vis = [[0]*self.width for _ in range(self.height)]
         sx, sy = start
-        # self.diss[sx][sy]=0
         self.vis[sx][sy]=True
 
         pl,pr = pricing
-        x_y_d = [(sx,sy,0,grid[sx][sy])] if pl<= grid[sx][sy] <=pr else []
+        x_y_d_p = [(sx,sy,0,grid[sx][sy])] if pl<= grid[sx][sy] <=pr else []
         # bfs
         now = [start]
         d = 0
         while now:
             q = []
-            d+=1
+            d +=1
             for sx,sy in now:
                 for next in self.next(sx,sy):
                     nx,ny = next
                     if self.vis[nx][ny]: continue
                     self.vis[nx][ny] = True
-                    # self.diss[nx][ny] = d
-                    g = grid[nx][ny]
-                    if pl<= g <=pr:
-                        x_y_d.append((nx,ny,d,g))
+                    p = grid[nx][ny]
+                    if pl<= p <=pr:
+                        x_y_d_p.append((nx,ny,d,p))
                     q.append(next)
             now = q
 
-        # print(x_y_d)
-        # for l in self.diss:print(l)
-        def _f(xyd1,xyd2):
-            x1,y1,d1,p1=xyd1
-            x2,y2,d2,p2=xyd2
+        # print(x_y_d_p)
+        def _f(xydp1,xydp2):
+            x1,y1,d1,p1=xydp1
+            x2,y2,d2,p2=xydp2
             if d1!=d2:return 1 if d1>d2 else -1
             elif p1!=p2: return 1 if p1>p2 else -1
             elif x1!=x2: return 1 if x1>x2 else -1
             else:return 1 if y1>y2 else -1
-        x_y_d.sort(key=functools.cmp_to_key(_f))
+        x_y_d_p.sort(key=functools.cmp_to_key(_f))
 
-        # print(x_y_d)
-        res = [[x,y] for x,y,d,p in x_y_d[:k]]
-        return res
+        return [[x,y] for x,y,d,p in x_y_d_p[:k]]
 
 
 def test(data_test):
