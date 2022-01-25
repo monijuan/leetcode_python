@@ -136,13 +136,19 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 [模拟卷Leetcode【普通】062. 不同路径_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121562711)
 [模拟卷Leetcode【普通】063. 不同路径 II_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121562745)
 [模拟卷Leetcode【普通】064. 最小路径和_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/etails/121562773)
+[模拟卷Leetcode【普通】071. 简化路径_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122683890)
 [模拟卷Leetcode【普通】073. 矩阵置零_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121562793)
+[模拟卷Leetcode【普通】074. 搜索二维矩阵_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122683906)
 [模拟卷Leetcode【普通】075. 颜色分类_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121602643)
 [模拟卷Leetcode【普通】077. 组合_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121602670)
+[模拟卷Leetcode【普通】078. 子集_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122683917)
 [模拟卷Leetcode【普通】079. 单词搜索_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121602773)
 [模拟卷Leetcode【普通】082. 删除排序链表中的重复元素 II_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121602790)
+[模拟卷Leetcode【普通】089. 格雷编码_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122683930)
+[模拟卷Leetcode【普通】090. 子集 II_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122683950)
 [模拟卷Leetcode【普通】091. 解码方法_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121695297)
 [模拟卷Leetcode【普通】096. 不同的二叉搜索树_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121695314)
+[模拟卷Leetcode【普通】097. 交错字符串_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122683963)
 [模拟卷Leetcode【普通】098. 验证二叉搜索树_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121695334)
 [模拟卷Leetcode【普通】102. 二叉树的层序遍历_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121761504)
 [模拟卷Leetcode【普通】105. 从前序与中序遍历序列构造二叉树_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/121761521)
@@ -326,4 +332,4 @@ class TreeNode:
 
 
 
-> 最近更新日期：2022.1.10
+> 最近更新日期：2022.1.25
