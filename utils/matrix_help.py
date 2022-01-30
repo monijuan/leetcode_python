@@ -11,13 +11,14 @@ from typing import List
 class Solution:
     def __init__(self,matrix):
         self.height,self.width = len(matrix), len(matrix[0])
+        pass
 
     @lru_cache(None)
     def next(self,rowid,colid):
         res = []
-        for row_id, col_id in ((rowid - 1, colid), (rowid, colid - 1), (rowid + 1, colid), (rowid, colid + 1)):
-            if 0 <= row_id < self.height and 0 <= col_id < self.width:
-                res.append([row_id, col_id])
+        for i, j in ((rowid - 1, colid), (rowid, colid - 1), (rowid + 1, colid), (rowid, colid + 1)):
+            if 0 <= i < self.height and 0 <= j < self.width:
+                res.append([i, j])
         return res
 
 
