@@ -1,0 +1,91 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2022/2/3 11:13
+# @Author  : 模拟卷
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 1414. 和为 K 的最少斐波那契数字数目.py
+# @Software: PyCharm 
+# ===================================
+"""给你数字 k ，请你返回和为 k 的斐波那契数字的最少数目，其中，每个斐波那契数字都可以被使用多次。
+
+斐波那契数字定义为：
+
+F1 = 1
+F2 = 1
+Fn = Fn-1 + Fn-2 ， 其中 n > 2 。
+数据保证对于给定的 k ，一定能找到可行解。
+
+ 
+
+示例 1：
+
+输入：k = 7
+输出：2
+解释：斐波那契数字为：1，1，2，3，5，8，13，……
+对于 k = 7 ，我们可以得到 2 + 5 = 7 。
+示例 2：
+
+输入：k = 10
+输出：2
+解释：对于 k = 10 ，我们可以得到 2 + 8 = 10 。
+示例 3：
+
+输入：k = 19
+输出：3
+解释：对于 k = 19 ，我们可以得到 1 + 5 + 13 = 19 。
+ 
+
+提示：
+
+1 <= k <= 10^9
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/find-the-minimum-number-of-fibonacci-numbers-whose-sum-is-k
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+from leetcode_python.utils import *
+
+
+class Solution:
+    def findMinFibonacciNumbers(self, k: int) -> int:
+        f = [1,1]
+        while f[-1]<k:f.append(f[-1]+f[-2])
+        res,i = 0,len(f)-1
+        while k:
+            if k>=f[i]:
+                k-=f[i]
+                res+=1
+            i-=1
+        return res
+
+
+def test(data_test):
+    s = Solution()
+    data = data_test  # normal
+    # data = [list2node(data_test[0])]  # list转node
+    return s.getResult(*data)
+
+
+def test_obj(data_test):
+    result = [None]
+    obj = Solution(*data_test[1][0])
+    for fun, data in zip(data_test[0][1::], data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+
+if __name__ == '__main__':
+    datas = [
+        [],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')
+
