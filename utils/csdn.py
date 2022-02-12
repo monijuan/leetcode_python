@@ -71,7 +71,11 @@ def GetDetail(filepath):
 
 
 def GetResult(标题, 题目名字, 题目说明, 代码):
-    res = f"""### 标题
+    res = f"""
+
+## 汇总：[模拟卷Leetcode 题解汇总](https://blog.csdn.net/qq_34451909/article/details/120968335)
+    
+### 标题
 
 ```
 {标题}
@@ -97,7 +101,7 @@ def GetResult(标题, 题目名字, 题目说明, 代码):
 备注：
 GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monijuan/leetcode_python)
 
-CSDN汇总：[模拟卷Leetcode 题解汇总_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/120968335)
+CSDN汇总：[模拟卷Leetcode 题解汇总](https://blog.csdn.net/qq_34451909/article/details/120968335)
 
 可以加QQ群交流：==*1092754609*==
 
