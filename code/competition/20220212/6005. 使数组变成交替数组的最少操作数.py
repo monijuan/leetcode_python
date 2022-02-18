@@ -3,7 +3,7 @@
 # @Author  : 模拟卷
 # @Github  : https://github.com/monijuan
 # @CSDN    : https://blog.csdn.net/qq_34451909
-# @File    : 6005AC. 使数组变成交替数组的最少操作数.py
+# @File    : 6005. 使数组变成交替数组的最少操作数.py
 # @Software: PyCharm 
 # ===================================
 """给你一个下标从 0 开始的数组 nums ，该数组由 n 个正整数组成。
@@ -51,9 +51,9 @@ class Solution:
         nums2 = [x for i,x in enumerate(nums) if not i&1]   # 奇数
         cnt1 = sorted(list(Counter(nums1).items()),key=lambda x:-x[1])
         cnt2 = sorted(list(Counter(nums2).items()),key=lambda x:-x[1])
-        # print(nums)
-        # print(nums1,cnt1)
-        # print(nums2,cnt2)
+        print(nums)
+        print(nums1,cnt1)
+        print(nums2,cnt2)
         if cnt1[0][0]!=cnt2[0][0]:
             res = len(nums1)-cnt1[0][1]+len(nums2)-cnt2[0][1]
         else:
@@ -62,6 +62,7 @@ class Solution:
                 ress.append(len(nums1) - cnt1[1][1] + len(nums2) - cnt2[0][1])
             if len(cnt2)>1:
                 ress.append(len(nums1) - cnt1[0][1] + len(nums2) - cnt2[1][1])
+            print(ress)
             res = min(ress)
         return res
 
@@ -87,7 +88,8 @@ def test_obj(data_test):
 
 if __name__ == '__main__':
     datas = [
-        [[3,1,3,2,4,3]],
+        # [[3,1,3,2,4,3]],
+        [[1,3,4,3,3,2,3,3,2,2,3]],
     ]
     for data_test in datas:
         t0 = time.time()
