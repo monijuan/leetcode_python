@@ -57,6 +57,13 @@ def List2Node(datas:List)->ListNode:
 # endregion
 
 # region ############ others 2 list
+def Node2List(head:ListNode)->List:
+    res = []
+    while head:
+        res.append(head.val)
+        head = head.next
+    return res
+
 def BST2List(root):
     """平衡二叉树 -> 列表"""
     return BST2List(root.left) + [root.val] + BST2List(root.right) if root else []
