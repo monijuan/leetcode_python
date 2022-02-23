@@ -200,14 +200,22 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 [模拟卷Leetcode【普通】318. 最大单词长度乘积_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122054761)
 [模拟卷Leetcode【普通】319. 灯泡开关_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122054777)
 [模拟卷Leetcode【普通】322. 零钱兑换_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122080726)
+[模拟卷Leetcode【普通】334. 递增的三元子序列_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/123084331)
 [模拟卷Leetcode【普通】343. 整数拆分_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122080759)
+[模拟卷Leetcode【普通】347. 前 K 个高频元素_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/123084354)
 [模拟卷Leetcode【普通】371. 两整数之和_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122080775)
+[模拟卷Leetcode【普通】372. 超级次方_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/123084370)
 [模拟卷Leetcode【普通】375. 猜数字大小 II_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122080808)
 [模拟卷Leetcode【普通】376. 摆动序列_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122080843)
 [模拟卷Leetcode【普通】377. 组合总和 Ⅳ_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122080882)
+[模拟卷Leetcode【普通】384. 打乱数组_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/123084390)
+[模拟卷Leetcode【普通】390. 消除游戏_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/123084406)
 [模拟卷Leetcode【普通】397. 整数替换_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122165453)
 [模拟卷Leetcode【普通】400. 第 N 位数字_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122165467)
 [模拟卷Leetcode【普通】413. 等差数列划分_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122165477)
+[模拟卷Leetcode【普通】416. 分割等和子集_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/123084420)
+[模拟卷Leetcode【普通】419. 甲板上的战舰_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/123084444)
+[模拟卷Leetcode【普通】423. 从英文中重建数字_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/123084458)
 [模拟卷Leetcode【普通】430. 扁平化多级双向链表_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122165496)
 [模拟卷Leetcode【普通】437. 路径总和 III_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122165528)
 [模拟卷Leetcode【普通】443. 压缩字符串_卷子的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/122257639)
@@ -346,4 +354,4 @@ class TreeNode:
 
 
 
-> 最近更新日期：2022.2.15
+> 最近更新日期：2022.2.23
