@@ -8,7 +8,7 @@
 # ===================================
 from .rand_help import randListInt,randListListInt,randListListIntShow
 from .all_node import ListNode,TreeNode
-from .load_node import List2Tree,List2BST,List2Node,BST2List,Tree2List
+from .load_node import List2Tree,List2BST,List2Node,BST2List,Tree2List,Node2List
 import numpy as np
 import sys
 import time
