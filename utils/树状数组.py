@@ -69,6 +69,15 @@ class tree_树状数组:
         """ 区间更新：l~r 区间求和 """
         if l > r: return 0
         return self.sum_pos_internal(r) - self.sum_pos_internal(l - 1)
+
+    def get_sums(self):
+        """ 区间更新：计算所有[0,i]的求和"""
+        return [self.sum_pos_internal(i) for i in range(1,self.n)]
+
+    def get_scores(self):
+        """ 区间更新：计算每一位的值"""
+        sums = [self.sum_pos_internal(i) for i in range(1,self.n)]
+        return [s-sums[i-1] if i>0 else s for i,s in enumerate(sums)]
     ####### endregion 区间更新
 
 
