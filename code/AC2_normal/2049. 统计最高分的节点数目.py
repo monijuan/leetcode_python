@@ -1,0 +1,115 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2022/3/11 9:03
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 2049. 统计最高分的节点数目.py
+# @Software: PyCharm
+# ===================================
+"""给你一棵根节点为 0 的 二叉树 ，它总共有 n 个节点，节点编号为 0 到 n - 1 。同时给你一个下标从 0 开始的整数数组 parents 表示这棵树，其中 parents[i] 是节点 i 的父节点。由于节点 0 是根，所以 parents[0] == -1 。
+
+一个子树的 大小 为这个子树内节点的数目。每个节点都有一个与之关联的 分数 。求出某个节点分数的方法是，将这个节点和与它相连的边全部 删除 ，剩余部分是若干个 非空 子树，这个节点的 分数 为所有这些子树 大小的乘积 。
+
+请你返回有 最高得分 节点的 数目 。
+
+ 
+
+示例 1:
+
+
+
+输入：parents = [-1,2,0,2,0]
+输出：3
+解释：
+- 节点 0 的分数为：3 * 1 = 3
+- 节点 1 的分数为：4 = 4
+- 节点 2 的分数为：1 * 1 * 2 = 2
+- 节点 3 的分数为：4 = 4
+- 节点 4 的分数为：4 = 4
+最高得分为 4 ，有三个节点得分为 4 （分别是节点 1，3 和 4 ）。
+示例 2：
+
+
+
+输入：parents = [-1,2,0]
+输出：2
+解释：
+- 节点 0 的分数为：2 = 2
+- 节点 1 的分数为：2 = 2
+- 节点 2 的分数为：1 * 1 = 1
+最高分数为 2 ，有两个节点分数为 2 （分别为节点 0 和 1 ）。
+ 
+
+提示：
+
+n == parents.length
+2 <= n <= 105
+parents[0] == -1
+对于 i != 0 ，有 0 <= parents[i] <= n - 1
+parents 表示一棵二叉树。
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/count-nodes-with-the-highest-score
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+from leetcode_python.utils import *
+
+
+class Solution:
+    def __init__(self):
+        self.res = 0
+        self.cnt = 0
+
+    def dfs(self,root):
+        score = 1
+        sizep = self.n-1
+        for ch in self.childrens[root]:
+            sizec = self.dfs(ch)
+            score*=sizec
+            sizep-=sizec
+        if root:score*=sizep
+        if score>self.res:
+            self.res=score
+            self.cnt=1
+        elif score==self.res:
+            self.cnt+=1
+        return self.n-sizep
+
+    def countHighestScoreNodes(self, parents: List[int]) -> int:
+        self.n = len(parents)
+        self.childrens = [[] for _ in range(self.n)]
+        for id,p in enumerate(parents):
+            if p!=-1:
+                self.childrens[p].append(id)
+        self.dfs(0)
+        return self.cnt
+
+
+def test(data_test):
+    s = Solution()
+    data = data_test  # normal
+    # data = [list2node(data_test[0])]  # list转node
+    return s.getResult(*data)
+
+
+def test_obj(data_test):
+    result = [None]
+    obj = Solution(*data_test[1][0])
+    for fun, data in zip(data_test[0][1::], data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+
+if __name__ == '__main__':
+    datas = [
+        [],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')
