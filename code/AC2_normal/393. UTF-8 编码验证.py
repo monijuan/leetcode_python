@@ -1,0 +1,114 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2022/3/13 10:15
+# @Author  : 模拟卷
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 393. UTF-8 编码验证.py
+# @Software: PyCharm 
+# ===================================
+"""给定一个表示数据的整数数组 data ，返回它是否为有效的 UTF-8 编码。
+
+UTF-8 中的一个字符可能的长度为 1 到 4 字节，遵循以下的规则：
+
+对于 1 字节 的字符，字节的第一位设为 0 ，后面 7 位为这个符号的 unicode 码。
+对于 n 字节 的字符 (n > 1)，第一个字节的前 n 位都设为1，第 n+1 位设为 0 ，后面字节的前两位一律设为 10 。剩下的没有提及的二进制位，全部为这个符号的 unicode 码。
+这是 UTF-8 编码的工作方式：
+
+   Char. number range  |        UTF-8 octet sequence
+      (hexadecimal)    |              (binary)
+   --------------------+---------------------------------------------
+   0000 0000-0000 007F | 0xxxxxxx
+   0000 0080-0000 07FF | 110xxxxx 10xxxxxx
+   0000 0800-0000 FFFF | 1110xxxx 10xxxxxx 10xxxxxx
+   0001 0000-0010 FFFF | 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
+注意：输入是整数数组。只有每个整数的 最低 8 个有效位 用来存储数据。这意味着每个整数只表示 1 字节的数据。
+
+ 
+
+示例 1：
+
+输入：data = [197,130,1]
+输出：true
+解释：数据表示字节序列:11000101 10000010 00000001。
+这是有效的 utf-8 编码，为一个 2 字节字符，跟着一个 1 字节字符。
+示例 2：
+
+输入：data = [235,140,4]
+输出：false
+解释：数据表示 8 位的序列: 11101011 10001100 00000100.
+前 3 位都是 1 ，第 4 位为 0 表示它是一个 3 字节字符。
+下一个字节是开头为 10 的延续字节，这是正确的。
+但第二个延续字节不以 10 开头，所以是不符合规则的。
+ 
+
+提示:
+
+1 <= data.length <= 2 * 104
+0 <= data[i] <= 255
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/utf-8-validation
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+from leetcode_python.utils import *
+
+
+class Solution:
+    def validUtf8(self, data: List[int]) -> bool:
+        binary = lambda n: '' if n == 0 else binary(n // 2) + str(n % 2)
+        datan = [binary(x) for x in data]
+        datan = ['0'*(8-len(x))+x for x in datan]
+
+        def check_seq(idx, length): # 检查后length个二进制是否'10'开头
+            for i in range(idx + 1, idx + 1 + length):
+                if not datan[i].startswith('10'): return False
+            return True
+        l = len(data)
+        p = 0
+        while p < l:
+            if datan[p].startswith('0'):
+                p += 1
+            elif datan[p].startswith('110') and p + 1 < l:
+                if not check_seq(p, 1): return False
+                p += 2
+            elif datan[p].startswith('1110') and p + 2 < l:
+                if not check_seq(p, 2): return False
+                p += 3
+            elif datan[p].startswith('11110') and p + 3 < l:
+                if not check_seq(p, 3): return False
+                p += 4
+            else:
+                return False
+        return True
+
+def test(data_test):
+    s = Solution()
+    data = data_test  # normal
+    # data = [list2node(data_test[0])]  # list转node
+    return s.validUtf8(*data)
+
+
+def test_obj(data_test):
+    result = [None]
+    obj = Solution(*data_test[1][0])
+    for fun, data in zip(data_test[0][1::], data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+
+if __name__ == '__main__':
+    datas = [
+        [[197,130,1]],
+        # [[235,140,4]],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')
+
