@@ -16,7 +16,7 @@ def __unionset(bombs: List[List[int]]) -> int:
         if k in d[i]: d[i] |= d[k]
     return max(len(d[i]) for i in range(n))
 
-class UnionFindSet(object):
+class union_并查集(object):
     """并查集"""
     def __init__(self, data_list):
         """初始化两个字典，一个保存节点的父节点，另外一个保存父节点的大小
