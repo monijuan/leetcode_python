@@ -58,6 +58,7 @@ def List2Node(datas:List)->ListNode:
 
 # region ############ others 2 list
 def Node2List(head:ListNode)->List:
+    """链表 -> 列表"""
     res = []
     while head:
         res.append(head.val)

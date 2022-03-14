@@ -6,6 +6,8 @@
 # @File    : __init__.py
 # @Software: PyCharm 
 # ===================================
+from typing import List,Callable,Optional
+from functools import lru_cache
 from .rand_help import randListInt,randListListInt,randListListIntShow
 from .all_node import ListNode,TreeNode
 from .load_node import List2Tree,List2BST,List2Node,BST2List,Tree2List,Node2List
@@ -17,8 +19,6 @@ import numpy as np
 import sys
 import time
 import math
-from typing import List,Callable,Optional
-from functools import lru_cache
 from collections import Counter,defaultdict,deque
 from sortedcontainers import SortedList, SortedKeyList, SortedListWithKey, SortedDict, SortedKeysView, \
     SortedItemsView, SortedValuesView, SortedSet
