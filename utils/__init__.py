@@ -12,6 +12,7 @@ from .load_node import List2Tree,List2BST,List2Node,BST2List,Tree2List,Node2List
 from .树状数组 import tree_树状数组
 from .最短路径 import map_单源最短路径
 from .并查集 import union_并查集
+from .前缀和 import pre_二维前缀和
 import numpy as np
 import sys
 import time
