@@ -7,14 +7,10 @@
 # @Software: PyCharm 
 # ===================================
 from typing import List,Callable,Optional
-from functools import lru_cache
-from .rand_help import randListInt,randListListInt,randListListIntShow
-from .all_node import ListNode,TreeNode
-from .load_node import List2Tree,List2BST,List2Node,BST2List,Tree2List,Node2List
-from .树状数组 import tree_树状数组
-from .最短路径 import map_单源最短路径
-from .并查集 import union_并查集
-from .前缀和 import pre_二维前缀和
+from functools import lru_cache,reduce
+from itertools import product
+import queue
+import heapq
 import numpy as np
 import sys
 import time
@@ -22,9 +18,14 @@ import math
 from collections import Counter,defaultdict,deque
 from sortedcontainers import SortedList, SortedKeyList, SortedListWithKey, SortedDict, SortedKeysView, \
     SortedItemsView, SortedValuesView, SortedSet
-from itertools import product
-import queue
-import heapq
+
+from .rand_help import randListInt,randListListInt,randListListIntShow
+from .all_node import ListNode,TreeNode
+from .load_node import List2Tree,List2BST,List2Node,BST2List,Tree2List,Node2List
+from .树状数组 import tree_树状数组
+from .最短路径 import map_单源最短路径
+from .并查集 import union_并查集
+from .前缀和 import pre_二维前缀和
 
 
 @lru_cache(None)
