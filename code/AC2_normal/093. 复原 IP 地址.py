@@ -1,0 +1,89 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2022/3/16 10:43
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 093. 复原 IP 地址.py
+# @Software: PyCharm
+# ===================================
+"""有效 IP 地址 正好由四个整数（每个整数位于 0 到 255 之间组成，且不能含有前导 0），整数之间用 '.' 分隔。
+
+例如："0.1.2.201" 和 "192.168.1.1" 是 有效 IP 地址，但是 "0.011.255.245"、"192.168.1.312" 和 "192.168@1.1" 是 无效 IP 地址。
+给定一个只包含数字的字符串 s ，用以表示一个 IP 地址，返回所有可能的有效 IP 地址，这些地址可以通过在 s 中插入 '.' 来形成。你 不能 重新排序或删除 s 中的任何数字。你可以按 任何 顺序返回答案。
+
+ 
+
+示例 1：
+
+输入：s = "25525511135"
+输出：["255.255.11.135","255.255.111.35"]
+示例 2：
+
+输入：s = "0000"
+输出：["0.0.0.0"]
+示例 3：
+
+输入：s = "101023"
+输出：["1.0.10.23","1.0.102.3","10.1.0.23","10.10.2.3","101.0.2.3"]
+ 
+
+提示：
+
+1 <= s.length <= 20
+s 仅由数字组成
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/restore-ip-addresses
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+from leetcode_python.utils import *
+
+
+def isLegal(ssss):
+    if any(s.startswith('0') for s in ssss):return False
+    return all(0<=int(s)<=255 for s in ssss)
+
+class Solution:
+    def restoreIpAddresses(self, s: str) -> List[str]:
+        l = len(s)
+        if l<4:return []
+        res = []
+        for id1 in range(1,l-2):
+            for id2 in range(id1+1,l-1):
+                for id3 in range(id2+1,l):
+                    ssss = [s[:id1],s[id1:id2],s[id2:id3],s[id3:]]
+                    if isLegal(ssss):
+                        res.append('.'.join(*ssss))
+        return res
+
+
+
+
+def test(data_test):
+    s = Solution()
+    data = data_test  # normal
+    # data = [List2Node(data_test[0])]  # list转node
+    return s.getResult(*data)
+
+
+def test_obj(data_test):
+    result = [None]
+    obj = Solution(*data_test[1][0])
+    for fun, data in zip(data_test[0][1::], data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+
+if __name__ == '__main__':
+    datas = [
+        [],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')
