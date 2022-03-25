@@ -87,6 +87,25 @@ def Tree2List(root):
     while len(res)>1 and res[-1]==None: res.pop(-1)
     return res
 
+def NTree2List(self, root: 'Node') -> List[List[int]]:
+    """ 429. N 叉树的层序遍历
+        N叉树 -> 层序遍历列表
+    输入：root = [1,null,3,2,4,null,5,6]
+    输出：[[1],[3,2,4],[5,6]]
+    """
+    if not root:return []
+    res = []
+    last = [root]
+    while last:
+        now = []
+        line = []
+        for node in last:
+            line.append(node.val)
+            now.extend(node.children)
+        last = now
+        res.append(line)
+    return res
+
 # endregion
 
 
