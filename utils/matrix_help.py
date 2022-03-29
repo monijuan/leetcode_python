@@ -21,7 +21,6 @@ class Solution:
                 res.append([i, j])
         return res
 
-
     def dfs(self,r,c):
         self.grid[r][c]=0
         for nextr,nextc in self.next(r,c):
@@ -38,3 +37,7 @@ class Solution:
                     res+=1
                     self.dfs(r,c)
         return res
+
+    def rot(mat):
+        """ 逆时针90 """
+        return list(zip(*mat))[::-1]
