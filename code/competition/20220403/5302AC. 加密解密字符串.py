@@ -58,21 +58,14 @@ keys、values[i]、dictionary[i]、word1 和 word2 只含小写英文字母
 from leetcode_python.utils import *
 
 class Encrypter:
-
     def __init__(self, keys: List[str], values: List[str], dictionary: List[str]):
-        self.dictionary = dictionary
-        self.enc_map = {}
-        for k,v in zip(keys,values):
-            self.enc_map[k]=v
+        self.enc_map = dict(zip(keys,values))
         self.cnt_dec = defaultdict(int)
         for di in dictionary:
             self.cnt_dec[self.encrypt(di)]+=1
 
     def encrypt(self, word1: str) -> str:
-        res = ''
-        for c in word1:
-            res += self.enc_map.get(c,c)
-        return res
+        return ''.join(self.enc_map.get(c,c) for c in word1)
 
     def decrypt(self, word2: str) -> int:
         return self.cnt_dec[word2]
