@@ -1,0 +1,111 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2022/4/3 9:19
+# @Author  : 模拟卷
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 1376. 通知所有员工所需的时间.py
+# @Software: PyCharm 
+# ===================================
+"""公司里有 n 名员工，每个员工的 ID 都是独一无二的，编号从 0 到 n - 1。公司的总负责人通过 headID 进行标识。
+
+在 manager 数组中，每个员工都有一个直属负责人，其中 manager[i] 是第 i 名员工的直属负责人。对于总负责人，manager[headID] = -1。题目保证从属关系可以用树结构显示。
+
+公司总负责人想要向公司所有员工通告一条紧急消息。他将会首先通知他的直属下属们，然后由这些下属通知他们的下属，直到所有的员工都得知这条紧急消息。
+
+第 i 名员工需要 informTime[i] 分钟来通知它的所有直属下属（也就是说在 informTime[i] 分钟后，他的所有直属下属都可以开始传播这一消息）。
+
+返回通知所有员工这一紧急消息所需要的 分钟数 。
+
+ 
+
+示例 1：
+
+输入：n = 1, headID = 0, manager = [-1], informTime = [0]
+输出：0
+解释：公司总负责人是该公司的唯一一名员工。
+示例 2：
+
+
+
+输入：n = 6, headID = 2, manager = [2,2,-1,2,2,2], informTime = [0,0,1,0,0,0]
+输出：1
+解释：id = 2 的员工是公司的总负责人，也是其他所有员工的直属负责人，他需要 1 分钟来通知所有员工。
+上图显示了公司员工的树结构。
+ 
+
+提示：
+
+1 <= n <= 10^5
+0 <= headID < n
+manager.length == n
+0 <= manager[i] < n
+manager[headID] == -1
+informTime.length == n
+0 <= informTime[i] <= 1000
+如果员工 i 没有下属，informTime[i] == 0 。
+题目 保证 所有员工都可以收到通知。
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/time-needed-to-inform-all-employees
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+from leetcode_python.utils import *
+
+
+class Solution:
+    def numOfMinutes(self, n: int, headID: int, manager: List[int], informTime: List[int]) -> int:
+        children = defaultdict(list)
+        for i in range(n):
+            if i != headID:
+                children[manager[i]].append(i)
+
+        def dfs(nowid):
+            res = 0
+            for s in children[nowid]:
+                res = max(res, informTime[nowid] + dfs(s))
+            return res
+        return dfs(headID)
+
+class Solution_大佬:
+    def numOfMinutes(self, n: int, headID: int, manager: List[int], informTime: List[int]) -> int:
+        self.son = defaultdict(list)
+        for i in range(n):
+            if i != headID:
+                self.son[manager[i]].append(i)
+
+        return self.dfs(headID, informTime)
+
+    def dfs(self, nowid, informTime):
+        res = 0
+        for s in self.son[nowid]:
+            res = max(res, informTime[nowid] + self.dfs(s, informTime))
+        return res
+
+
+def test(data_test):
+    s = Solution()
+    data = data_test    # normal
+    # data = [List2Node(data_test[0])]  # list转node
+    return s.getResult(*data)
+
+def test_obj(data_test):
+    result = [None]
+    obj = Solution(*data_test[1][0])
+    for fun,data in zip(data_test[0][1::],data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+if __name__ == '__main__':
+    datas = [
+        [],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-'*50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')
