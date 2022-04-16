@@ -6,8 +6,8 @@
 # @File    : __init__.py
 # @Software: PyCharm 
 # ===================================
-from typing import List,Callable,Optional
-from functools import lru_cache,reduce
+from typing import List, Callable, Optional
+from functools import lru_cache, reduce
 from itertools import product
 import queue
 import heapq
@@ -15,13 +15,13 @@ import numpy as np
 import sys
 import time
 import math
-from collections import Counter,defaultdict,deque
+from collections import Counter, defaultdict, deque
 from sortedcontainers import SortedList, SortedKeyList, SortedListWithKey, SortedDict, SortedKeysView, \
     SortedItemsView, SortedValuesView, SortedSet
 
-from .rand_help import randListInt,randListListInt,randListListIntShow
-from .all_node import ListNode,TreeNode
-from .load_node import List2Tree,List2BST,List2Node,BST2List,Tree2List,Node2List
+from .rand_help import randListInt, randListListInt, randListListIntShow
+from .all_node import ListNode, TreeNode
+from .load_node import List2Tree, List2BST, List2Node, BST2List, Tree2List, Node2List
 from .树状数组 import tree_树状数组
 from .最短路径 import map_单源最短路径
 from .并查集 import union_并查集
@@ -30,7 +30,6 @@ from .字符串哈希 import hash_字符串哈希
 
 
 @lru_cache(None)
-
 ########################### test
 # region 子数组
 def lengthOfLIS_最长递增子数组(nums: List[int]) -> int:
@@ -55,38 +54,65 @@ def lengthOfLIS_最长严格递增子数组(nums: List[int]) -> int:
         else:
             dp[j] = num
     return len(dp)
+
+
+# endregion
+
+# region dfs
+def __demo_bfs():
+    end = '0001'
+    start, step = '0000', 0
+    queue = [(start, step)]
+    while queue:
+        word, step_ = queue.pop(0)
+        if word == end:
+            return step
+        for id in range(len(word)):
+            new = word
+            if True:
+                queue.append((new, step + 1))
+    return -1
+
+
 # endregion
 
 # region dfs
 class Solution:
     """ 047. 全排列 II"""
-    def dfs(self,now):
-        if self.length>=len(now):
+
+    def dfs(self, now):
+        if self.length >= len(now):
             if now not in self.res:
                 self.res.append(now)
         else:
             for nextid in range(self.length):
                 if not self.vis[nextid]:
-                    self.vis[nextid]=True
-                    self.dfs(now+[self.nums[nextid]])
-                    self.vis[nextid]=False
+                    self.vis[nextid] = True
+                    self.dfs(now + [self.nums[nextid]])
+                    self.vis[nextid] = False
 
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:
         self.nums = nums
         self.length = len(nums)
-        self.vis = [False]*self.length
+        self.vis = [False] * self.length
         self.res = []
         self.dfs([])
         return self.res
+
+
 # endregion
 
 # region 二分查找
 import bisect
+
+
 def __test_bisect():
-    li = list(range(0,20,3))
+    li = list(range(0, 20, 3))
     print(f'li:{li}')
-    for x in [1,2,3,4,20]:
-        print(f"{x}:[left]{bisect.bisect_left(li,x)}, [right]{bisect.bisect_right(li,x)}, ")
+    for x in [1, 2, 3, 4, 20]:
+        print(f"{x}:[left]{bisect.bisect_left(li, x)}, [right]{bisect.bisect_right(li, x)}, ")
+
+
 # endregion
 
 # region product 多重循环
@@ -122,8 +148,6 @@ def __test_product():
     """
     li = list(range(3))
     n, d = len(li), defaultdict(set)
-    for i, j, k in product(range(n), repeat = 3):
-        print(i,j,k)
+    for i, j, k in product(range(n), repeat=3):
+        print(i, j, k)
 # endregion
-
-
