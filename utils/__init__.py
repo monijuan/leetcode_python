@@ -27,6 +27,7 @@ from .最短路径 import map_单源最短路径
 from .并查集 import union_并查集
 from .前缀和 import pre_二维前缀和
 from .字符串哈希 import hash_字符串哈希
+from .线段树 import tree_线段树
 
 
 @lru_cache(None)
