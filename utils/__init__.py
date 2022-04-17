@@ -28,10 +28,27 @@ from .并查集 import union_并查集
 from .前缀和 import pre_二维前缀和
 from .字符串哈希 import hash_字符串哈希
 from .线段树 import tree_线段树
- 
+
 
 @lru_cache(None)
 ########################### test
+## region 二维前缀和
+def sum_grid二维前缀和(grid):
+    """
+        res[i][j][0]:水平和
+        res[i][j][1]:垂直和
+    """
+    h, w = len(grid), len(grid[0])
+    res = [[[0, 0] for _ in range(w)] for _ in range(h)]
+    for i in range(h):
+        for j in range(w):
+            res[i][j][0] = grid[i][j] + (0 if j == 0 else res[i][j - 1][0])
+    for j in range(w):
+        for i in range(h):
+            res[i][j][1] = grid[i][j] + (0 if i == 0 else res[i - 1][j][1])
+    return res
+# endregion
+
 # region 子数组
 def lengthOfLIS_最长递增子数组(nums: List[int]) -> int:
     """最长非递减子数组"""

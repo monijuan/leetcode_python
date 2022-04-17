@@ -129,7 +129,7 @@ class Solution:
         nums = BST2List(root)
         nums = [x for x in nums if x != None]
         print(nums)
-        tree = tree_线段树(len(nums)+1,query_fn=max)
+        tree = tree_线段树(max(nums)+1,query_fn=max)
         for t,x,y in ops:
             tree.update(x,y,t)
             print(tree.lazy)
