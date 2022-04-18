@@ -19,7 +19,7 @@ type 等于 1 时，将节点值范围在 [x, y] 的节点均染红
 题目保证对于每个操作的 x、y 值定出现在二叉搜索树节点中
 示例 1：
 
-输入：root = [1,null,2,null,3,null,4,null,5], ops = [[1,2,4],[1,1,3],[0,3,5]]
+输入：root = [1,None,2,None,3,None,4,None,5], ops = [[1,2,4],[1,1,3],[0,3,5]]
 
 输出：2
 
@@ -32,7 +32,7 @@ image.png
 
 示例 2：
 
-输入：root = [4,2,7,1,null,5,null,null,null,null,6]
+输入：root = [4,2,7,1,None,5,None,None,None,None,6]
 ops = [[0,2,2],[1,1,5],[0,4,5],[1,5,7]]
 
 输出：5
@@ -77,7 +77,9 @@ class tree_线段树():
     def _pull(self, x):
         while x > 1:
             x //= 2
-            self.tree[x] = self.query_fn(self.tree[x * 2], self.tree[x * 2 + 1])
+            print('x*2:',self.tree[x * 2],', x*2+1:',self.tree[x * 2 + 1])
+            self.tree[x] = max(self.tree[x * 2], self.tree[x * 2 + 1])
+            # self.tree[x] = self.query_fn(self.tree[x * 2], self.tree[x * 2 + 1])
             # self.tree[x] = self.update_fn(self.tree[x], self.lazy[x])
             self.tree[x] = self.lazy[x]
 
@@ -129,10 +131,11 @@ class Solution:
         nums = BST2List(root)
         nums = [x for x in nums if x != None]
         print(nums)
-        tree = tree_线段树(max(nums)+1,query_fn=max)
+        tree = tree_线段树(max(nums)+1,query_fn=sum)
         for t,x,y in ops:
             tree.update(x,y,t)
             print(tree.lazy)
+            print(tree.query(0,len(nums)))
 
 
 # --------------------------------------------------------------------------------
@@ -196,7 +199,8 @@ def test_obj(data_test):
 
 if __name__ == '__main__':
     datas = [
-        [[1,None,2,None,3,None,4,None,5],[[1,2,4],[1,1,3],[0,3,5]]],
+        # [[1,None,2,None,3,None,4,None,5],[[1,2,4],[1,1,3],[0,3,5]]],
+        [[4,2,7,1,None,5,None,None,None,None,6],[[0,2,2],[1,1,5],[0,4,5],[1,5,7]]],
     ]
     for data_test in datas:
         t0 = time.time()
