@@ -271,6 +271,7 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 [模拟卷Leetcode【普通】825. 适龄的朋友_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/124102186)
 [模拟卷Leetcode【普通】837. 新21点_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/124102239)
 [模拟卷Leetcode【普通】838. 推多米诺_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/124102280)
+[模拟卷Leetcode【普通】841. 钥匙和房间_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/124262182)
 
 
 
