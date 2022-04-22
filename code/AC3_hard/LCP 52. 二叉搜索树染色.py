@@ -56,7 +56,8 @@ ops[i][0] 仅为 0 or 1
 """
 from leetcode_python.utils import *
 
-from sortedcontainers import SortedList
+def BST2List(root):
+    return BST2List(root.left) + [root.val] + BST2List(root.right) if root else []
 
 class tree_线段树():
     def __init__(self, N, query_fn=sum):
@@ -124,9 +125,7 @@ class tree_线段树():
             R //= 2
         return ans
 
-
-
-class Solution:
+class Solution_线段树_但是不会:
     def getNumber(self, root: Optional[TreeNode], ops: List[List[int]]) -> int:
         nums = BST2List(root)
         nums = [x for x in nums if x != None]
@@ -137,9 +136,7 @@ class Solution:
             print(tree.lazy)
             print(tree.query(0,len(nums)))
 
-
 # --------------------------------------------------------------------------------
-
 def BST2List(root):
     return BST2List(root.left) + [root.val] + BST2List(root.right) if root else []
 
@@ -164,11 +161,7 @@ class Solution_1:
         return ans
 
 # --------------------------------------------------------------------------------
-
-def BST2List(root):
-    return BST2List(root.left) + [root.val] + BST2List(root.right) if root else []
-
-class Solution_2:
+class Solution:
     def getNumber(self, root: Optional[TreeNode], ops: List[List[int]]) -> int:
         nums = BST2List(root)
         ans = 0
