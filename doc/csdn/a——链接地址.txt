@@ -274,6 +274,7 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 [模拟卷Leetcode【普通】841. 钥匙和房间_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/124262182)
 [模拟卷Leetcode【普通】846. 一手顺子_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/124265466)
 [模拟卷Leetcode【普通】851. 喧闹和富有_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/124337839)
+[模拟卷Leetcode【普通】869. 重新排序得到 2 的幂_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/124370824)
 
 
 

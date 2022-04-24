@@ -3,7 +3,7 @@
 # @Author  : 模拟卷
 # @Github  : https://github.com/monijuan
 # @CSDN    : https://blog.csdn.net/qq_34451909
-# @File    : 04.py
+# @File    : 6044AC. 花期内花的数目.py
 # @Software: PyCharm 
 # ===================================
 """
@@ -158,6 +158,7 @@ class Solution:
                     e5_next = edges[id5][(i_+1)%4]
                     e5_next2 = edges[id5][(i_+2)%4]
                     if checkThreeSide(e_b,e_a4,ell,e5_,e5_next,e5_next2):
+                        # res_5ed.append([visited+[id5],last4e+[edges[id5][(i_+3)%4]]])
                         res_5ed.append([visited+[id5],last4e+[flip(edges[id5][(i_+3)%4])]])
                 edges_id5_f = flips(*edges[id5])
                 for i_,e5_ in enumerate(edges_id5_f):
@@ -166,7 +167,7 @@ class Solution:
                     # if checkThreeSide(ell,e_a4,e_b,e5_,e5_next,e5_next2):
                     if checkThreeSide(e_b,e_a4,ell,e5_,e5_next,e5_next2):
                         # res_5ed.append([visited+[id5],last4e+[edges_id5_f[(i_+3)%4]]])
-                        res_5ed.append([visited+[id5],last4e+[flip(edges[id5][(i_+3)%4])]])
+                        res_5ed.append([visited+[id5],last4e+[flip(edges_id5_f[(i_+3)%4])]])
 
         # for r5 in res_5ed:print('r5:',r5)
         print('len res5',len(res_5ed))
@@ -182,8 +183,8 @@ class Solution:
                     e6_next2 = edges[id6][(i_+2)%4]
                     e6_next3 = edges[id6][(i_+3)%4]
                     if checkFourSide(*last4e,e6_,e6_next,e6_next2,e6_next3):
-                        res.append(visited+[id6])
-                        # return True
+                        # res.append(visited+[id6])
+                        return True
 
                 edges_id6_f = flips(*edges[id6])
                 for i_,e6_ in enumerate(edges_id6_f):
@@ -191,11 +192,11 @@ class Solution:
                     e6_next2 = edges_id6_f[(i_+2)%4]
                     e6_next3 = edges_id6_f[(i_+3)%4]
                     if checkFourSide(*last4e,e6_,e6_next,e6_next2,e6_next3):
-                        res.append(visited+[id6])
-                        # return True
+                        # res.append(visited+[id6])
+                        return True
 
-        for r6 in res:print(r6)
-        print('len res',len(res))
+        # for r6 in res:print(r6)
+        # print('len res',len(res))
         return False
 
 
@@ -219,9 +220,9 @@ def test_obj(data_test):
 
 if __name__ == '__main__':
     datas = [
-        # [[["000","110","000"],["110","011","000"],["110","011","110"],["000","010","111"],["011","111","011"],["011","010","000"]]],
-        # [[["101","111","000"],["000","010","111"],["010","011","000"],["010","111","010"],["101","111","010"],["000","010","011"]]],
-        # [[["000","110","000"],["110","011","000"],["110","011","110"],["000","010","111"],["011","111","011"],["111","010","000"]]],
+    #     [[["000","110","000"],["110","011","000"],["110","011","110"],["000","010","111"],["011","111","011"],["011","010","000"]]],
+    #     [[["101","111","000"],["000","010","111"],["010","011","000"],["010","111","010"],["101","111","010"],["000","010","011"]]],
+    #     [[["000","110","000"],["110","011","000"],["110","011","110"],["000","010","111"],["011","111","011"],["111","010","000"]]],
         [[["010","110","000"],["110","011","000"],["110","011","110"],["000","010","111"],["011","111","110"],["010","010","000"]]],
     ]
     for data_test in datas:

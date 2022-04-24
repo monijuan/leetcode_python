@@ -3,7 +3,7 @@
 # @Author  : 模拟卷
 # @Github  : https://github.com/monijuan
 # @CSDN    : https://blog.csdn.net/qq_34451909
-# @File    : 01.py
+# @File    : 6041AC. 多个数组求交集.py
 # @Software: PyCharm 
 # ===================================
 """
