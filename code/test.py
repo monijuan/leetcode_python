@@ -2,7 +2,7 @@
 # @Time    : 2021/8/20 16:01
 # @Author  : xxxxxxxxx
 # @Email   : xxxxxxxxxxx@xxx.com
-# @File    : test.py
+# @File    : __test.py
 # @Software: PyCharm
 # ===================================
 from leetcode_python.utils import *
