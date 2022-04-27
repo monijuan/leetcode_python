@@ -6,7 +6,7 @@
 # @File    : __init__.py
 # @Software: PyCharm 
 # ===================================
-from typing import List, Callable, Optional
+from typing import List, Set, Tuple, Callable, Optional
 from functools import lru_cache, reduce
 from itertools import product
 import queue
@@ -33,7 +33,14 @@ from .线段树 import tree_线段树
 
 @lru_cache(None)
 ########################### test
-## region 二维前缀和
+## region 前缀和
+def sum_nums一维前缀和(nums):
+    res = []
+    for n in nums:
+        res.append(n+res[-1] if res else n)
+    return res
+
+
 def sum_grid二维前缀和(grid):
     """
         res[i][j][0]:水平和
@@ -48,6 +55,8 @@ def sum_grid二维前缀和(grid):
         for i in range(h):
             res[i][j][1] = grid[i][j] + (0 if i == 0 else res[i - 1][j][1])
     return res
+
+
 # endregion
 
 # region 子数组
@@ -169,6 +178,8 @@ def __test_product():
     n, d = len(li), defaultdict(set)
     for i, j, k in product(range(n), repeat=3):
         print(i, j, k)
+
+
 # endregion
 
 
