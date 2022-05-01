@@ -3,7 +3,7 @@
 # @Author  : 模拟卷
 # @Github  : https://github.com/monijuan
 # @CSDN    : https://blog.csdn.net/qq_34451909
-# @File    : 02.py
+# @File    : 6048AC. 必须拿起的最小连续卡牌数.py
 # @Software: PyCharm 
 # ===================================
 """给你一个下标从 0 开始长度为 n 的整数数组 nums 。
