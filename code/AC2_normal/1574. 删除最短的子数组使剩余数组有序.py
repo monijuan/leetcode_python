@@ -1,0 +1,94 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2022/5/1 15:04
+# @Author  : 模拟卷
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 1574. 删除最短的子数组使剩余数组有序.py
+# @Software: PyCharm 
+# ===================================
+"""给你一个整数数组 arr ，请你删除一个子数组（可以为空），使得 arr 中剩下的元素是 非递减 的。
+
+一个子数组指的是原数组中连续的一个子序列。
+
+请你返回满足题目要求的最短子数组的长度。
+
+ 
+
+示例 1：
+
+输入：arr = [1,2,3,10,4,2,3,5]
+输出：3
+解释：我们需要删除的最短子数组是 [10,4,2] ，长度为 3 。剩余元素形成非递减数组 [1,2,3,3,5] 。
+另一个正确的解为删除子数组 [3,10,4] 。
+示例 2：
+
+输入：arr = [5,4,3,2,1]
+输出：4
+解释：由于数组是严格递减的，我们只能保留一个元素。所以我们需要删除长度为 4 的子数组，要么删除 [5,4,3,2]，要么删除 [4,3,2,1]。
+示例 3：
+
+输入：arr = [1,2,3]
+输出：0
+解释：数组已经是非递减的了，我们不需要删除任何元素。
+示例 4：
+
+输入：arr = [1]
+输出：0
+ 
+
+提示：
+
+1 <= arr.length <= 10^5
+0 <= arr[i] <= 10^9
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/shortest-subarray-to-be-removed-to-make-array-sorted
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+from leetcode_python.utils import *
+
+
+class Solution:
+    def findLengthOfShortestSubarray(self, arr: List[int]) -> int:
+        n = len(arr)
+        l, r = 0, n-1
+        while l < n-1 and arr[l]<=arr[l+1] : l += 1
+        if l == n-1: return 0
+        while r > 0 and arr[r] >= arr[r-1]: r -= 1
+        ans = min(n-l-1, r)
+        for i in range(l, -1, -1):
+            tmp = r + bisect.bisect_left(arr[r:], arr[i]) - i - 1
+            ans = min(ans, tmp)
+            if tmp == r - i - 1:
+                break
+        return ans
+
+
+
+def test(data_test):
+    s = Solution()
+    data = data_test    # normal
+    # data = [List2Node(data_test[0])]  # list转node
+    return s.findLengthOfShortestSubarray(*data)
+
+def test_obj(data_test):
+    result = [None]
+    obj = Solution(*data_test[1][0])
+    for fun,data in zip(data_test[0][1::],data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+if __name__ == '__main__':
+    datas = [
+        [[1,2,3,10,4,2,3,5]],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-'*50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')
