@@ -17,8 +17,9 @@ import time
 import math
 import random
 from collections import Counter, defaultdict, deque
-from sortedcontainers import SortedList, SortedKeyList, SortedListWithKey, SortedDict, SortedKeysView, \
-    SortedItemsView, SortedValuesView, SortedSet
+import sortedcontainers
+# from sortedcontainers import SortedList, SortedKeyList, SortedListWithKey, SortedDict, SortedKeysView, \
+#     SortedItemsView, SortedValuesView, SortedSet
 
 from .rand_help import randListInt, randListListInt, randListListIntShow
 from .all_node import ListNode, TreeNode

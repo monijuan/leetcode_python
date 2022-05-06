@@ -1,0 +1,120 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2022/5/6 9:32
+# @Author  : 模拟卷
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 1146. 快照数组.py
+# @Software: PyCharm 
+# ===================================
+"""实现支持下列接口的「快照数组」- SnapshotArray：
+
+SnapshotArray(int length) - 初始化一个与指定长度相等的 类数组 的数据结构。初始时，每个元素都等于 0。
+void set(index, val) - 会将指定索引 index 处的元素设置为 val。
+int snap() - 获取该数组的快照，并返回快照的编号 snap_id（快照号是调用 snap() 的总次数减去 1）。
+int get(index, snap_id) - 根据指定的 snap_id 选择快照，并返回该快照指定索引 index 的值。
+ 
+
+示例：
+
+输入：["SnapshotArray","set","snap","set","get"]
+     [[3],[0,5],[],[0,6],[0,0]]
+输出：[null,null,0,null,5]
+解释：
+SnapshotArray snapshotArr = new SnapshotArray(3); // 初始化一个长度为 3 的快照数组
+snapshotArr.set(0,5);  // 令 array[0] = 5
+snapshotArr.snap();  // 获取快照，返回 snap_id = 0
+snapshotArr.set(0,6);
+snapshotArr.get(0,0);  // 获取 snap_id = 0 的快照中 array[0] 的值，返回 5
+ 
+
+提示：
+
+1 <= length <= 50000
+题目最多进行50000 次set，snap，和 get的调用 。
+0 <= index < length
+0 <= snap_id < 我们调用 snap() 的总次数
+0 <= val <= 10^9
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/snapshot-array
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+from leetcode_python.utils import *
+
+class SnapshotArray:
+    def __init__(self, length: int):
+        self.length = length
+        self.rec = defaultdict(list)
+        self.p = 0
+        self.snap_id = -1
+        self.srec = dict()
+
+    def set(self, index: int, val: int) -> None:
+        self.rec[index].append([self.p,val])
+        self.p += 1
+
+    def snap(self) -> int:
+        self.snap_id += 1
+        self.srec[self.snap_id] = self.p
+        self.p += 1
+        return self.snap_id
+
+    def get(self, index: int, snap_id: int) -> int:
+        p = self.srec[snap_id]
+        if not self.rec[index]:
+            return 0
+        else:
+            k = bisect.bisect_right(self.rec[index],[p,0xffffffff])-1
+            if k < 0:
+                return 0
+            else:
+                return self.rec[index][k][1]
+
+
+class SnapshotArray_tle:
+    def __init__(self, length: int):
+        self.nums = [0] * length
+        self.snap_id = -1
+        self.snap_res = dict()
+
+    def set(self, index: int, val: int) -> None:
+        self.nums[index] = val
+
+    def snap(self) -> int:
+        self.snap_id += 1
+        self.snap_res[self.snap_id] = self.nums.copy()
+        return self.snap_id
+
+    def get(self, index: int, snap_id: int) -> int:
+        return self.snap_res[snap_id][index]
+
+
+def test(data_test):
+    s = Solution()
+    data = data_test  # normal
+    # data = [List2Node(data_test[0])]  # list转node
+    return s.getResult(*data)
+
+
+def test_obj(data_test):
+    result = [None]
+    obj = Solution(*data_test[1][0])
+    for fun, data in zip(data_test[0][1::], data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+
+if __name__ == '__main__':
+    datas = [
+        [],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')

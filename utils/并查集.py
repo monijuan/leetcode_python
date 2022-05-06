@@ -63,7 +63,37 @@ class union_并查集(object):
                 self.parent_dict[a_head] = b_head
                 self.size_dict[b_head] = a_set_size + b_set_size
 
+class union_并查集2:
+    def __init__(self, n):
+        self.parent = [x for x in range(n)]  # x的直接老板是谁（不是掌门，不是幕后boss ）
+        self.sz = [0 for x in range(n)]  # 不同之处  等函数中置1了,从说明这是个人  每个人能管几个人  能管自己也算1个
+        self.part = n  # 江湖上有几个门派
 
+    def Find(self, x: int) -> int:  # 找x所在门派的 掌门（终极boss，门派老大）
+        if self.parent[x] == x:
+            return x
+        return self.Find(self.parent[x])
+
+    def Union(self, x: int, y: int) -> bool:  # 合并两个门派
+        root_x = self.Find(x)  # x所在门派的掌门
+        root_y = self.Find(y)  # y所在门派的掌门
+        if root_x == root_y:  # 如果是同一个人  不用合并了  本就是同门
+            return False
+        if self.sz[root_x] > self.sz[root_y]:  # root_x 手下的人多
+            root_x, root_y = root_y, root_x  # 为了代码写起来简洁  不然要写个else root_y合并到root_x门下
+        self.parent[root_x] = root_y  # root_x带着门派投靠到root_y门下  root_x认root_y做老板
+        self.sz[root_y] += self.sz[root_x]  # root_y手下的人马 更多了  把新增的人马数统计好
+        self.part -= 1  # 江湖上从此少了一个门派
+        return True
+
+    def inthesamepart(self, x: int, y: int) -> bool:  # 判断 x y 在不在同一个门派
+        root_x = self.Find(x)
+        root_y = self.Find(y)
+        return root_x == root_y
+
+    def getpartsize(self, x: int) -> int:  # 判断 x 所在的门派， 有多少人
+        root_x = self.Find(x)
+        return self.sz[root_x]  # 其实就是  掌门手下有多少人马（包含掌门自己）
 
 def test(data_test):
     s = Solution()
