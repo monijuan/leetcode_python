@@ -53,11 +53,27 @@
 from leetcode_python.utils import *
 
 class Solution:
-    def __init__(self):
-        pass
+    def maxProfit(self, inventory: List[int], orders: int) -> int:
+        L,R = 0, max(inventory)
+        while L < R:
+            mid = (L + R + 1) >> 1
+            cur_order = sum(max(0,inv - mid) for inv in inventory)
+            if cur_order >= orders:
+                L = mid
+            else:
+                R = mid - 1
 
-    def getResult(self,args):
-        return
+        attnum = L + 1
+        res = cnt = 0
+        for inv in inventory:
+            if inv > attnum:
+                cur = inv - attnum
+                res += (inv + attnum + 1) * cur // 2
+                res %= 1000000007
+                cnt += cur
+        res += (orders - cnt) * attnum
+        res %= 1000000007
+        return res
 
 
 def test(data_test):

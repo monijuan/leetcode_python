@@ -41,8 +41,7 @@ def sum_nums一维前缀和(nums):
         res.append(n+res[-1] if res else n)
     return res
 
-
-def sum_grid二维前缀和(grid):
+def sum_grid二维单向前缀和(grid):
     """
         res[i][j][0]:水平和
         res[i][j][1]:垂直和
@@ -57,6 +56,18 @@ def sum_grid二维前缀和(grid):
             res[i][j][1] = grid[i][j] + (0 if i == 0 else res[i - 1][j][1])
     return res
 
+def sum_grid二维前缀和(grid):
+    """
+    1292. 元素和小于等于阈值的正方形的最大边长
+    sum = grid[x1..x2][y1..y2]
+        = res[x2][y2] - res[x1 - 1][y2] - res[x2][y1 - 1] + res[x1 - 1][y1 - 1]
+    """
+    h, w = len(grid), len(grid[0])
+    res = [[0] * (w + 1) for _ in range(h + 1)]
+    for i in range(1, h + 1):
+        for j in range(1, w + 1):
+            res[i][j] = res[i - 1][j] + res[i][j - 1] - res[i - 1][j - 1] + grid[i - 1][j - 1]
+    return res
 
 # endregion
 
