@@ -1,0 +1,93 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2022/5/7 10:50
+# @Author  : 模拟卷
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 981. 基于时间的键值存储.py
+# @Software: PyCharm 
+# ===================================
+"""设计一个基于时间的键值数据结构，该结构可以在不同时间戳存储对应同一个键的多个值，并针对特定时间戳检索键对应的值。
+
+实现 TimeMap 类：
+
+TimeMap() 初始化数据结构对象
+void set(String key, String value, int timestamp) 存储键 key、值 value，以及给定的时间戳 timestamp。
+String get(String key, int timestamp)
+返回先前调用 set(key, value, timestamp_prev) 所存储的值，其中 timestamp_prev <= timestamp 。
+如果有多个这样的值，则返回对应最大的  timestamp_prev 的那个值。
+如果没有值，则返回空字符串（""）。
+ 
+示例：
+
+输入：
+["TimeMap", "set", "get", "get", "set", "get", "get"]
+[[], ["foo", "bar", 1], ["foo", 1], ["foo", 3], ["foo", "bar2", 4], ["foo", 4], ["foo", 5]]
+输出：
+[null, null, "bar", "bar", null, "bar2", "bar2"]
+
+解释：
+TimeMap timeMap = new TimeMap();
+timeMap.set("foo", "bar", 1);  // 存储键 "foo" 和值 "bar" ，时间戳 timestamp = 1  
+timeMap.get("foo", 1);         // 返回 "bar"
+timeMap.get("foo", 3);         // 返回 "bar", 因为在时间戳 3 和时间戳 2 处没有对应 "foo" 的值，所以唯一的值位于时间戳 1 处（即 "bar"） 。
+timeMap.set("foo", "bar2", 4); // 存储键 "foo" 和值 "bar2" ，时间戳 timestamp = 4 
+timeMap.get("foo", 4);         // 返回 "bar2"
+timeMap.get("foo", 5);         // 返回 "bar2"
+ 
+
+提示：
+
+1 <= key.length, value.length <= 100
+key 和 value 由小写英文字母和数字组成
+1 <= timestamp <= 107
+set 操作中的时间戳 timestamp 都是严格递增的
+最多调用 set 和 get 操作 2 * 105 次
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/time-based-key-value-store
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+from leetcode_python.utils import *
+
+class TimeMap:
+    def __init__(self):
+        self.dct = defaultdict(list)
+
+    def set(self, key: str, value: str, timestamp: int) -> None:
+        self.dct[key].append([timestamp, value])
+
+    def get(self, key: str, timestamp: int) -> str:
+        a = bisect.bisect_right(self.dct[key], [timestamp, "z" * 101])
+        return  self.dct[key][a-1][1] if a else ""
+
+
+
+
+
+def test(data_test):
+    s = Solution()
+    data = data_test    # normal
+    # data = [List2Node(data_test[0])]  # list转node
+    return s.getResult(*data)
+
+def test_obj(data_test):
+    result = [None]
+    obj = Solution(*data_test[1][0])
+    for fun,data in zip(data_test[0][1::],data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+if __name__ == '__main__':
+    datas = [
+        [],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-'*50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')
