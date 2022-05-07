@@ -1,0 +1,91 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2022/5/7 17:40
+# @Author  : 模拟卷
+# @Github  : https://github.com/monijuan
+# @CSDN    : https://blog.csdn.net/qq_34451909
+# @File    : 1802. 有界数组中指定下标处的最大值.py
+# @Software: PyCharm 
+# ===================================
+"""给你三个正整数 n、index 和 maxSum 。你需要构造一个同时满足下述所有条件的数组 nums（下标 从 0 开始 计数）：
+
+nums.length == n
+nums[i] 是 正整数 ，其中 0 <= i < n
+abs(nums[i] - nums[i+1]) <= 1 ，其中 0 <= i < n-1
+nums 中所有元素之和不超过 maxSum
+nums[index] 的值被 最大化
+返回你所构造的数组中的 nums[index] 。
+
+注意：abs(x) 等于 x 的前提是 x >= 0 ；否则，abs(x) 等于 -x 。
+
+ 
+
+示例 1：
+
+输入：n = 4, index = 2,  maxSum = 6
+输出：2
+解释：数组 [1,1,2,1] 和 [1,2,2,1] 满足所有条件。不存在其他在指定下标处具有更大值的有效数组。
+示例 2：
+
+输入：n = 6, index = 1,  maxSum = 10
+输出：3
+ 
+
+提示：
+
+1 <= n <= maxSum <= 109
+0 <= index < n
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/maximum-value-at-a-given-index-in-a-bounded-array
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+"""
+from leetcode_python.utils import *
+
+
+class Solution():
+    def maxValue(self, n, index, maxSum):
+        def check(mid, m):
+            if m >= mid:
+                return mid * (mid + 1) // 2 + m - mid
+            else:
+                return (mid * 2 - m + 1) * m // 2
+
+        left, right = 0, maxSum + 1
+        while left < right:
+            mid = (left + right) >> 1
+            if check(mid, index + 1) + check(mid, n - index) - mid > maxSum:
+                right = mid
+            else:
+                left = mid + 1
+        return left - 1
+
+
+def test(data_test):
+    s = Solution()
+    data = data_test  # normal
+    # data = [List2Node(data_test[0])]  # list转node
+    return s.getResult(*data)
+
+
+def test_obj(data_test):
+    result = [None]
+    obj = Solution(*data_test[1][0])
+    for fun, data in zip(data_test[0][1::], data_test[1][1::]):
+        if data:
+            res = obj.__getattribute__(fun)(*data)
+        else:
+            res = obj.__getattribute__(fun)()
+        result.append(res)
+    return result
+
+
+if __name__ == '__main__':
+    datas = [
+        [],
+    ]
+    for data_test in datas:
+        t0 = time.time()
+        print('-' * 50)
+        print('input:', data_test)
+        print('output:', test(data_test))
+        print(f'use time:{time.time() - t0}s')

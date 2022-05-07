@@ -36,10 +36,14 @@ from .线段树 import tree_线段树
 ########################### test
 ## region 前缀和
 def sum_nums一维前缀和(nums):
-    res = []
-    for n in nums:
-        res.append(n+res[-1] if res else n)
-    return res
+    # res = []
+    # for n in nums:
+    #     res.append(n+res[-1] if res else n)
+    # return res
+    prefix = [0]
+    for num in nums:
+        prefix.append(prefix[-1] + num)
+    return prefix
 
 def sum_grid二维单向前缀和(grid):
     """
