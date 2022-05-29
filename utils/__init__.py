@@ -31,6 +31,9 @@ from .前缀和 import pre_二维前缀和
 from .字符串哈希 import hash_字符串哈希
 from .线段树 import tree_线段树
 
+# import sys
+# sys.setrecursionlimit(10 ** 9)
+
 
 @lru_cache(None)
 ########################### test

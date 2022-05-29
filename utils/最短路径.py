@@ -10,6 +10,45 @@
 """
 from leetcode_python.utils import *
 
+class Solution_6081_到达角落需要移除障碍物的最小数目:
+    def minimumObstacles(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        flights = []
+        for i in range(m):
+            for j in range(n):
+                if i:
+                    flights.append([i * n + j, (i - 1) * n + j, grid[i - 1][j]])
+                if i < m - 1:
+                    flights.append([i * n + j, (i + 1) * n + j, grid[i + 1][j]])
+                if j:
+                    flights.append([i * n + j, (i) * n + j - 1, grid[i][j - 1]])
+                if j < n - 1:
+                    flights.append([i * n + j, (i) * n + j + 1, grid[i][j + 1]])
+
+        def findCheapestPrice(flights: List[List[int]], src: int, dst: int, k: int) -> int:
+            g = defaultdict(list)
+            for u, v, w in flights:
+                g[u].append((v, w))
+            res = defaultdict(lambda: float('inf'))
+            res[(0, 0)] = 0
+            q = [(0, 0, src)]
+            while q:
+                time, step, nownode = heapq.heappop(q)
+                if step > k + 1 or time > res[(step, nownode)]:
+                    continue
+                if nownode == dst:
+                    return time
+                for v, w in g[nownode]:
+                    newtime = w + time
+                    if newtime < res[v]:
+                        heapq.heappush(q, (newtime, step + 1, v))
+                        res[v] = newtime
+                # print(res)
+            return -1
+
+        return findCheapestPrice(flights, 0, m * n - 1, m + n + 100000)
+
+
 class map_单源最短路径():
     def __init__(self, edges):
         """ edges: [[from,to,weight],]"""

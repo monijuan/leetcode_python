@@ -287,6 +287,10 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 [模拟卷Leetcode【普通】1020. 飞地的数量_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/124946122?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"124946122"%2C"source"%3A"qq_34451909"}&ctrtid=77zYj)
 [模拟卷Leetcode【普通】1031. 两个非重叠子数组的最大和_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/124946136?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"124946136"%2C"source"%3A"qq_34451909"}&ctrtid=NaHhX)
 [模拟卷Leetcode【普通】1034. 边界着色_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/124946170?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"124946170"%2C"source"%3A"qq_34451909"}&ctrtid=BXP6d)
+[模拟卷Leetcode【普通】1042. 不邻接植花_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/125014465?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"125014465"%2C"source"%3A"qq_34451909"}&ctrtid=L371O)
+[模拟卷Leetcode【普通】1057. 校园自行车分配_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/125014478?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"125014478"%2C"source"%3A"qq_34451909"}&ctrtid=IPsoB)
+[模拟卷Leetcode【普通】1058. 最小化舍入误差以满足目标_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/125014487?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"125014487"%2C"source"%3A"qq_34451909"}&ctrtid=0zmyD)
+[模拟卷Leetcode【普通】1060. 有序数组中的缺失元素_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/125014491?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"125014491"%2C"source"%3A"qq_34451909"}&ctrtid=ZceDq)
 
 
 
