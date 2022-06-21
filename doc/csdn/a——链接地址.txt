@@ -297,6 +297,13 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 [模拟卷Leetcode【普通】1109. 航班预订统计_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/125280752?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"125280752"%2C"source"%3A"qq_34451909"}&ctrtid=773XZ)
 [模拟卷Leetcode【普通】1143. 最长公共子序列_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/125280770?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"125280770"%2C"source"%3A"qq_34451909"}&ctrtid=DkxLL)
 [模拟卷Leetcode【普通】1218. 最长定差子序列_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/125280785?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"125280785"%2C"source"%3A"qq_34451909"}&ctrtid=8yjkT)
+[模拟卷Leetcode【普通】1219. 黄金矿工_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/125393968?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"125393968"%2C"source"%3A"qq_34451909"}&ctrtid=GNyZK)
+[模拟卷Leetcode【普通】1249. 移除无效的括号_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/125393992?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"125393992"%2C"source"%3A"qq_34451909"}&ctrtid=vwyLL)
+[模拟卷Leetcode【普通】1296. 划分数组为连续数字的集合_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/125394014?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"125394014"%2C"source"%3A"qq_34451909"}&ctrtid=ZRc8i)
+[模拟卷Leetcode【普通】1314. 矩阵区域和_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/125394031?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"125394031"%2C"source"%3A"qq_34451909"}&ctrtid=8PR1i)
+[模拟卷Leetcode【普通】1405. 最长快乐字符串_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/125394049?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"125394049"%2C"source"%3A"qq_34451909"}&ctrtid=n4tfQ)
+[模拟卷Leetcode【普通】1414. 和为 K 的最少斐波那契数字数目_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/125394078?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"125394078"%2C"source"%3A"qq_34451909"}&ctrtid=ilXYA)
+[模拟卷Leetcode【普通】1447. 最简分数_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/125394101?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"125394101"%2C"source"%3A"qq_34451909"}&ctrtid=Qfpsh)
 
 
 
