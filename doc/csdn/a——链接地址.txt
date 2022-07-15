@@ -309,6 +309,11 @@ GitHub：[https://github.com/monijuan/leetcode_python ](https://github.com/monij
 [模拟卷Leetcode【普通】1609. 奇偶树_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/125639718?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"125639718"%2C"source"%3A"qq_34451909"}&ctrtid=Jaq3E)
 [模拟卷Leetcode【普通】1705. 吃苹果的最大数目_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/125639736?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"125639736"%2C"source"%3A"qq_34451909"}&ctrtid=shRAb)
 [模拟卷Leetcode【普通】1706. 球会落何处_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/125639761?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"125639761"%2C"source"%3A"qq_34451909"}&ctrtid=zG9V3)
+[模拟卷Leetcode【普通】1765. 地图中的最高点_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/125806543?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"125806543"%2C"source"%3A"qq_34451909"}&ctrtid=1Db0s)
+[模拟卷Leetcode【普通】1823. 找出游戏的获胜者_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/125806559?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"125806559"%2C"source"%3A"qq_34451909"}&ctrtid=v0qqN)
+[模拟卷Leetcode【普通】1894. 找到需要补充粉笔的学生编号_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/125806577?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"125806577"%2C"source"%3A"qq_34451909"}&ctrtid=HomEQ)
+[模拟卷Leetcode【普通】1996. 游戏中弱角色的数量_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/125806596?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"125806596"%2C"source"%3A"qq_34451909"}&ctrtid=xZwDf)
+[模拟卷Leetcode【普通】2013. 检测正方形_邂逅模拟卷的博客-CSDN博客](https://blog.csdn.net/qq_34451909/article/details/125806617?csdn_share_tail={"type"%3A"blog"%2C"rType"%3A"article"%2C"rId"%3A"125806617"%2C"source"%3A"qq_34451909"}&ctrtid=Qgt1A)
 
 
 
