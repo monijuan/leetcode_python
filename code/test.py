@@ -5,8 +5,10 @@
 # @File    : __test.py
 # @Software: PyCharm
 # ===================================
-from leetcode_python.utils import *
+import bisect
 
+from leetcode_python.utils import *
+bisect.bisect_left()
 def test():
     li = list(range(3))
     n, d = len(li), defaultdict(set)

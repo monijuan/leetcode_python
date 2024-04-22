@@ -95,6 +95,42 @@ class union_并查集2:
         root_x = self.Find(x)
         return self.sz[root_x]  # 其实就是  掌门手下有多少人马（包含掌门自己）
 
+
+class union_并查集list:
+    """
+    1631. 最小体力消耗路径
+    https://leetcode.cn/problems/path-with-minimum-effort/solutions/581109/zui-xiao-ti-li-xiao-hao-lu-jing-by-leetc-3q2j/?envType=daily-question&envId=2024-04-22
+    """
+    def __init__(self, n: int):
+        self.parent = list(range(n))
+        self.size = [1] * n
+        self.n = n
+        # 当前连通分量数目
+        self.setCount = n
+
+    def findset(self, x: int) -> int:
+        if self.parent[x] == x:
+            return x
+        self.parent[x] = self.findset(self.parent[x])
+        return self.parent[x]
+
+    def unite(self, x: int, y: int) -> bool:
+        x, y = self.findset(x), self.findset(y)
+        if x == y:
+            return False
+        if self.size[x] < self.size[y]:
+            x, y = y, x
+        self.parent[y] = x
+        self.size[x] += self.size[y]
+        self.setCount -= 1
+        return True
+
+    def connected(self, x: int, y: int) -> bool:
+        x, y = self.findset(x), self.findset(y)
+        return x == y
+
+
+
 def test(data_test):
     s = Solution()
     data = data_test  # normal
